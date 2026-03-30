@@ -11,6 +11,7 @@
     :root {
       --red: #e50914;
       --red-dark: #b00710;
+      --accent: #F5A623;
       --bg: #0a0a0a;
       --bg2: #141414;
       --bg3: #1f1f1f;
@@ -38,7 +39,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 300;
       padding: 1.2rem 4rem;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: flex-start; align-items: center; gap: 3rem;
       background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
       transition: background 0.4s;
     }
@@ -49,6 +50,8 @@
       letter-spacing: 0.08em;
       color: var(--red);
       text-shadow: 0 0 30px rgba(229,9,20,0.5);
+      cursor: pointer;
+      text-decoration: none;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -61,6 +64,7 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: #fff; border-bottom: 1px solid var(--red); padding-bottom: 2px; }
 
     /* ── HERO ── */
     .hero {
@@ -140,7 +144,7 @@
       font-size: 0.82rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--red);
+      color: var(--accent);
       margin-bottom: 1rem;
       display: flex; align-items: center; gap: 1rem;
       opacity: 0;
@@ -154,7 +158,7 @@
 
     .hero-title {
       font-family: var(--display);
-      font-size: clamp(5rem, 14vw, 13rem);
+      font-size: 60px;
       line-height: 0.85;
       letter-spacing: 0.01em;
       margin-bottom: 1.5rem;
@@ -162,7 +166,8 @@
       animation: fadeUp 0.7s 0.5s forwards;
     }
     .hero-title .name-line { display: block; }
-    .hero-title .red { color: var(--red); }
+    .hero-title .name-line + .name-line { margin-top: 10px; }
+    .hero-title .red { color: var(--accent); }
 
     .hero-desc {
       font-size: 1.05rem;
@@ -219,7 +224,7 @@
       display: flex; align-items: center; gap: 1rem;
       color: #fff;
     }
-    .row-label .rl-accent { color: var(--red); }
+    .row-label .rl-accent { color: var(--accent); }
     .row-label::after {
       content: '';
       flex: 1; height: 1px;
@@ -242,7 +247,7 @@
       margin-bottom: 1.5rem;
       letter-spacing: 0.01em;
     }
-    .about-big .red { color: var(--red); }
+    .about-big .red { color: var(--accent); }
     .about-body {
       font-size: 1rem;
       font-weight: 300;
@@ -266,8 +271,8 @@
       color: rgba(255,255,255,0.6);
     }
     .meta-badge.highlight {
-      border-color: var(--red);
-      color: var(--red);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* Skills as "episodes" */
@@ -369,7 +374,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--red);
+      color: var(--accent);
       margin-bottom: 0.4rem;
     }
     .card-title {
@@ -407,7 +412,7 @@
     .hover-result {
       font-family: var(--display);
       font-size: 3rem;
-      color: var(--red);
+      color: var(--accent);
       line-height: 1;
       margin-bottom: 0.3rem;
     }
@@ -452,7 +457,7 @@
       font-family: var(--cond);
       font-size: 0.72rem;
       letter-spacing: 0.15em;
-      color: var(--red);
+      color: var(--accent);
       text-transform: uppercase;
       margin-bottom: 0.3rem;
     }
@@ -497,7 +502,7 @@
       font-size: 0.82rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--red);
+      color: var(--accent);
       margin-bottom: 1rem;
     }
     .contact-big {
@@ -582,12 +587,13 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">PORTFOLIO</div>
+  <a class="nav-logo" href="#home" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">PORTFOLIO</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#home" data-section="home">프로필</a></li>
+    <li><a href="#tools" data-section="tools">활용툴</a></li>
+    <li><a href="#experience" data-section="experience">경력기술서</a></li>
+    <li><a href="#projects" data-section="projects">기획서</a></li>
+    <li><a href="#contact" data-section="contact">연락처</a></li>
   </ul>
 </nav>
 
@@ -664,6 +670,54 @@
         <div class="ep-sub">Unity · Unreal · Figma</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="background: var(--bg);">
+  <div class="row-label reveal"><span class="rl-accent">🛠</span> 활용툴</div>
+  <div class="tools-grid reveal" style="display:grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem;">
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">UNITY</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">게임 엔진</div>
+    </div>
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">UNREAL</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">게임 엔진</div>
+    </div>
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">FIGMA</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">UI/UX 디자인</div>
+    </div>
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">NOTION</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">기획 문서</div>
+    </div>
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">JIRA</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">이슈 트래킹</div>
+    </div>
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">EXCEL</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">데이터 분석</div>
+    </div>
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">MIRO</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">협업 보드</div>
+    </div>
+
+    <div style="background:var(--bg3); padding:1.5rem; border:1px solid rgba(255,255,255,0.06); text-align:center;">
+      <div style="font-family:var(--display); font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">GITHUB</div>
+      <div style="font-family:var(--cond); font-size:0.8rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">버전 관리</div>
+    </div>
+
   </div>
 </section>
 
@@ -801,6 +855,20 @@
     nav.classList.toggle('solid', window.scrollY > 80);
   });
 
+  // Active nav tab on scroll
+  const sections = document.querySelectorAll('section[id], .hero[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observer.observe(s));
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
@@ -813,5 +881,79 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => io.observe(el));
 </script>
+
+<!-- ── LIVE EDIT PANEL ── -->
+<div id="live-panel" style="
+  position:fixed; bottom:2rem; right:2rem; z-index:9999;
+  background:rgba(10,10,10,0.95); border:1px solid rgba(229,9,20,0.5);
+  padding:1.2rem 1.5rem; width:280px;
+  font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; color:#fff;
+  box-shadow: 0 0 30px rgba(229,9,20,0.2);
+">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <span style="color:#e50914;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">🎛 Live Editor</span>
+    <button onclick="document.getElementById('live-panel').style.display='none'"
+      style="background:none;border:none;color:#666;cursor:pointer;font-size:1rem;">✕</button>
+  </div>
+
+  <div style="margin-bottom:1rem;">
+    <label style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+      <span>히어로 타이틀</span>
+      <span id="hero-val" style="color:#e50914;">10vw</span>
+    </label>
+    <input type="range" min="5" max="20" value="10" step="0.5"
+      style="width:100%;accent-color:#e50914;"
+      oninput="
+        const v = this.value;
+        document.getElementById('hero-val').textContent = v + 'vw';
+        document.querySelector('.hero-title').style.fontSize = 'clamp(2rem,' + v + 'vw,12rem)';
+      ">
+  </div>
+
+  <div style="margin-bottom:1rem;">
+    <label style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+      <span>About 타이틀</span>
+      <span id="about-val" style="color:#e50914;">6vw</span>
+    </label>
+    <input type="range" min="2" max="12" value="6" step="0.5"
+      style="width:100%;accent-color:#e50914;"
+      oninput="
+        const v = this.value;
+        document.getElementById('about-val').textContent = v + 'vw';
+        document.querySelector('.about-big').style.fontSize = 'clamp(2rem,' + v + 'vw,6rem)';
+      ">
+  </div>
+
+  <div style="margin-bottom:1rem;">
+    <label style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
+      <span>Contact 타이틀</span>
+      <span id="contact-val" style="color:#e50914;">12vw</span>
+    </label>
+    <input type="range" min="3" max="20" value="12" step="0.5"
+      style="width:100%;accent-color:#e50914;"
+      oninput="
+        const v = this.value;
+        document.getElementById('contact-val').textContent = v + 'vw';
+        document.querySelector('.contact-big').style.fontSize = 'clamp(2.5rem,' + v + 'vw,11rem)';
+      ">
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:0.8rem;margin-top:0.5rem;">
+    <p style="color:#666;font-size:0.75rem;margin-bottom:0.6rem;">슬라이더 조절 후 Claude에게 값을 알려주세요!</p>
+    <button onclick="
+      const msg = '히어로: ' + document.getElementById('hero-val').textContent +
+                  ' / About: ' + document.getElementById('about-val').textContent +
+                  ' / Contact: ' + document.getElementById('contact-val').textContent;
+      prompt('이 값을 Claude에게 복사해서 붙여넣기 하세요:', msg);
+    " style="
+      width:100%; padding:0.5rem;
+      background:#e50914; border:none; color:#fff;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.85rem; letter-spacing:0.08em;
+      text-transform:uppercase; cursor:pointer;
+    ">📋 값 복사하기</button>
+  </div>
+</div>
+
 </body>
 </html>
