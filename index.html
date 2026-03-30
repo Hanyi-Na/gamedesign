@@ -231,6 +231,10 @@
       background: linear-gradient(to right, rgba(229,9,20,0.4), transparent);
     }
 
+    .contact-row {
+      margin-bottom: 2rem;
+    }
+
     /* ── ABOUT ── */
     #about { background: var(--bg2); }
     .about-layout {
@@ -323,114 +327,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── PROJECTS (Netflix card row) ── */
-    #projects { background: var(--bg); padding-bottom: 2rem; }
-    .cards-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-    }
-    .project-card {
-      position: relative;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--bg3);
-    }
-    /* Colored gradient backgrounds for each card */
-    .project-card:nth-child(1) .card-bg { background: linear-gradient(135deg, #1a0a00 0%, #3d1008 50%, #1a0505 100%); }
-    .project-card:nth-child(2) .card-bg { background: linear-gradient(135deg, #00101a 0%, #083040 50%, #001a10 100%); }
-    .project-card:nth-child(3) .card-bg { background: linear-gradient(135deg, #0d001a 0%, #2a0840 50%, #1a0010 100%); }
-
-    .card-bg {
-      position: absolute; inset: 0;
-      transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    /* Decorative geometry inside each card */
-    .card-geo {
-      position: absolute; inset: 0;
-      opacity: 0.15;
-    }
-    .card-geo::before {
-      content: attr(data-letter);
-      font-family: var(--display);
-      font-size: 12rem;
-      color: #fff;
-      position: absolute;
-      bottom: -2rem; right: -1rem;
-      line-height: 1;
-      opacity: 0.08;
-    }
-
-    .card-info {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 1.5rem;
-      transition: opacity 0.3s;
-    }
-    .card-cat {
-      font-family: var(--cond);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-    .card-title {
-      font-family: var(--display);
-      font-size: 1.8rem;
-      letter-spacing: 0.03em;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .card-tag {
-      font-family: var(--cond);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    /* Hover expand effect */
-    .card-hover {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: flex-start;
-      padding: 2rem;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .project-card:hover .card-hover { opacity: 1; }
-    .project-card:hover .card-bg { transform: scale(1.08); }
-
-    .hover-result {
-      font-family: var(--display);
-      font-size: 3rem;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-    .hover-label {
-      font-family: var(--cond);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 1rem;
-    }
-    .hover-desc {
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.7;
-    }
-
     /* ── EXPERIENCE ── */
     #experience { background: var(--bg2); }
     .exp-episodes { display: flex; flex-direction: column; }
@@ -488,8 +384,7 @@
       background: var(--bg);
       position: relative;
       overflow: hidden;
-      text-align: center;
-      padding: 7rem 4rem;
+      padding: 5rem 4rem 7rem;
     }
     #contact::before {
       content: '';
@@ -497,55 +392,74 @@
       background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(229,9,20,0.12) 0%, transparent 70%);
     }
     .contact-content { position: relative; z-index: 1; }
-    .contact-eyebrow {
-      font-family: var(--cond);
-      font-size: 0.82rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .contact-big {
-      font-family: var(--display);
-      font-size: clamp(4rem, 12vw, 11rem);
-      line-height: 0.85;
-      letter-spacing: 0.02em;
+    .contact-header {
       margin-bottom: 2rem;
     }
     .contact-sub {
       font-size: 1rem;
       font-weight: 300;
       color: rgba(255,255,255,0.55);
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       line-height: 1.8;
+      max-width: 720px;
     }
-    .contact-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .contact-link {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-family: var(--cond);
-      font-size: 0.85rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+    }
+    .contact-card {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 1.2rem 1.4rem;
       text-decoration: none;
-      padding: 0.85rem 2rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.7);
-      transition: all 0.25s;
-    }
-    .contact-link:hover {
-      border-color: var(--red);
       color: #fff;
-      background: rgba(229,9,20,0.1);
+      transition: transform 0.25s, border-color 0.25s, background 0.25s;
+      backdrop-filter: blur(8px);
     }
-    .contact-link.primary {
-      background: var(--red);
-      border-color: var(--red);
+    .contact-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(229,9,20,0.8);
+      background: rgba(229,9,20,0.08);
+    }
+    .contact-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      background: rgba(229,9,20,0.15);
+      border: 1px solid rgba(229,9,20,0.4);
+      flex-shrink: 0;
+    }
+    .contact-text {
+      text-align: left;
+      min-width: 0;
+    }
+    .contact-label {
+      font-family: var(--cond);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .contact-value {
+      font-size: 1.05rem;
       color: #fff;
+      line-height: 1.5;
+      word-break: break-all;
     }
-    .contact-link.primary:hover {
-      background: var(--red-dark);
-      filter: brightness(1.1);
-    }
+
 
     /* ── FOOTER ── */
     footer {
@@ -580,6 +494,9 @@
       .exp-ep { grid-template-columns: 1fr; gap: 0.5rem; }
       .ep-number { font-size: 2rem; }
       .hero-letters { display: none; }
+      .contact-info { grid-template-columns: 1fr; }
+      .contact-card { padding: 1rem; }
+      .contact-value { font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -589,10 +506,10 @@
 <nav id="nav">
   <a class="nav-logo" href="#home" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">PORTFOLIO</a>
   <ul class="nav-links">
-    <li><a href="#home" data-section="home">프로필</a></li>
+    <li><a href="#about" data-section="about">프로필</a></li>
     <li><a href="#tools" data-section="tools">활용툴</a></li>
-    <li><a href="#experience" data-section="experience">경력기술서</a></li>
-    <li><a href="#projects" data-section="projects">기획서</a></li>
+    <li><a href="#experience" data-section="experience">경력사항</a></li>
+        <li><a href="#docs" data-section="docs">기획서</a></li>
     <li><a href="#contact" data-section="contact">연락처</a></li>
   </ul>
 </nav>
@@ -613,7 +530,7 @@
       레벨, 메커닉, 경험 — 게임을 이야기로 만드는 기획자.
     </p>
     <div class="hero-actions">
-      <a href="#projects" class="btn btn-play"><span class="btn-icon">▶</span> 작업물 보기</a>
+      <a href="#docs" class="btn btn-play"><span class="btn-icon">▶</span> 작업물 보기</a>
       <a href="#about" class="btn btn-info"><span class="btn-icon">ℹ</span> 더 알아보기</a>
     </div>
   </div>
@@ -621,7 +538,7 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="row-label reveal"><span class="rl-accent">NEW</span> 기획자 소개</div>
+  <div class="row-label reveal"><span class="rl-accent"></span> 프로필</div>
   <div class="about-layout">
     <div class="about-text">
       <h2 class="about-big reveal">게임을<br/>이야기로<br/><span class="red">만드는</span> 사람.</h2>
@@ -721,74 +638,10 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="row-label reveal"><span class="rl-accent">▶</span> 주요 프로젝트</div>
-  <div class="cards-row">
-
-    <div class="project-card reveal">
-      <div class="card-bg"></div>
-      <div class="card-geo" data-letter="A"></div>
-      <div class="card-info">
-        <div class="card-cat">모바일 RPG · 레벨 디자인</div>
-        <h3 class="card-title">PROJECT A</h3>
-        <div class="card-tags">
-          <span class="card-tag">Unity</span>
-          <span class="card-tag">레벨 디자인</span>
-          <span class="card-tag">전투 시스템</span>
-        </div>
-      </div>
-      <div class="card-hover">
-        <div class="hover-result">+40%</div>
-        <div class="hover-label">세션 길이 증가</div>
-        <p class="hover-desc">모바일 RPG의 던전 시스템 전면 재설계. 플레이어 동선 분석을 통해 핵심 병목 구간을 발견하고 레벨 구조를 개편했습니다.</p>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="card-bg"></div>
-      <div class="card-geo" data-letter="B"></div>
-      <div class="card-info">
-        <div class="card-cat">PC 어드벤처 · 시스템 기획</div>
-        <h3 class="card-title">PROJECT B</h3>
-        <div class="card-tags">
-          <span class="card-tag">Unreal</span>
-          <span class="card-tag">퀘스트 설계</span>
-          <span class="card-tag">내러티브</span>
-        </div>
-      </div>
-      <div class="card-hover">
-        <div class="hover-result">4.8★</div>
-        <div class="hover-label">유저 평점</div>
-        <p class="hover-desc">오픈월드 어드벤처의 퀘스트 시스템 및 NPC 대화 트리 설계. 선택지 기반 내러티브로 리플레이 가치를 높였습니다.</p>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="card-bg"></div>
-      <div class="card-geo" data-letter="C"></div>
-      <div class="card-info">
-        <div class="card-cat">캐주얼 게임 · UI/UX</div>
-        <h3 class="card-title">PROJECT C</h3>
-        <div class="card-tags">
-          <span class="card-tag">Figma</span>
-          <span class="card-tag">UI 설계</span>
-          <span class="card-tag">튜토리얼</span>
-        </div>
-      </div>
-      <div class="card-hover">
-        <div class="hover-result">↓28%</div>
-        <div class="hover-label">초반 이탈률 감소</div>
-        <p class="hover-desc">캐주얼 게임의 온보딩 및 튜토리얼 플로우 전면 개편. 신규 플레이어 이탈률을 대폭 낮추고 초기 리텐션을 개선했습니다.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="row-label reveal"><span class="rl-accent">EP</span> 경력 사항</div>
+  <div class="row-label reveal"><span class="rl-accent"></span> 경력사항</div>
   <div class="exp-episodes">
 
     <div class="exp-ep reveal">
@@ -824,19 +677,66 @@
   </div>
 </section>
 
+
+<!-- DOCS -->
+<section id="docs" style="background: var(--bg);">
+  <div class="row-label reveal"><span class="rl-accent">▶</span> 기획서</div>
+  <div class="exp-episodes">
+    <div class="exp-ep reveal">
+      <div class="ep-number">01</div>
+      <div class="ep-body">
+        <div class="ep-period">Planning Document</div>
+        <div class="ep-role">프로젝트 기획서 제목</div>
+        <div class="ep-company">장르 · 플랫폼 · 담당 범위</div>
+        <div class="ep-desc">이 영역에 기획서 요약, 핵심 시스템, 담당 업무, 성과 등을 정리하면 됩니다. 기존 주요 프로젝트 섹션 대신 경력사항 아래에서 문서형 포맷으로 보여지도록 구성했습니다.</div>
+      </div>
+    </div>
+
+    <div class="exp-ep reveal">
+      <div class="ep-number">02</div>
+      <div class="ep-body">
+        <div class="ep-period">Planning Document</div>
+        <div class="ep-role">프로젝트 기획서 제목</div>
+        <div class="ep-company">장르 · 플랫폼 · 담당 범위</div>
+        <div class="ep-desc">필요하면 PDF 링크, Notion 링크, 상세 설명 버튼 등을 이 블록 안에 추가해서 확장할 수 있습니다.</div>
+      </div>
+    </div>
+
+    <div class="exp-ep reveal">
+      <div class="ep-number">03</div>
+      <div class="ep-body">
+        <div class="ep-period">Planning Document</div>
+        <div class="ep-role">프로젝트 기획서 제목</div>
+        <div class="ep-company">장르 · 플랫폼 · 담당 범위</div>
+        <div class="ep-desc">현재는 레이아웃만 추가했고, 실제 내용은 기존 디자인을 해치지 않도록 플레이스홀더 형태로 유지했습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-content">
-    <div class="contact-eyebrow reveal">New Episode Available</div>
-    <h2 class="contact-big reveal">함께<br/>만들어요.</h2>
+    <div class="row-label reveal contact-row"><span class="rl-accent">CONTACT</span> 연락처</div>
     <p class="contact-sub reveal">
-      새로운 프로젝트, 협업, 또는 커피챗 언제든 환영해요.
+      프로젝트 협업, 채용 제안, 기타 문의는 아래 연락처로 부탁드립니다.
     </p>
-    <div class="contact-btns reveal">
-      <a href="mailto:your@email.com" class="contact-link primary">✉ 이메일 보내기</a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">LinkedIn</a>
-      <a href="https://notion.so/yourpage" target="_blank" class="contact-link">포트폴리오 노션</a>
-      <a href="/resume.pdf" class="contact-link">이력서 ↓</a>
+    <div class="contact-info reveal">
+      <a href="mailto:gtnan2@naver.com" class="contact-card">
+        <span class="contact-icon">✉</span>
+        <div class="contact-text">
+          <div class="contact-label">이메일</div>
+          <div class="contact-value">gtnan2@naver.com</div>
+        </div>
+      </a>
+      <a href="tel:01046886515" class="contact-card">
+        <span class="contact-icon">☎</span>
+        <div class="contact-text">
+          <div class="contact-label">전화번호</div>
+          <div class="contact-value">010-4688-6515</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -858,16 +758,29 @@
   // Active nav tab on scroll
   const sections = document.querySelectorAll('section[id], .hero[id]');
   const navLinks = document.querySelectorAll('.nav-links a[data-section]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
-        if (active) active.classList.add('active');
+
+  function setActiveNav() {
+    const navHeight = nav.offsetHeight || 0;
+    const probeY = navHeight + window.innerHeight * 0.28;
+    let currentSectionId = null;
+
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= probeY && rect.bottom >= probeY) {
+        currentSectionId = section.id;
       }
     });
-  }, { threshold: 0.3 });
-  sections.forEach(s => observer.observe(s));
+
+    navLinks.forEach(a => a.classList.remove('active'));
+    if (currentSectionId) {
+      const active = document.querySelector(`.nav-links a[data-section="${currentSectionId}"]`);
+      if (active) active.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', setActiveNav);
+  window.addEventListener('load', setActiveNav);
+  window.addEventListener('resize', setActiveNav);
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -881,79 +794,6 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => io.observe(el));
 </script>
-
-<!-- ── LIVE EDIT PANEL ── -->
-<div id="live-panel" style="
-  position:fixed; bottom:2rem; right:2rem; z-index:9999;
-  background:rgba(10,10,10,0.95); border:1px solid rgba(229,9,20,0.5);
-  padding:1.2rem 1.5rem; width:280px;
-  font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; color:#fff;
-  box-shadow: 0 0 30px rgba(229,9,20,0.2);
-">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
-    <span style="color:#e50914;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">🎛 Live Editor</span>
-    <button onclick="document.getElementById('live-panel').style.display='none'"
-      style="background:none;border:none;color:#666;cursor:pointer;font-size:1rem;">✕</button>
-  </div>
-
-  <div style="margin-bottom:1rem;">
-    <label style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
-      <span>히어로 타이틀</span>
-      <span id="hero-val" style="color:#e50914;">10vw</span>
-    </label>
-    <input type="range" min="5" max="20" value="10" step="0.5"
-      style="width:100%;accent-color:#e50914;"
-      oninput="
-        const v = this.value;
-        document.getElementById('hero-val').textContent = v + 'vw';
-        document.querySelector('.hero-title').style.fontSize = 'clamp(2rem,' + v + 'vw,12rem)';
-      ">
-  </div>
-
-  <div style="margin-bottom:1rem;">
-    <label style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
-      <span>About 타이틀</span>
-      <span id="about-val" style="color:#e50914;">6vw</span>
-    </label>
-    <input type="range" min="2" max="12" value="6" step="0.5"
-      style="width:100%;accent-color:#e50914;"
-      oninput="
-        const v = this.value;
-        document.getElementById('about-val').textContent = v + 'vw';
-        document.querySelector('.about-big').style.fontSize = 'clamp(2rem,' + v + 'vw,6rem)';
-      ">
-  </div>
-
-  <div style="margin-bottom:1rem;">
-    <label style="display:flex;justify-content:space-between;margin-bottom:0.4rem;">
-      <span>Contact 타이틀</span>
-      <span id="contact-val" style="color:#e50914;">12vw</span>
-    </label>
-    <input type="range" min="3" max="20" value="12" step="0.5"
-      style="width:100%;accent-color:#e50914;"
-      oninput="
-        const v = this.value;
-        document.getElementById('contact-val').textContent = v + 'vw';
-        document.querySelector('.contact-big').style.fontSize = 'clamp(2.5rem,' + v + 'vw,11rem)';
-      ">
-  </div>
-
-  <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:0.8rem;margin-top:0.5rem;">
-    <p style="color:#666;font-size:0.75rem;margin-bottom:0.6rem;">슬라이더 조절 후 Claude에게 값을 알려주세요!</p>
-    <button onclick="
-      const msg = '히어로: ' + document.getElementById('hero-val').textContent +
-                  ' / About: ' + document.getElementById('about-val').textContent +
-                  ' / Contact: ' + document.getElementById('contact-val').textContent;
-      prompt('이 값을 Claude에게 복사해서 붙여넣기 하세요:', msg);
-    " style="
-      width:100%; padding:0.5rem;
-      background:#e50914; border:none; color:#fff;
-      font-family:'Barlow Condensed',sans-serif;
-      font-size:0.85rem; letter-spacing:0.08em;
-      text-transform:uppercase; cursor:pointer;
-    ">📋 값 복사하기</button>
-  </div>
-</div>
 
 </body>
 </html>
