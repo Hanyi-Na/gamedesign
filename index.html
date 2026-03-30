@@ -378,6 +378,98 @@
       line-height: 1.85;
       max-width: 540px;
     }
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .doc-card {
+      background: linear-gradient(180deg, rgba(31,31,31,0.96) 0%, rgba(20,20,20,0.96) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 240px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .doc-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(229,9,20,0.5);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+      background: linear-gradient(180deg, rgba(42,42,42,0.98) 0%, rgba(20,20,20,0.98) 100%);
+    }
+    .doc-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .doc-title {
+      font-family: var(--display);
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin: 0;
+    }
+    .doc-badge {
+      font-family: var(--cond);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(245,166,35,0.45);
+      padding: 0.35rem 0.65rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .doc-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      flex: 1;
+    }
+    .doc-actions {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .doc-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.82rem 1.25rem;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--cond);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease, filter 0.2s ease;
+    }
+    .doc-download:hover {
+      background: var(--red-dark);
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+    .doc-download.disabled,
+    .doc-download[aria-disabled="true"] {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.45);
+      pointer-events: none;
+    }
+    .docs-note {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
 
     /* ── CONTACT ── */
     #contact {
@@ -494,6 +586,7 @@
       .exp-ep { grid-template-columns: 1fr; gap: 0.5rem; }
       .ep-number { font-size: 2rem; }
       .hero-letters { display: none; }
+      .docs-grid { grid-template-columns: 1fr; }
       .contact-info { grid-template-columns: 1fr; }
       .contact-card { padding: 1rem; }
       .contact-value { font-size: 0.95rem; }
@@ -681,39 +774,61 @@
 <!-- DOCS -->
 <section id="docs" style="background: var(--bg);">
   <div class="row-label reveal"><span class="rl-accent">▶</span> 기획서</div>
-  <div class="exp-episodes">
-    <div class="exp-ep reveal">
-      <div class="ep-number">01</div>
-      <div class="ep-body">
-        <div class="ep-period">Planning Document</div>
-        <div class="ep-role">프로젝트 기획서 제목</div>
-        <div class="ep-company">장르 · 플랫폼 · 담당 범위</div>
-        <div class="ep-desc">이 영역에 기획서 요약, 핵심 시스템, 담당 업무, 성과 등을 정리하면 됩니다. 기존 주요 프로젝트 섹션 대신 경력사항 아래에서 문서형 포맷으로 보여지도록 구성했습니다.</div>
+  <div class="docs-grid reveal">
+    <article class="doc-card">
+      <div class="doc-card-top">
+        <h3 class="doc-title">시스템 기획서 (컨플루언스 Ver)</h3>
+        <span class="doc-badge">LINK</span>
       </div>
-    </div>
+      <p class="doc-desc">
+        시스템 구조, 정책 정의, 예외 처리, 운영 흐름 등을 컨플루언스 문서 기준으로 정리하는 영역입니다.
+      </p>
+      <div class="doc-actions">
+        <a class="doc-download disabled" aria-disabled="true">준비 중</a>
+      </div>
+    </article>
 
-    <div class="exp-ep reveal">
-      <div class="ep-number">02</div>
-      <div class="ep-body">
-        <div class="ep-period">Planning Document</div>
-        <div class="ep-role">프로젝트 기획서 제목</div>
-        <div class="ep-company">장르 · 플랫폼 · 담당 범위</div>
-        <div class="ep-desc">필요하면 PDF 링크, Notion 링크, 상세 설명 버튼 등을 이 블록 안에 추가해서 확장할 수 있습니다.</div>
+    <article class="doc-card">
+      <div class="doc-card-top">
+        <h3 class="doc-title">시스템 기획서</h3>
+        <span class="doc-badge">PDF</span>
       </div>
-    </div>
+      <p class="doc-desc">
+        핵심 시스템 정의, 플로우, 규칙, 화면 구조 등을 문서형으로 정리하는 영역입니다.
+      </p>
+      <div class="doc-actions">
+        <a class="doc-download disabled" aria-disabled="true">준비 중</a>
+      </div>
+    </article>
 
-    <div class="exp-ep reveal">
-      <div class="ep-number">03</div>
-      <div class="ep-body">
-        <div class="ep-period">Planning Document</div>
-        <div class="ep-role">프로젝트 기획서 제목</div>
-        <div class="ep-company">장르 · 플랫폼 · 담당 범위</div>
-        <div class="ep-desc">현재는 레이아웃만 추가했고, 실제 내용은 기존 디자인을 해치지 않도록 플레이스홀더 형태로 유지했습니다.</div>
+    <article class="doc-card">
+      <div class="doc-card-top">
+        <h3 class="doc-title">콘텐츠 기획서</h3>
+        <span class="doc-badge">PDF</span>
       </div>
-    </div>
+      <p class="doc-desc">
+        캐릭터 컨셉, 구성 의도, 스탯, 스킬, 특성, 예상 플레이 등 콘텐츠 설계 내용을 정리한 PDF 문서입니다.
+      </p>
+      <div class="doc-actions">
+        <a href="./콘텐츠 기획서_캐릭터 컨셉_나한이.pdf" download class="doc-download">↓ 다운로드</a>
+      </div>
+    </article>
+
+    <article class="doc-card">
+      <div class="doc-card-top">
+        <h3 class="doc-title">데이터 테이블</h3>
+        <span class="doc-badge">XLSX</span>
+      </div>
+      <p class="doc-desc">
+        밸런스 수치, 보상, 성장값, 식별자 규칙 등을 테이블 형태로 관리하는 문서 영역입니다.
+      </p>
+      <div class="doc-actions">
+        <a class="doc-download disabled" aria-disabled="true">준비 중</a>
+      </div>
+    </article>
   </div>
+  <p class="docs-note reveal">※보안 상의 이유로 문서 내 데이터 및 구조는 실제와 다르게 작성했습니다</p>
 </section>
-
 
 <!-- CONTACT -->
 <section id="contact">
