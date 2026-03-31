@@ -4,9 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HANYI-NA — Game Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <style>
+    @font-face {
+      font-family: 'GmarketSans';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -251,6 +258,20 @@
       flex-direction: column;
       gap: 0.75rem;
     }
+    .about-resume-btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 0.95rem;
+      padding: 0.9rem;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.07);
+      text-decoration: none;
+    }
+    .about-resume-btn:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.4);
+    }
     .about-photo {
       width: 100%;
       height: 520px;
@@ -280,12 +301,13 @@
       letter-spacing: 0.1em;
     }
     .about-big {
-      font-family: var(--display);
+      font-family: 'GmarketSans', 'Gmarket Sans', sans-serif;
+      font-weight: 700;
       font-size: clamp(2.4rem, 4.5vw, 4rem);
-      line-height: 0.9;
+      line-height: 1.1;
       margin-top: 0;
       margin-bottom: 2rem;
-      letter-spacing: 0.01em;
+      letter-spacing: -0.02em;
     }
     .about-big .red { color: var(--accent); }
     .about-body {
@@ -653,12 +675,33 @@
       flex-direction: column;
       gap: 0.4rem;
     }
+    /* 나열형 태그 */
+    .tools-tag-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .tools-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .tools-tag {
+      font-family: var(--cond);
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.38rem 0.9rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.13);
+      color: rgba(255,255,255,0.78);
+    }
+    /* 카드 + 태그 혼합 */
+    .tools-mixed { display: flex; flex-direction: column; gap: 0.4rem; }
+    .tools-mixed .tools-tag-list { margin-top: 0.3rem; }
+    /* 설명 있는 카드 */
     .tool-card {
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.07);
       padding: 0.85rem 1.2rem;
       display: grid;
-      grid-template-columns: 140px 1fr;
+      grid-template-columns: 150px 1fr;
       gap: 1.25rem;
       align-items: center;
       transition: border-color 0.2s, background 0.2s;
@@ -675,19 +718,33 @@
       letter-spacing: 0.08em;
     }
     .tool-card-right { min-width: 0; }
-    .tool-card-role {
-      font-family: var(--cond);
-      font-size: 0.88rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
     .tool-card-desc {
       font-size: 1rem;
       font-weight: 400;
       color: rgba(255,255,255,0.78);
       line-height: 1.7;
+    }
+    /* AI 특별 레이아웃 */
+    .ai-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.65;
+      margin-bottom: 1.1rem;
+      padding: 0.85rem 1.2rem;
+      background: rgba(245,166,35,0.07);
+      border-left: 3px solid var(--accent);
+    }
+    .ai-subcat { display: flex; flex-direction: column; gap: 0.65rem; }
+    .ai-subrow { display: flex; align-items: flex-start; gap: 1rem; }
+    .ai-sublabel {
+      font-family: var(--cond);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.75);
+      width: 96px;
+      flex-shrink: 0;
+      padding-top: 0.35rem;
     }
 
     /* ── CONTACT ── */
@@ -869,8 +926,10 @@
       .tools-cat-label { font-size: 1.2rem; }
       .tool-card { grid-template-columns: 1fr; gap: 0.3rem; padding: 0.9rem 1rem; }
       .tool-card-name { font-size: 1.2rem; }
-      .tool-card-role { font-size: 0.8rem; }
       .tool-card-desc { font-size: 0.88rem; }
+      .tools-tag { font-size: 0.82rem; padding: 0.32rem 0.75rem; }
+      .ai-sublabel { font-size: 0.72rem; width: 72px; }
+      .ai-desc { font-size: 0.9rem; }
 
       /* Docs */
       .docs-grid { grid-template-columns: 1fr; }
@@ -993,15 +1052,19 @@
           <span class="info-label">병역</span>
           <span class="info-value">공군 병장 만기전역 (2012.04–2014.04)</span>
         </div>
+        <div class="info-row">
+          <span class="info-label">취미</span>
+          <span class="info-value">헬스 · 수영 · 보드게임 · 영상 제작</span>
+        </div>
       </div>
     </div>
     <div class="about-photos">
       <div class="about-photo">
         <img src="./Photo1.png" alt="나한이" />
       </div>
-      <div class="about-photo">
-        <img src="./Photo2.png" alt="나한이" />
-      </div>
+      <a href="./이력서_나한이.pdf" download class="btn btn-info about-resume-btn">
+        ↓ &nbsp;이력서 PDF 다운로드
+      </a>
     </div>
   </div>
 </section>
@@ -1100,43 +1163,25 @@
   <div class="row-label reveal">🛠 보유기술</div>
   <div class="tools-section-inner reveal">
 
-    <!-- 기획 -->
+    <!-- 기획 / 협업, QA -->
     <div class="tools-category">
-      <div class="tools-cat-label">기획</div>
-      <div class="tools-cat-grid">
-        <div class="tool-card">
-          <div class="tool-card-name">NOTION</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">기획 문서 · 협업</div>
-            <div class="tool-card-desc">기획서, 회의록, 시스템 정책 등 팀 문서를 Notion으로 구조화하고 관리한 실무 경험</div>
+      <div class="tools-cat-label">기획 / 협업, QA</div>
+      <div class="ai-subcat">
+        <div class="ai-subrow">
+          <div class="ai-sublabel">기획</div>
+          <div class="tools-tag-list">
+            <span class="tools-tag">MS Office</span>
+            <span class="tools-tag">Google Docs</span>
+            <span class="tools-tag">Confluence</span>
+            <span class="tools-tag">Notion</span>
           </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-card-name">CONFLUENCE</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">팀 위키 · 정책 관리</div>
-            <div class="tool-card-desc">기획 정책과 운영 흐름을 Confluence 문서 체계로 정리하여 팀 내 공유 및 유지보수 경험</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">JIRA</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">이슈 트래킹 · 스프린트</div>
-            <div class="tool-card-desc">스프린트 계획, 태스크 분류, 버그 트래킹 등 Jira 기반의 애자일 개발 프로세스 참여</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">EXCEL</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">데이터 분석 · 밸런스</div>
-            <div class="tool-card-desc">밸런스 시트, 드롭테이블, KPI 분석 등 기획 데이터를 Excel로 설계하고 운영에 반영</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">MIRO</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">협업 보드 · 플로우 설계</div>
-            <div class="tool-card-desc">게임 흐름, 시스템 맵, 브레인스토밍 결과를 Miro로 시각화하여 팀과 공유</div>
+        <div class="ai-subrow">
+          <div class="ai-sublabel">협업, QA</div>
+          <div class="tools-tag-list">
+            <span class="tools-tag">Jira</span>
+            <span class="tools-tag">Redmine</span>
+            <span class="tools-tag">Mantis</span>
           </div>
         </div>
       </div>
@@ -1145,27 +1190,28 @@
     <!-- 개발 -->
     <div class="tools-category">
       <div class="tools-cat-label">개발</div>
-      <div class="tools-cat-grid">
+      <div class="tools-mixed">
         <div class="tool-card">
           <div class="tool-card-name">UNITY</div>
           <div class="tool-card-right">
-            <div class="tool-card-role">게임 엔진 · 모바일</div>
-            <div class="tool-card-desc">1인 개발로 모바일 게임을 Unity로 제작하여 앱 스토어 출시까지 전 과정 경험</div>
+            <div class="tool-card-desc">1인 모바일 게임 개발 및 출시 경험, 더미 데이터를 활용한 프로토타입 제작</div>
           </div>
         </div>
         <div class="tool-card">
           <div class="tool-card-name">UNREAL</div>
           <div class="tool-card-right">
-            <div class="tool-card-role">게임 엔진 · PC/콘솔</div>
-            <div class="tool-card-desc">Unreal 환경에서 기획 의도를 레벨 및 시스템으로 구현하는 실무 협업 경험</div>
+            <div class="tool-card-desc">Unreal 4를 활용하여 신규 캐릭터 제작 및 인게임 관련 기획에 활용</div>
           </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-card-name">GITHUB</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">버전 관리 · 협업</div>
-            <div class="tool-card-desc">기획 문서 및 스크립트의 버전 관리와 팀 협업을 GitHub을 통해 진행</div>
-          </div>
+        <div class="tools-tag-list">
+          <span class="tools-tag">MySql</span>
+          <span class="tools-tag">SQLyog</span>
+          <span class="tools-tag">Visual Studio</span>
+          <span class="tools-tag">VS Code</span>
+          <span class="tools-tag">Lua Script</span>
+          <span class="tools-tag">SVN</span>
+          <span class="tools-tag">Fork</span>
+          <span class="tools-tag">Git</span>
         </div>
       </div>
     </div>
@@ -1175,17 +1221,9 @@
       <div class="tools-cat-label">디자인</div>
       <div class="tools-cat-grid">
         <div class="tool-card">
-          <div class="tool-card-name">FIGMA</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">UI/UX 설계 · 와이어프레임</div>
-            <div class="tool-card-desc">게임 UI 화면 흐름과 와이어프레임을 Figma로 설계하여 개발팀과 커뮤니케이션</div>
-          </div>
-        </div>
-        <div class="tool-card">
           <div class="tool-card-name">PHOTOSHOP</div>
           <div class="tool-card-right">
-            <div class="tool-card-role">이미지 편집 · 목업</div>
-            <div class="tool-card-desc">기획 목업, UI 가이드 이미지 제작 및 마케팅 소재 보조 작업 경험</div>
+            <div class="tool-card-desc">이미지 편집, 유튜브 썸네일 제작, 간단한 색보정, 이미지 합성</div>
           </div>
         </div>
       </div>
@@ -1194,20 +1232,15 @@
     <!-- 영상 -->
     <div class="tools-category">
       <div class="tools-cat-label">영상</div>
-      <div class="tools-cat-grid">
+      <div class="tools-mixed">
         <div class="tool-card">
-          <div class="tool-card-name">PREMIERE</div>
+          <div class="tool-card-name">PREMIERE PRO</div>
           <div class="tool-card-right">
-            <div class="tool-card-role">영상 편집 · 유튜브</div>
-            <div class="tool-card-desc">게임 플레이 영상 및 유튜브 콘텐츠를 Premiere Pro로 편집하여 프리랜서 운영</div>
+            <div class="tool-card-desc">유튜브 편집, 외주 영상 제작을 통한 프리랜서 경험</div>
           </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-card-name">AFTER EFFECTS</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">모션 그래픽 · 효과</div>
-            <div class="tool-card-desc">인트로 애니메이션, 자막 효과 등 After Effects를 활용한 영상 후반 작업 경험</div>
-          </div>
+        <div class="tools-tag-list">
+          <span class="tools-tag">After Effects</span>
         </div>
       </div>
     </div>
@@ -1215,26 +1248,36 @@
     <!-- AI -->
     <div class="tools-category">
       <div class="tools-cat-label">AI</div>
-      <div class="tools-cat-grid">
-        <div class="tool-card">
-          <div class="tool-card-name">CHATGPT</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">기획 보조 · 텍스트 생성</div>
-            <div class="tool-card-desc">기획 아이디어 발산, 문서 초안 작성, 시나리오 검토 등 기획 업무 보조 도구로 활용</div>
+      <div class="ai-section">
+        <div class="ai-desc">바이브 코딩, 데이터 분석, 이미지 및 영상 제작 가능</div>
+        <div class="ai-subcat">
+          <div class="ai-subrow">
+            <div class="ai-sublabel">LLM / 분석</div>
+            <div class="tools-tag-list">
+              <span class="tools-tag">ChatGPT</span>
+              <span class="tools-tag">Grok</span>
+              <span class="tools-tag">Claude</span>
+              <span class="tools-tag">Gemini</span>
+              <span class="tools-tag">Perplexity</span>
+              <span class="tools-tag">NotebookLM</span>
+            </div>
           </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">MIDJOURNEY</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">이미지 생성 · 컨셉 아트</div>
-            <div class="tool-card-desc">캐릭터 컨셉, 배경 무드 보드 등 기획 비주얼라이징을 위한 AI 이미지 생성 활용</div>
+          <div class="ai-subrow">
+            <div class="ai-sublabel">이미지 / 영상</div>
+            <div class="tools-tag-list">
+              <span class="tools-tag">Midjourney</span>
+              <span class="tools-tag">Cling</span>
+              <span class="tools-tag">Veo</span>
+            </div>
           </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">CLAUDE</div>
-          <div class="tool-card-right">
-            <div class="tool-card-role">문서 작성 · 분석 보조</div>
-            <div class="tool-card-desc">복잡한 기획 구조 정리, 문서 리뷰, 데이터 해석 등 심층 분석 작업에 활용</div>
+          <div class="ai-subrow">
+            <div class="ai-sublabel">사운드</div>
+            <div class="tools-tag-list">
+              <span class="tools-tag">Suno</span>
+              <span class="tools-tag">Eleven Labs</span>
+              <span class="tools-tag">SuperTone</span>
+              <span class="tools-tag">Typecast</span>
+            </div>
           </div>
         </div>
       </div>
