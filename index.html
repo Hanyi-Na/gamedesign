@@ -165,10 +165,11 @@
     }
 
     .hero-title {
-      font-family: var(--display);
+      font-family: 'GmarketSans', sans-serif;
+      font-weight: 700;
       font-size: 60px;
-      line-height: 0.85;
-      letter-spacing: 0.01em;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
       margin-bottom: 1.5rem;
       opacity: 0;
       animation: fadeUp 0.7s 0.5s forwards;
@@ -473,8 +474,163 @@
       font-weight: 300;
       color: rgba(255,255,255,0.6);
       line-height: 1.85;
-      max-width: 540px;
+      max-width: 600px;
     }
+    .ep-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.7rem; }
+    .ep-tag {
+      font-size: 0.75rem;
+      padding: 0.22rem 0.65rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.62);
+    }
+
+    /* ── PROJECTS (redesign) ── */
+    .proj-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .proj-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid rgba(229,9,20,0.25);
+      padding: 1.75rem 2rem;
+      transition: border-left-color 0.2s, background 0.2s;
+    }
+    .proj-card:hover { border-left-color: var(--red); background: #1c1c1c; }
+    .proj-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .proj-main { flex: 1; min-width: 0; }
+    .proj-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.45rem; }
+    .proj-company { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); }
+    .proj-dot { color: rgba(255,255,255,0.2); }
+    .proj-period { font-size: 0.78rem; color: var(--muted); }
+    .proj-title { font-family: var(--display); font-size: 2.2rem; letter-spacing: 0.04em; color: #fff; line-height: 1; margin-bottom: 0.55rem; }
+    .proj-ptags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .proj-ptag { font-size: 0.72rem; padding: 0.18rem 0.6rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.55); }
+    .proj-nums { display: flex; gap: 0.6rem; flex-shrink: 0; }
+    .proj-num { text-align: center; padding: 0.6rem 0.9rem; background: rgba(229,9,20,0.07); border: 1px solid rgba(229,9,20,0.2); min-width: 82px; }
+    .proj-num-val { font-family: var(--display); font-size: 1.5rem; color: var(--red); line-height: 1; }
+    .proj-num-desc { font-size: 0.68rem; color: rgba(255,255,255,0.5); line-height: 1.3; margin-top: 0.2rem; }
+    .proj-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+    .proj-role-row { display: flex; align-items: flex-start; gap: 0.6rem; flex-wrap: wrap; }
+    .proj-role-head { font-size: 0.75rem; font-weight: 700; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; flex-shrink: 0; padding-top: 0.22rem; }
+    .proj-rtag { font-size: 0.82rem; padding: 0.2rem 0.7rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.78); }
+    .proj-achiev { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+    .proj-achiev li { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.65; padding-left: 1.1rem; position: relative; }
+    .proj-achiev li::before { content: '—'; position: absolute; left: 0; color: var(--red); font-size: 0.8rem; top: 0.15rem; }
+    .proj-achiev li b { color: rgba(255,255,255,0.92); font-weight: 600; }
+    /* ── CAREER CARDS ── */
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .career-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid var(--cc);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .career-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+    /* 로고 영역 */
+    .cc-logo {
+      background: #fff;
+      width: 100%;
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem 2rem;
+    }
+    .cc-logo img {
+      max-width: 100%;
+      max-height: 64px;
+      object-fit: contain;
+    }
+    /* 카드 본문 */
+    .cc-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex: 1;
+    }
+    .cc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cc-name {
+      font-family: 'GmarketSans', sans-serif;
+      font-weight: 700;
+      font-size: 1.55rem;
+      letter-spacing: -0.01em;
+      color: #fff;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .cc-num {
+      font-family: var(--display);
+      font-size: 2rem;
+      color: rgba(255,255,255,0.07);
+      line-height: 1;
+    }
+    .cc-period {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.02em;
+    }
+    /* 재직 기간 바 */
+    .cc-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .cc-bar-track {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .cc-bar-fill {
+      height: 100%;
+      background: var(--cc);
+      border-radius: 2px;
+    }
+    .cc-duration {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--cc);
+    }
+    /* 팀 + 태그 */
+    .cc-team {
+      font-size: 0.95rem;
+      color: #fff;
+      line-height: 1.6;
+    }
+    .cc-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+    .cc-tag {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+    }
+
     /* ── PROJECTS ── */
     #projects { background: var(--bg); }
     .project-grid {
@@ -1072,35 +1228,75 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="row-label reveal">💼 경력</div>
-  <div class="exp-episodes">
+  <div class="career-grid reveal">
 
-    <div class="exp-ep reveal">
-      <div class="ep-number">01</div>
-      <div class="ep-body">
-        <div class="ep-period">2023.01 — 현재</div>
-        <div class="ep-role">Game Designer</div>
-        <div class="ep-company">회사 이름 · 게임 스튜디오</div>
-        <div class="ep-desc">모바일 및 PC 타이틀의 레벨 디자인, 시스템 기획, 밸런스 설계를 담당. 유저 데이터 기반의 인터랙티브 분석을 통해 핵심 지표를 개선하고, 신규 콘텐츠 기획을 리드했습니다.</div>
+    <!-- VERTIGO -->
+    <div class="career-card" style="--cc: #e08020;">
+      <div class="cc-logo">
+        <img src="./logo_vertigo.png" alt="Vertigo Games" />
+      </div>
+      <div class="cc-body">
+        <div class="cc-header">
+          <div class="cc-name">버티고우 게임즈</div>
+          <div class="cc-num">01</div>
+        </div>
+        <div class="cc-period">2019.05 — 2019.12</div>
+        <div class="cc-bar-wrap">
+          <div class="cc-bar-track"><div class="cc-bar-fill" style="width:28%;"></div></div>
+          <div class="cc-duration">8개월</div>
+        </div>
+        <div class="cc-team">블랙샷 M 기획팀</div>
+        <div class="cc-tags">
+          <span class="cc-tag">신규 개발</span>
+          <span class="cc-tag">라이브 서비스</span>
+          <span class="cc-tag">모바일</span>
+        </div>
       </div>
     </div>
 
-    <div class="exp-ep reveal">
-      <div class="ep-number">02</div>
-      <div class="ep-body">
-        <div class="ep-period">2021.06 — 2022.12</div>
-        <div class="ep-role">Junior Game Designer</div>
-        <div class="ep-company">이전 회사 · 인디 스튜디오</div>
-        <div class="ep-desc">퀘스트 및 스토리 기획, UI 플로우 설계 보조. 소규모 팀에서 기획부터 출시까지 전 과정을 경험했습니다.</div>
+    <!-- JOYCITY -->
+    <div class="career-card" style="--cc: #f07c20;">
+      <div class="cc-logo">
+        <img src="./logo_joycity.png" alt="Joycity" />
+      </div>
+      <div class="cc-body">
+        <div class="cc-header">
+          <div class="cc-name">조이시티</div>
+          <div class="cc-num">02</div>
+        </div>
+        <div class="cc-period">2020.02 — 2021.10</div>
+        <div class="cc-bar-wrap">
+          <div class="cc-bar-track"><div class="cc-bar-fill" style="width:72%;"></div></div>
+          <div class="cc-duration">1년 9개월</div>
+        </div>
+        <div class="cc-team">3on3 프리스타일 기획팀</div>
+        <div class="cc-tags">
+          <span class="cc-tag">라이브 서비스</span>
+          <span class="cc-tag">PS · XBOX · PC</span>
+        </div>
       </div>
     </div>
 
-    <div class="exp-ep reveal">
-      <div class="ep-number">03</div>
-      <div class="ep-body">
-        <div class="ep-period">2021.02 — 2021.05</div>
-        <div class="ep-role">QA & Design Intern</div>
-        <div class="ep-company">첫 회사 이름</div>
-        <div class="ep-desc">게임 QA 테스트 및 버그 리포팅, 기획 문서 보조 작성. 현업 기획자와 협업하며 실무 프로세스를 익혔습니다.</div>
+    <!-- DOUBLEU -->
+    <div class="career-card" style="--cc: #5aab22;">
+      <div class="cc-logo">
+        <img src="./logo_doubleu.png" alt="Doubleu Games" />
+      </div>
+      <div class="cc-body">
+        <div class="cc-header">
+          <div class="cc-name">더블유 게임즈</div>
+          <div class="cc-num">03</div>
+        </div>
+        <div class="cc-period">2021.11 — 2024.03</div>
+        <div class="cc-bar-wrap">
+          <div class="cc-bar-track"><div class="cc-bar-fill" style="width:100%;"></div></div>
+          <div class="cc-duration">2년 5개월</div>
+        </div>
+        <div class="cc-team">스튜디오G 기획팀</div>
+        <div class="cc-tags">
+          <span class="cc-tag">신규 개발</span>
+          <span class="cc-tag">모바일</span>
+        </div>
       </div>
     </div>
 
@@ -1110,52 +1306,230 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="row-label reveal">🎮 프로젝트</div>
-  <div class="project-grid reveal">
-    <article class="project-panel">
-      <div class="project-img">IMAGE / THUMBNAIL</div>
-      <div class="project-body">
-        <div class="project-kicker">Main Project</div>
-        <h3 class="project-name">Bingo Haven</h3>
-        <p class="project-summary">
-          시스템 기획과 콘텐츠 구조 설계 중심으로 참여한 프로젝트입니다. 라이브 운영을 고려한 DB 기반 설계와 문서화, 협업 프로세스 정리에 강점을 담아 소개할 수 있는 영역입니다.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">System Design</span>
-          <span class="project-tag">Live Ops</span>
-          <span class="project-tag">DB Driven</span>
+  <div class="proj-list reveal">
+
+    <!-- 01 Spinning In Space -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-main">
+          <div class="proj-meta">
+            <span class="proj-company">더블유게임즈</span>
+            <span class="proj-dot">·</span>
+            <span class="proj-period">2021.11 — 2023.02 &nbsp;(1년 4개월)</span>
+          </div>
+          <div class="proj-title">SPINNING IN SPACE</div>
+          <div class="proj-ptags">
+            <span class="proj-ptag">캐주얼 어드벤처</span>
+            <span class="proj-ptag">모바일</span>
+            <span class="proj-ptag">Unity</span>
+            <span class="proj-ptag">6개국 소프트 런칭</span>
+          </div>
+        </div>
+        <div class="proj-nums">
+          <div class="proj-num">
+            <div class="proj-num-val">50%</div>
+            <div class="proj-num-desc">개발·QA 일정<br>단축</div>
+          </div>
+          <div class="proj-num">
+            <div class="proj-num-val">30%</div>
+            <div class="proj-num-desc">Jira 이슈<br>감소</div>
+          </div>
+          <div class="proj-num">
+            <div class="proj-num-val">125</div>
+            <div class="proj-num-desc">어드벤처<br>콘텐츠 기획</div>
+          </div>
         </div>
       </div>
-    </article>
-    <article class="project-panel">
-      <div class="project-img">IMAGE / THUMBNAIL</div>
-      <div class="project-body">
-        <div class="project-kicker">Planning Focus</div>
-        <h3 class="project-name">System & UX</h3>
-        <p class="project-summary">
-          기능 정의와 플레이 흐름, UI/UX 의도를 함께 설계한 프로젝트를 정리하는 공간입니다. 문제 정의부터 화면 구조, 사용자 경험 관점까지 한 번에 보여줄 수 있도록 구성했습니다.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">UX Flow</span>
-          <span class="project-tag">Feature Spec</span>
-          <span class="project-tag">Documentation</span>
+      <div class="proj-bottom">
+        <div class="proj-role-row">
+          <span class="proj-role-head">역할</span>
+          <span class="proj-rtag">시스템 기획</span>
+          <span class="proj-rtag">콘텐츠 기획</span>
+          <span class="proj-rtag">DB 구조 개선</span>
+          <span class="proj-rtag">해외 자회사 협업</span>
+        </div>
+        <ul class="proj-achiev">
+          <li>상점 메인, 친구 시스템, 우편함, 튜토리얼, 푸시 알림 시스템 기획</li>
+          <li>어드벤처 콘텐츠 <b>템플릿화 및 자동화</b>로 기획 일정 약 30% 이상 단축</li>
+          <li>신규 테이블 컬럼 및 데이터 입력 규칙 생성으로 DB 구조 개선 — 개발·QA 일정 50% 단축</li>
+          <li>시애틀 자회사와의 업무 협업 및 해외 출시 프로세스 경험</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 02 3on3 FreeStyle -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-main">
+          <div class="proj-meta">
+            <span class="proj-company">조이시티</span>
+            <span class="proj-dot">·</span>
+            <span class="proj-period">2020.02 — 2021.10 &nbsp;(1년 9개월)</span>
+          </div>
+          <div class="proj-title">3ON3 FREESTYLE</div>
+          <div class="proj-ptags">
+            <span class="proj-ptag">스포츠</span>
+            <span class="proj-ptag">PS · XBOX · PC(STEAM)</span>
+            <span class="proj-ptag">Unreal Engine 4</span>
+            <span class="proj-ptag">라이브 서비스</span>
+          </div>
+        </div>
+        <div class="proj-nums">
+          <div class="proj-num">
+            <div class="proj-num-val">1위</div>
+            <div class="proj-num-desc">신규 캐릭터<br>일 매출 달성</div>
+          </div>
+          <div class="proj-num">
+            <div class="proj-num-val">DAU<br>+10%</div>
+            <div class="proj-num-desc">세력전 콘텐츠<br>기여</div>
+          </div>
+          <div class="proj-num">
+            <div class="proj-num-val">118%</div>
+            <div class="proj-num-desc">월 목표 매출<br>달성</div>
+          </div>
         </div>
       </div>
-    </article>
-    <article class="project-panel">
-      <div class="project-img">IMAGE / THUMBNAIL</div>
-      <div class="project-body">
-        <div class="project-kicker">Portfolio Highlight</div>
-        <h3 class="project-name">Content Design</h3>
-        <p class="project-summary">
-          캐릭터, 성장, 보상, 데이터 구조 등 콘텐츠 설계 역량을 보여주는 프로젝트를 담는 섹션입니다. 기획서와 데이터 테이블 문서로 자연스럽게 이어지도록 연결했습니다.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Content</span>
-          <span class="project-tag">Balance</span>
-          <span class="project-tag">Table Design</span>
+      <div class="proj-bottom">
+        <div class="proj-role-row">
+          <span class="proj-role-head">역할</span>
+          <span class="proj-rtag">캐릭터 기획</span>
+          <span class="proj-rtag">밸런스 기획</span>
+          <span class="proj-rtag">시스템 기획</span>
+          <span class="proj-rtag">콘텐츠 기획</span>
+        </div>
+        <ul class="proj-achiev">
+          <li>신규 캐릭터 <b>6종 메인 기획</b> — 27개 스킬 상세 기획, 스토리·대사 스크립트·트레일러 콘티 제작</li>
+          <li>데이터 분석을 통한 스탯·스킬 밸런스 작업, 플랫폼별 서버 데이터 작업</li>
+          <li><b>세력전 콘텐츠</b> 메인 기획 — 전월 대비 DAU 10% 증가, 월 목표 매출 118% 달성 기여</li>
+          <li>콘솔(PS, XBOX) DLC 검수용 빌드 세팅, STEAM 버전 출시·포팅 작업 참여</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 03 BLACKSHOT M -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-main">
+          <div class="proj-meta">
+            <span class="proj-company">버티고우 게임즈</span>
+            <span class="proj-dot">·</span>
+            <span class="proj-period">2019.05 — 2019.12 &nbsp;(8개월)</span>
+          </div>
+          <div class="proj-title">BLACKSHOT M</div>
+          <div class="proj-ptags">
+            <span class="proj-ptag">FPS</span>
+            <span class="proj-ptag">모바일</span>
+            <span class="proj-ptag">Unity</span>
+            <span class="proj-ptag">글로벌 런칭</span>
+          </div>
+        </div>
+        <div class="proj-nums">
+          <div class="proj-num">
+            <div class="proj-num-val">19.09</div>
+            <div class="proj-num-desc">소프트<br>런칭</div>
+          </div>
+          <div class="proj-num">
+            <div class="proj-num-val">19.11</div>
+            <div class="proj-num-desc">글로벌<br>런칭</div>
+          </div>
         </div>
       </div>
-    </article>
+      <div class="proj-bottom">
+        <div class="proj-role-row">
+          <span class="proj-role-head">역할</span>
+          <span class="proj-rtag">시스템 기획</span>
+          <span class="proj-rtag">콘텐츠 기획</span>
+          <span class="proj-rtag">밸런스 기획</span>
+        </div>
+        <ul class="proj-achiev">
+          <li>궁극기 스킬 시스템, 프리셋 시스템 기획</li>
+          <li>총기 컨셉, 캐릭터 컨셉, 신규 스킬 기획</li>
+          <li>총기 수치·캐릭터 스탯·가차 상품 확률 밸런스 작업, 맵 레벨 디자인 작업</li>
+          <li>PC → 모바일 <b>게임 모드 포팅</b> 작업 참여</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 04 거너덕 -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-main">
+          <div class="proj-meta">
+            <span class="proj-company">PDNA게임즈 &nbsp;(1인 개발)</span>
+            <span class="proj-dot">·</span>
+            <span class="proj-period">2018.07 — 2019.03 &nbsp;(8개월)</span>
+          </div>
+          <div class="proj-title">거너덕</div>
+          <div class="proj-ptags">
+            <span class="proj-ptag">아케이드</span>
+            <span class="proj-ptag">모바일</span>
+            <span class="proj-ptag">Unity / C#</span>
+            <span class="proj-ptag">구글 플레이 · 원스토어 출시</span>
+          </div>
+        </div>
+        <div class="proj-nums">
+          <div class="proj-num">
+            <div class="proj-num-val">1인</div>
+            <div class="proj-num-desc">기획·개발·아트<br>QA·마케팅</div>
+          </div>
+          <div class="proj-num">
+            <div class="proj-num-val">2곳</div>
+            <div class="proj-num-desc">스토어<br>출시</div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-bottom">
+        <div class="proj-role-row">
+          <span class="proj-role-head">역할</span>
+          <span class="proj-rtag">전체 기획</span>
+          <span class="proj-rtag">Unity 개발</span>
+          <span class="proj-rtag">아트</span>
+          <span class="proj-rtag">QA</span>
+          <span class="proj-rtag">마케팅</span>
+        </div>
+        <ul class="proj-achiev">
+          <li>UI, 시스템, 콘텐츠, 전투, 레벨 등 <b>모든 기획 직접 수행</b></li>
+          <li>Unity와 C#을 활용하여 클라이언트 위주 개발, 에셋 및 API 적극 활용</li>
+          <li>Unity Ads API를 활용한 광고·보상형 게임 BM 직접 설계 및 경험</li>
+          <li>구글 플레이, 원스토어 출시 — 게임 개발 전 프로세스 경험</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 05 캐주얼 빙고 (현재 개발 중) -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-main">
+          <div class="proj-meta">
+            <span class="proj-company">더블유게임즈</span>
+            <span class="proj-dot">·</span>
+            <span class="proj-period">2023.03 — 2023.09 &nbsp;(7개월)</span>
+          </div>
+          <div class="proj-title">캐주얼 빙고 게임</div>
+          <div class="proj-ptags">
+            <span class="proj-ptag">캐주얼</span>
+            <span class="proj-ptag">모바일</span>
+            <span class="proj-ptag">Unity</span>
+            <span class="proj-ptag">개발 중</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-bottom">
+        <div class="proj-role-row">
+          <span class="proj-role-head">역할</span>
+          <span class="proj-rtag">시스템 기획</span>
+          <span class="proj-rtag">콘텐츠 기획</span>
+          <span class="proj-rtag">DB 작업</span>
+          <span class="proj-rtag">레퍼런스 분석</span>
+        </div>
+        <ul class="proj-achiev">
+          <li>적립식 BM, 단기·장기 이벤트, 대화, 퀘스트, 업적 시스템 기획</li>
+          <li>3D 오브젝트·캐릭터 구성 및 연출 관련 콘텐츠 기획</li>
+          <li>전반적인 <b>DB 구조 확립</b> — 비개발자를 위한 데이터 작업 가이드 생성, 기획 주도 테이블 작업 방식 구축</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>
 <!-- TOOLS -->
