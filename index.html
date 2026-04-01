@@ -58,7 +58,7 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-      padding: 0.84rem 4rem;
+      padding: 0.5rem 4rem;
       display: flex; justify-content: flex-start; align-items: center; gap: 2.5rem;
       background: rgba(10,10,10,0.97);
       transition: background 0.4s;
@@ -76,7 +76,7 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       font-family: var(--cond);
-      font-size: 1.7rem;
+      font-size: 0.85rem;
       letter-spacing: -0.01em;
       text-transform: uppercase;
       color: #fff;
@@ -529,11 +529,10 @@
     /* Header */
     .proj-header { display: flex; flex-direction: column; gap: 0.6rem; }
     .proj-title-row { display: flex; align-items: center; gap: 1.25rem; }
-    .proj-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
-    .proj-logo { height: 60px; object-fit: contain; background: #fff; padding: 5px 14px; border-radius: 3px; flex-shrink: 0; align-self: flex-start; }
-    .proj-company-text { font-size: 0.82rem; font-weight: 400; color: rgba(255,255,255,0.6); letter-spacing: 0.02em; }
-    .proj-dot { color: rgba(255,255,255,0.2); }
-    .proj-period { font-size: 0.88rem; color: #fff; font-weight: 400; }
+    .proj-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .proj-company-text { font-size: 0.95rem; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.01em; }
+    .proj-meta-sep { color: rgba(255,255,255,0.3); font-size: 0.9rem; }
+    .proj-period { font-size: 0.95rem; color: rgba(255,255,255,0.6); font-weight: 400; }
     .proj-title { font-family: var(--display); font-size: 2.4rem; letter-spacing: 0.04em; color: #fff; line-height: 1; }
     .proj-ptags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
     .proj-ptag { font-size: 0.8rem; padding: 0.22rem 0.7rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
@@ -566,6 +565,19 @@
       align-self: flex-start;
     }
     .proj-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .proj-store-btn {
+      display: block;
+      text-align: center;
+      padding: 0.6rem 0.8rem;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, filter 0.2s;
+    }
+    .proj-store-btn:hover { background: var(--red-dark); filter: brightness(1.1); }
     .proj-thumb-empty {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
@@ -1103,7 +1115,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       /* Nav */
-      nav { padding: 1rem 1.5rem; }
+      nav { padding: 0.75rem 1.25rem; gap: 0; }
       .nav-hamburger { display: block; }
       .nav-links {
         display: none;
@@ -1117,9 +1129,9 @@
         z-index: 350;
       }
       .nav-links li { list-style: none; }
-      .nav-links a { font-size: 1.5rem; letter-spacing: 0.06em; }
+      .nav-links a { font-size: 1.4rem; letter-spacing: 0.06em; }
       #nav.menu-open .nav-links { display: flex; }
-      #nav.menu-open .nav-hamburger { position: fixed; top: 1rem; right: 1.5rem; z-index: 400; }
+      #nav.menu-open .nav-hamburger { position: fixed; top: 0.75rem; right: 1.25rem; z-index: 400; }
 
       /* Sections */
       section { padding: 3.5rem 1.25rem; }
@@ -1131,14 +1143,16 @@
 
       /* Hero */
       .hero-letters { display: none; }
-      .hero-title { font-size: clamp(2.8rem, 10vw, 5rem); }
-      .hero-desc { font-size: 0.9rem; }
+      .hero-title { font-size: clamp(2.2rem, 9vw, 4rem); }
+      .hero-desc { font-size: 0.95rem; max-width: 100%; }
       .hero-actions { flex-direction: column; gap: 0.75rem; }
+      .btn { padding: 0.9rem 1.8rem; font-size: 1.1rem; width: 100%; justify-content: center; }
+      .btn-icon { font-size: 1.3rem; }
 
       /* About */
       .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-photos { flex-direction: row; }
-      .about-photo { height: 320px; }
+      .about-photos { flex-direction: row; flex-wrap: wrap; }
+      .about-photo { height: 320px; min-width: 0; flex: 1; }
       .about-big { font-size: clamp(2rem, 6vw, 3rem); }
       .about-name { font-size: 1.6rem; }
       .meta-badge { font-size: 0.88rem; padding: 0.45rem 0.9rem; }
@@ -1146,13 +1160,31 @@
       .info-label { font-size: 0.92rem; width: 82px; }
       .info-value { font-size: 1.05rem; }
 
+      /* Skills grid */
+      .skills-grid { grid-template-columns: 1fr; }
+
       /* Experience */
       .exp-ep { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.5rem 0; }
       .ep-number { font-size: 1.8rem; }
       .ep-role { font-size: 1.5rem; }
       .ep-desc { font-size: 0.88rem; max-width: 100%; }
 
-      /* Projects */
+      /* Career cards */
+      .career-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
+      .cc-name { font-size: 1.3rem; white-space: normal; }
+      .cc-tags { flex-wrap: wrap; }
+
+      /* Proj-list cards */
+      .proj-card { flex-direction: column; gap: 0; padding: 1.5rem; }
+      .proj-thumb { width: 100%; height: 200px; margin-top: 1.25rem; align-self: stretch; }
+      .proj-title { font-size: 1.9rem; }
+      .proj-sections { gap: 0.75rem; }
+      .proj-nums { gap: 0.4rem; }
+      .proj-num { min-width: 70px; padding: 0.5rem 0.75rem; }
+      .proj-num-val { font-size: 1.2rem; }
+      .proj-achiev li { font-size: 0.88rem; }
+
+      /* Project grid (elsewhere) */
       .project-grid { grid-template-columns: 1fr; }
       .project-img { height: 180px; }
 
@@ -1162,12 +1194,14 @@
       .tool-card-name { font-size: 1.2rem; }
       .tool-card-desc { font-size: 0.88rem; }
       .tools-tag { font-size: 0.82rem; padding: 0.32rem 0.75rem; }
-      .ai-sublabel { font-size: 0.72rem; width: 72px; }
+      .ai-subrow { flex-wrap: wrap; gap: 0.5rem; }
+      .ai-sublabel { font-size: 0.72rem; width: auto; min-width: 72px; }
       .ai-desc { font-size: 0.9rem; }
 
       /* Docs */
       .docs-grid { grid-template-columns: 1fr; }
       .doc-title { font-size: 1.4rem; }
+      .doc-title-sub { font-size: 1.2rem; }
 
       /* Contact */
       .contact-info { grid-template-columns: 1fr; max-width: 100%; }
@@ -1180,14 +1214,42 @@
     }
 
     @media (max-width: 480px) {
-      .about-big { font-size: clamp(2rem, 9vw, 3rem); }
+      /* Hero */
+      .hero-title { font-size: clamp(1.9rem, 10vw, 3rem); }
+      .hero-desc { font-size: 0.9rem; }
+      .btn { font-size: 1rem; padding: 0.85rem 1.4rem; }
+
+      /* About */
+      .about-big { font-size: clamp(1.8rem, 9vw, 2.8rem); }
       .about-photo { height: 260px; }
       .meta-badge { font-size: 0.82rem; padding: 0.4rem 0.75rem; }
       .info-label { width: 72px; font-size: 0.85rem; }
       .info-value { font-size: 0.95rem; }
+
+      /* Experience */
       .ep-role { font-size: 1.3rem; }
+
+      /* Career cards */
+      .career-grid { grid-template-columns: 1fr; }
+      .cc-logo { height: 80px; }
+      .cc-body { padding: 1rem; }
+
+      /* Proj-list cards */
+      .proj-card { padding: 1.1rem; }
+      .proj-title { font-size: 1.5rem; }
+      .proj-thumb { height: 160px; }
+      .proj-rtag { font-size: 0.8rem; }
+      .proj-achiev li { font-size: 0.84rem; }
+
+      /* Tools */
       .tools-cat-label { font-size: 1.1rem; }
+      .tools-section-inner { gap: 2rem; }
+
+      /* Contact */
       .contact-value { font-size: 1rem; }
+
+      /* Footer */
+      footer { padding: 1.25rem 1rem; }
     }
   </style>
 </head>
@@ -1390,18 +1452,17 @@
     <div class="proj-card">
       <div class="proj-body">
         <div class="proj-header">
-          <img src="./logo_doubleu.png" alt="W Games" class="proj-logo" />
-          <div class="proj-title-row">
-            <div class="proj-title">BINGO HAVEN</div>
+          <div class="proj-title">BINGO HAVEN</div>
+          <div class="proj-meta">
+            <span class="proj-company-text">더블유게임즈</span>
+            <span class="proj-meta-sep">/</span>
+            <span class="proj-period">2023.03 — 2023.09 &nbsp;(7개월)</span>
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">캐주얼</span>
             <span class="proj-ptag">모바일</span>
             <span class="proj-ptag">Unity</span>
             <span class="proj-ptag">개발 중</span>
-          </div>
-          <div class="proj-meta">
-            <span class="proj-period">2023.03 — 2023.09 &nbsp;(7개월)</span>
           </div>
         </div>
         <div class="proj-sections">
@@ -1431,18 +1492,17 @@
     <div class="proj-card">
       <div class="proj-body">
         <div class="proj-header">
-          <img src="./logo_doubleu.png" alt="W Games" class="proj-logo" />
-          <div class="proj-title-row">
-            <div class="proj-title">SPINNING IN SPACE</div>
+          <div class="proj-title">SPINNING IN SPACE</div>
+          <div class="proj-meta">
+            <span class="proj-company-text">더블유게임즈</span>
+            <span class="proj-meta-sep">/</span>
+            <span class="proj-period">2021.11 — 2023.02 &nbsp;(1년 4개월)</span>
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">캐주얼 어드벤처</span>
             <span class="proj-ptag">모바일</span>
             <span class="proj-ptag">Unity</span>
             <span class="proj-ptag">6개국 소프트 런칭</span>
-          </div>
-          <div class="proj-meta">
-            <span class="proj-period">2021.11 — 2023.02 &nbsp;(1년 4개월)</span>
           </div>
         </div>
         <div class="proj-sections">
@@ -1478,18 +1538,17 @@
     <div class="proj-card">
       <div class="proj-body">
         <div class="proj-header">
-          <img src="./logo_joycity.png" alt="JoyCity" class="proj-logo" />
-          <div class="proj-title-row">
-            <div class="proj-title">3ON3 FREESTYLE</div>
+          <div class="proj-title">3ON3 FREESTYLE</div>
+          <div class="proj-meta">
+            <span class="proj-company-text">조이시티</span>
+            <span class="proj-meta-sep">/</span>
+            <span class="proj-period">2020.02 — 2021.10 &nbsp;(1년 9개월)</span>
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">스포츠</span>
             <span class="proj-ptag">PS · XBOX · PC(STEAM)</span>
             <span class="proj-ptag">Unreal Engine 4</span>
             <span class="proj-ptag">라이브 서비스</span>
-          </div>
-          <div class="proj-meta">
-            <span class="proj-period">2020.02 — 2021.10 &nbsp;(1년 9개월)</span>
           </div>
         </div>
         <div class="proj-sections">
@@ -1525,18 +1584,17 @@
     <div class="proj-card">
       <div class="proj-body">
         <div class="proj-header">
-          <img src="./logo_vertigo.png" alt="Vertigo Games" class="proj-logo" />
-          <div class="proj-title-row">
-            <div class="proj-title">BLACKSHOT M</div>
+          <div class="proj-title">BLACKSHOT M</div>
+          <div class="proj-meta">
+            <span class="proj-company-text">버티고우게임즈</span>
+            <span class="proj-meta-sep">/</span>
+            <span class="proj-period">2019.05 — 2019.12 &nbsp;(8개월)</span>
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">FPS</span>
             <span class="proj-ptag">모바일</span>
             <span class="proj-ptag">Unity</span>
             <span class="proj-ptag">글로벌 런칭</span>
-          </div>
-          <div class="proj-meta">
-            <span class="proj-period">2019.05 — 2019.12 &nbsp;(8개월)</span>
           </div>
         </div>
         <div class="proj-sections">
@@ -1566,16 +1624,16 @@
       <div class="proj-thumb"><img src="./proj_blackshot.png" alt="BLACKSHOT M" /></div>
     </div>
 
-    <!-- 05 거너덕 -->
+    <!-- 05 GUNNER DUCK -->
     <div class="proj-card">
       <div class="proj-body">
         <div class="proj-header">
+          <div class="proj-title">GUNNER DUCK</div>
           <div class="proj-meta">
-            <span class="proj-company-text">PDNA게임즈 &nbsp;·&nbsp; 1인 개발</span>
-            <span class="proj-dot">·</span>
+            <span class="proj-company-text">PDNA게임즈</span>
+            <span class="proj-meta-sep">/</span>
             <span class="proj-period">2018.07 — 2019.03 &nbsp;(8개월)</span>
           </div>
-          <div class="proj-title">거너덕</div>
           <div class="proj-ptags">
             <span class="proj-ptag">아케이드</span>
             <span class="proj-ptag">모바일</span>
@@ -1609,7 +1667,10 @@
           </div>
         </div>
       </div>
-      <div class="proj-thumb"><img src="./proj_gunnerduck.png" alt="거너덕" /></div>
+      <div class="proj-thumb-wrap" style="display:flex;flex-direction:column;gap:0.6rem;flex-shrink:0;">
+        <div class="proj-thumb"><img src="./proj_gunnerduck.png" alt="GUNNER DUCK" /></div>
+        <a href="https://m.onestore.co.kr/v2/ko-kr/app/0000737986" target="_blank" rel="noopener" class="proj-store-btn">▶ 거너덕 원스토어 바로가기</a>
+      </div>
     </div>
 
   </div>
