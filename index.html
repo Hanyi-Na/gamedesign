@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HANYI-NA — Game Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gowun+Dodum&display=swap" rel="stylesheet" />
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <style>
     @font-face {
@@ -279,7 +279,6 @@
       align-items: start;
       max-width: 1200px;
     }
-    .about-text {}
     .about-photos {
       display: flex;
       flex-direction: column;
@@ -472,7 +471,6 @@
       padding-top: 0.2rem;
     }
     .exp-ep:hover .ep-number { color: rgba(229,9,20,0.4); }
-    .ep-body {}
     .ep-period {
       font-family: var(--cond);
       font-size: 0.72rem;
@@ -978,6 +976,124 @@
       padding-top: 0.35rem;
     }
 
+    /* ── RECENTLY PLAYED ── */
+    #recently-played {
+      background: var(--bg2);
+      padding: 5rem max(2.5rem, calc((100% - 1080px) / 2)) 7rem;
+    }
+    .rp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0;
+    }
+    .rp-card {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .rp-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229,9,20,0.5);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+    .rp-img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--bg3);
+      position: relative;
+    }
+    .rp-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .rp-card:hover .rp-img-wrap img {
+      transform: scale(1.05);
+    }
+    .rp-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.15);
+      background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%);
+    }
+    .rp-body {
+      padding: 1.2rem 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+    .rp-title {
+      font-family: 'Gowun Dodum', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #fff;
+      line-height: 1.3;
+    }
+    .rp-comment {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .rp-tag {
+      display: inline-block;
+      font-family: var(--cond);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid rgba(229,9,20,0.4);
+      padding: 0.28rem 0.6rem;
+      align-self: flex-start;
+    }
+    .rp-subblock {
+      margin-top: 4rem;
+    }
+    .rp-subblock:first-of-type {
+      margin-top: 2.5rem;
+    }
+    .rp-subtitle {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .rp-subtitle::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+    .rp-subtitle .rp-subtitle-accent {
+      color: var(--accent);
+    }
+    .rp-subtitle .rp-subtitle-meta {
+      font-family: var(--body);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+
     /* ── CONTACT ── */
     #contact {
       background: var(--bg);
@@ -1139,6 +1255,8 @@
       section { padding: 3.5rem 1.25rem; }
       .hero { padding: 0 1.25rem 4rem; min-height: 500px; }
       #contact { padding: 3.5rem 1.25rem 5rem; }
+      #recently-played { padding: 3.5rem 1.25rem 5rem; }
+      .rp-grid { grid-template-columns: 1fr; }
 
       /* Row label */
       .row-label { font-size: 1.3rem; }
@@ -1313,6 +1431,7 @@
     <li><a href="#projects" data-section="projects" onclick="closeMenu()">프로젝트</a></li>
     <li><a href="#tools" data-section="tools" onclick="closeMenu()">보유기술</a></li>
     <li><a href="#docs" data-section="docs" onclick="closeMenu()">기획서</a></li>
+    <li><a href="#recently-played" data-section="recently-played" onclick="closeMenu()">플레이 로그</a></li>
     <li><a href="#contact" data-section="contact" onclick="closeMenu()">연락처</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('menu-open')" aria-label="메뉴">☰</button>
@@ -1334,8 +1453,8 @@
       근거로 설득하고, 소통으로 완성합니다.
     </p>
     <div class="hero-actions">
-      <button class="btn btn-play" onclick="openIntro()"><span class="btn-icon">▶</span> 자기소개 재생</button>
-      <a href="#about" class="btn btn-info"><span class="btn-icon info-lg">ⓘ</span> 상세 정보</a>
+      <button class="btn btn-play" onclick="openIntro()"><span class="btn-icon">▶</span> 포트폴리오 티저</button>
+      <a href="#about" class="btn btn-info"><span class="btn-icon info-lg">ⓘ</span> 프로필 보기</a>
     </div>
   </div>
 </section>
@@ -1360,6 +1479,7 @@
         <div class="meta-row">
           <span class="meta-badge">Unity</span>
           <span class="meta-badge">Unreal</span>
+          <span class="meta-badge">PC / Console / Mobile</span>
         </div>
       </div>
 
@@ -1858,27 +1978,136 @@
         <a href="./시스템 기획서_시즌 꾸미기_나한이.pdf" download class="doc-download">↓ 다운로드</a>
       </div>
     </article>
-
-    <article class="doc-card">
-      <div class="doc-card-top">
-        <h3 class="doc-title">데이터 테이블</h3>
-        <span class="doc-badge">XLSX</span>
-      </div>
-      <p class="doc-desc">
-        캐릭터 제작 시 직접 작업한 테이블 목록과 구조를 정리
-      </p>
-      <div class="doc-actions">
-        <a href="./데이터 테이블_나한이.xlsx" download class="doc-download">↓ 다운로드</a>
-      </div>
-    </article>
   </div>
   <p class="docs-note reveal">※ 보안 유지를 위해 문서 내 데이터와 구조는 실제와 다르게 재구성되었습니다</p>
 </section>
+<!-- RECENTLY PLAYED -->
+<section id="recently-played">
+  <div class="row-label reveal">🎮 플레이 로그</div>
+
+  <!-- 인생게임 TOP 3 -->
+  <div class="rp-subblock reveal">
+    <div class="rp-subtitle">🏆 인생게임 <span class="rp-subtitle-accent">TOP 3</span></div>
+    <div class="rp-grid">
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./life_game1.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">리그 오브 레전드</div>
+          <p class="rp-comment">시즌2부터 1만 게임 이상 플레이<br>플래티넘 / T1, 젠지 아카데미 수강</p>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./life_game2.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">라스트 오브 어스</div>
+          <p class="rp-comment"></p>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./life_game3.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">젤다: 야생의 숨결</div>
+          <p class="rp-comment"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 현재 플레이 6개 -->
+  <div class="rp-subblock reveal">
+    <div class="rp-subtitle">🕹 현재 플레이 <span class="rp-subtitle-accent">6개</span> <span class="rp-subtitle-meta">(2026년 4월 기준)</span></div>
+    <div class="rp-grid">
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./now_game1.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">블루아카이브</div>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./now_game2.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">트릭컬: 리바이브</div>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./now_game3.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">명조: 워더링 웨이브</div>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./now_game4.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">붉은사막</div>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./now_game5.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">롤토체스 / TFT</div>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./now_game6.jpg" alt="게임 이미지" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">메이플 키우기</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-content">
     <div class="row-label reveal contact-row">📬 연락처</div>
     <div class="contact-info reveal">
+      <a class="contact-card" style="cursor:default;">
+        <div class="contact-card-top">
+          <span class="contact-icon">👤</span>
+          <span class="contact-label">이름</span>
+        </div>
+        <div class="contact-value">나한이</div>
+      </a>
       <a class="contact-card" style="cursor:default;">
         <div class="contact-card-top">
           <span class="contact-icon">✉</span>
