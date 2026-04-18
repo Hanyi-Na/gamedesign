@@ -515,56 +515,48 @@
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.07);
       border-left: 3px solid rgba(229,9,20,0.25);
-      padding: 2rem 2rem;
       transition: border-left-color 0.2s, background 0.2s;
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 440px 1fr;
     }
-    .proj-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1.25rem; }
     .proj-card:hover { border-left-color: var(--red); background: #1c1c1c; }
-    /* Header */
-    .proj-header { display: flex; flex-direction: column; gap: 0.6rem; }
-    .proj-title-row { display: flex; align-items: center; gap: 1.25rem; }
-    .proj-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-    .proj-company-text { font-size: 1.14rem; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.01em; }
-    .proj-meta-sep { color: rgba(255,255,255,0.3); font-size: 1.09rem; }
-    .proj-period { font-size: 1.14rem; color: rgba(255,255,255,0.6); font-weight: 400; }
-    .proj-title { font-family: var(--display); font-size: 2.4rem; letter-spacing: 0.04em; color: #fff; line-height: 1; }
-    .proj-ptags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .proj-ptag { font-size: 0.99rem; padding: 0.25rem 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
-    /* Sections */
-    .proj-sections { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.1rem; }
-    .proj-section { display: flex; flex-direction: column; gap: 0.55rem; }
-    .proj-section-label {
-      font-size: 1.37rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent);
+    /* Left column */
+    .proj-left {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgba(255,255,255,0.07);
     }
-    .proj-role-row { display: flex; align-items: flex-start; gap: 0.45rem; flex-wrap: wrap; }
-    .proj-rtag { font-size: 1.07rem; padding: 0.32rem 0.9rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
-    /* KPI nums */
-    .proj-nums { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .proj-num { padding: 0.65rem 1.1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid var(--red); min-width: 90px; }
-    .proj-num-val { font-family: var(--display); font-size: 1.7rem; color: #fff; line-height: 1; letter-spacing: 0.02em; }
-    .proj-num-desc { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.3; margin-top: 0.3rem; font-weight: 400; }
-    /* Achievements */
-    .proj-achiev { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
-    .proj-achiev li { font-size: 1.14rem; color: #fff; line-height: 1.7; padding-left: 1.2rem; position: relative; font-weight: 400; }
-    .proj-achiev li::before { content: '▸'; position: absolute; left: 0; color: var(--red); font-size: 0.75rem; top: 0.28rem; }
-    .proj-achiev li b { font-weight: 400; }
-    .proj-achiev-sub { font-size: 0.95em; color: var(--accent); padding-left: 0.2rem; }
-    .proj-achiev n { font-style: normal; color: var(--accent); font-weight: 700; }
+    .proj-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding: 2rem 2rem 1.5rem;
+    }
+    .proj-title-row { display: flex; align-items: center; gap: 1.25rem; }
+    .proj-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: nowrap; white-space: nowrap; }
+    .proj-company-text { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.85); letter-spacing: 0.01em; white-space: nowrap; }
+    .proj-meta-sep { color: rgba(255,255,255,0.3); font-size: 1rem; flex-shrink: 0; }
+    .proj-period { font-size: 1rem; color: rgba(255,255,255,0.6); font-weight: 400; white-space: nowrap; }
+    .proj-title { font-family: var(--display); font-size: 2.2rem; letter-spacing: 0.04em; color: #fff; line-height: 1; }
+    .proj-ptags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .proj-ptag { font-size: 0.82rem; padding: 0.2rem 0.65rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+    /* Thumb */
     .proj-thumb {
-      width: 300px;
-      height: 300px;
-      flex-shrink: 0;
+      aspect-ratio: 16 / 9;
+      width: calc(100% - 3rem);
       background: var(--bg2);
-      border: 1px solid rgba(255,255,255,0.06);
       overflow: hidden;
-      align-self: flex-start;
+      margin: 0 1.5rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      flex-shrink: 0;
     }
     .proj-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .proj-thumb-empty {
+      width: 100%; height: 100%; min-height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.1);
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    }
     .proj-store-btn {
       display: block;
       text-align: center;
@@ -576,14 +568,66 @@
       font-weight: 600;
       text-decoration: none;
       transition: background 0.2s, filter 0.2s;
+      flex-shrink: 0;
     }
     .proj-store-btn:hover { background: var(--red-dark); filter: brightness(1.1); }
-    .proj-thumb-empty {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.1);
-      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    .proj-btn-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
     }
+    .proj-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      font-family: var(--body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, filter 0.2s;
+      white-space: nowrap;
+    }
+    .proj-btn-store {
+      background: var(--red);
+      color: #fff;
+    }
+    .proj-btn-store:hover { background: var(--red-dark); filter: brightness(1.1); }
+    .proj-btn-dl {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .proj-btn-dl:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.6); }
+    /* Right column */
+    .proj-right {
+      padding: 2rem 2.5rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    /* Sections */
+    .proj-sections { display: flex; flex-direction: column; gap: 1rem; }
+    .proj-section { display: flex; flex-direction: column; gap: 0.55rem; }
+    .proj-section-label {
+      font-size: 1.2rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .proj-role-row { display: flex; align-items: flex-start; gap: 0.45rem; flex-wrap: wrap; }
+    .proj-rtag { font-size: 0.95rem; padding: 0.28rem 0.8rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+    /* KPI nums */
+    .proj-nums { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .proj-num { padding: 0.65rem 1.1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid var(--red); min-width: 90px; }
+    .proj-num-val { font-family: var(--display); font-size: 1.7rem; color: #fff; line-height: 1; letter-spacing: 0.02em; }
+    .proj-num-desc { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.3; margin-top: 0.3rem; font-weight: 400; }
+    /* Achievements */
+    .proj-achiev { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .proj-achiev li { font-size: 1.05rem; color: #fff; line-height: 1.7; padding-left: 1.2rem; position: relative; font-weight: 400; }
+    .proj-achiev li::before { content: '▸'; position: absolute; left: 0; color: var(--red); font-size: 0.75rem; top: 0.28rem; }
+    .proj-achiev li b { font-weight: 400; }
+    .proj-achiev-sub { font-size: 0.95em; color: var(--accent); padding-left: 0.2rem; }
+    .proj-achiev n { font-style: normal; color: var(--accent); font-weight: 700; }
     /* ── CAREER CARDS ── */
     .career-grid {
       display: grid;
@@ -1121,13 +1165,13 @@
 
     .contact-info {
       display: grid;
-      grid-template-columns: repeat(2, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
     .contact-card {
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.08);
-      padding: 1.5rem 2rem;
+      padding: 1.1rem 1.4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1307,9 +1351,10 @@
       .cc-num { font-size: 1.5rem; }
 
       /* Proj-list cards */
-      .proj-card { flex-direction: column; gap: 0; padding: 1.4rem; }
-      .proj-thumb-wrap { width: 100%; flex-shrink: unset; }
-      .proj-thumb { width: 100%; height: 210px; margin-top: 1.25rem; align-self: stretch; }
+      .proj-card { grid-template-columns: 1fr; }
+      .proj-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .proj-thumb { aspect-ratio: 16 / 9; width: calc(100% - 3rem); }
+      .proj-right { padding: 1.4rem; }
       .proj-store-btn { font-size: 0.88rem; padding: 0.6rem; }
       .proj-title { font-size: 1.9rem; }
       .proj-company-text { font-size: 0.95rem; }
@@ -1393,7 +1438,7 @@
       /* Proj-list cards */
       .proj-card { padding: 1rem; }
       .proj-title { font-size: 1.5rem; }
-      .proj-thumb { height: 170px; }
+      .proj-thumb { aspect-ratio: 16 / 9; width: calc(100% - 3rem); }
       .proj-company-text { font-size: 0.85rem; }
       .proj-period { font-size: 0.85rem; }
       .proj-ptag { font-size: 0.74rem; padding: 0.18rem 0.5rem; }
@@ -1462,27 +1507,8 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="row-label reveal">👤 프로필</div>
-  <h2 class="about-big reveal"><span class="red">재미를 숫자로</span><span style="color:#fff; display:block; margin-top:0.3em;">증명하는 사람</span></h2>
   <div class="about-layout">
     <div class="about-text">
-      <div class="about-meta reveal">
-        <div class="meta-row">
-          <span class="meta-badge highlight">게임기획 4년 10개월</span>
-          <span class="meta-badge">시스템 기획</span>
-          <span class="meta-badge">콘텐츠 기획</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-badge">1인 개발 경험</span>
-          <span class="meta-badge">신규 개발</span>
-          <span class="meta-badge">라이브서비스</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-badge">Unity</span>
-          <span class="meta-badge">Unreal</span>
-          <span class="meta-badge">PC / Console / Mobile</span>
-        </div>
-      </div>
-
       <!-- 인적사항 -->
       <div class="info-table reveal">
         <div class="info-row">
@@ -1494,42 +1520,40 @@
           <span class="info-value">1990.07.04</span>
         </div>
         <div class="info-row">
-          <span class="info-label">연락처</span>
-          <span class="info-value">010-4688-6515</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">이메일</span>
-          <span class="info-value">gtnan2@naver.com</span>
-        </div>
-        <div class="info-row">
           <span class="info-label">주소</span>
-          <span class="info-value">경기도 구리시 수택동</span>
+          <span class="info-value">경기도 구리시</span>
         </div>
         <div class="info-row">
           <span class="info-label">학력</span>
-          <span class="info-value">삼육대학교 경영학과 (2011–2016, 중퇴) · 학점 3.47/4.5</span>
+          <span class="info-value">삼육대학교 경영학과 (중퇴) · 학점 3.47/4.5</span>
         </div>
         <div class="info-row">
           <span class="info-label">자격증</span>
-          <span class="info-value">Unity Associate Certified (2019.05)</span>
+          <span class="info-value">Unity Associate Certified<br>한국사능력검정시험 1급</span>
         </div>
         <div class="info-row">
           <span class="info-label">병역</span>
-          <span class="info-value">공군 병장 만기전역 (2012.04–2014.04)</span>
+          <span class="info-value">공군 병장 만기전역</span>
         </div>
         <div class="info-row">
           <span class="info-label">취미</span>
-          <span class="info-value">헬스 · 수영 · 보드게임 · 영상 제작</span>
+          <span class="info-value">헬스 · 신작게임하기 · 보드게임하기</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">연락처</span>
+          <span class="info-value">010-4688-6515 / gtnan2@naver.com</span>
+        </div>
+        <div style="margin-top: 1.25rem;">
+          <a href="./이력서_나한이.pdf" download class="btn btn-info about-resume-btn">
+            ↓ &nbsp;이력서 PDF 다운로드
+          </a>
         </div>
       </div>
     </div>
     <div class="about-photos">
       <div class="about-photo">
-        <img src="./photo1.png" alt="나한이" />
+        <img src="./photo2.png" alt="나한이" onerror="this.style.display='none'" />
       </div>
-      <a href="./이력서_나한이.pdf" download class="btn btn-info about-resume-btn">
-        ↓ &nbsp;이력서 PDF 다운로드
-      </a>
     </div>
   </div>
 </section>
@@ -1537,6 +1561,23 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="row-label reveal">💼 경력 <span style="font-size:1.59rem;">(총 4년 10개월)</span></div>
+  <div class="about-meta reveal" style="margin-bottom: 2rem;">
+    <div class="meta-row">
+      <span class="meta-badge highlight">게임기획 4년 10개월</span>
+      <span class="meta-badge">시스템 기획</span>
+      <span class="meta-badge">콘텐츠 기획</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-badge">1인 개발 경험</span>
+      <span class="meta-badge">신규 개발</span>
+      <span class="meta-badge">라이브서비스</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-badge">Unity</span>
+      <span class="meta-badge">Unreal</span>
+      <span class="meta-badge">PC / Console / Mobile</span>
+    </div>
+  </div>
   <div class="career-grid reveal">
 
     <!-- DOUBLEU -->
@@ -1607,7 +1648,7 @@
 
     <!-- 01 BINGO HAVEN -->
     <div class="proj-card">
-      <div class="proj-body">
+      <div class="proj-left">
         <div class="proj-header">
           <div class="proj-title">BINGO HAVEN</div>
           <div class="proj-meta">
@@ -1622,6 +1663,9 @@
             <span class="proj-ptag">신규개발</span>
           </div>
         </div>
+        <div class="proj-thumb"><img src="./proj_bingo_haven.png" alt="BINGO HAVEN" /></div>
+      </div>
+      <div class="proj-right">
         <div class="proj-sections">
           <div class="proj-section">
             <div class="proj-section-label">주요 역할</div>
@@ -1643,12 +1687,11 @@
           </div>
         </div>
       </div>
-      <div class="proj-thumb"><img src="./proj_bingo_haven.png" alt="BINGO HAVEN" /></div>
     </div>
 
     <!-- 02 Spinning In Space -->
     <div class="proj-card">
-      <div class="proj-body">
+      <div class="proj-left">
         <div class="proj-header">
           <div class="proj-title">SPINNING IN SPACE</div>
           <div class="proj-meta">
@@ -1664,6 +1707,9 @@
             <span class="proj-ptag">소프트 런칭</span>
           </div>
         </div>
+        <div class="proj-thumb"><img src="./proj_spinning.png" alt="SPINNING IN SPACE" /></div>
+      </div>
+      <div class="proj-right">
         <div class="proj-sections">
           <div class="proj-section">
             <div class="proj-section-label">주요 역할</div>
@@ -1685,12 +1731,11 @@
           </div>
         </div>
       </div>
-      <div class="proj-thumb"><img src="./proj_spinning.png" alt="SPINNING IN SPACE" /></div>
     </div>
 
     <!-- 03 3on3 FreeStyle -->
     <div class="proj-card">
-      <div class="proj-body">
+      <div class="proj-left">
         <div class="proj-header">
           <div class="proj-title">3ON3 FREESTYLE</div>
           <div class="proj-meta">
@@ -1705,6 +1750,9 @@
             <span class="proj-ptag">라이브 서비스</span>
           </div>
         </div>
+        <div class="proj-thumb"><img src="./proj_3on3.png" alt="3ON3 FREESTYLE" /></div>
+      </div>
+      <div class="proj-right">
         <div class="proj-sections">
           <div class="proj-section">
             <div class="proj-section-label">주요 역할</div>
@@ -1726,12 +1774,11 @@
           </div>
         </div>
       </div>
-      <div class="proj-thumb"><img src="./proj_3on3.png" alt="3ON3 FREESTYLE" /></div>
     </div>
 
     <!-- 04 BLACKSHOT M -->
     <div class="proj-card">
-      <div class="proj-body">
+      <div class="proj-left">
         <div class="proj-header">
           <div class="proj-title">BLACKSHOT M</div>
           <div class="proj-meta">
@@ -1748,6 +1795,9 @@
             <span class="proj-ptag">글로벌 런칭</span>
           </div>
         </div>
+        <div class="proj-thumb"><img src="./proj_blackshot.png" alt="BLACKSHOT M" /></div>
+      </div>
+      <div class="proj-right">
         <div class="proj-sections">
           <div class="proj-section">
             <div class="proj-section-label">주요 역할</div>
@@ -1769,12 +1819,11 @@
           </div>
         </div>
       </div>
-      <div class="proj-thumb"><img src="./proj_blackshot.png" alt="BLACKSHOT M" /></div>
     </div>
 
     <!-- 05 GUNNER DUCK -->
     <div class="proj-card">
-      <div class="proj-body">
+      <div class="proj-left">
         <div class="proj-header">
           <div class="proj-title">GUNNER DUCK</div>
           <div class="proj-meta">
@@ -1789,6 +1838,9 @@
             <span class="proj-ptag">구글 플레이 · 원스토어 출시</span>
           </div>
         </div>
+        <div class="proj-thumb"><img src="./proj_gunnerduck.png" alt="GUNNER DUCK" /></div>
+      </div>
+      <div class="proj-right">
         <div class="proj-sections">
           <div class="proj-section">
             <div class="proj-section-label">주요 역할</div>
@@ -1811,10 +1863,10 @@
             </ul>
           </div>
         </div>
-      </div>
-      <div class="proj-thumb-wrap" style="display:flex;flex-direction:column;gap:0.6rem;flex-shrink:0;">
-        <div class="proj-thumb"><img src="./proj_gunnerduck.png" alt="GUNNER DUCK" /></div>
-        <a href="https://m.onestore.co.kr/v2/ko-kr/app/0000737986" target="_blank" rel="noopener" class="proj-store-btn">▶ 거너덕 원스토어 바로가기</a>
+        <div class="proj-btn-row">
+          <a href="https://m.onestore.co.kr/v2/ko-kr/app/0000737986" target="_blank" rel="noopener" class="proj-btn proj-btn-store">▶ 거너덕 원스토어 바로가기</a>
+          <a href="./거너덕_기획서_나한이.pdf" download class="proj-btn proj-btn-dl">↓ 거너덕 기획서 다운로드</a>
+        </div>
       </div>
     </div>
 
