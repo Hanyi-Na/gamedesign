@@ -13,6 +13,12 @@
       font-weight: 700;
       font-style: normal;
     }
+    @font-face {
+      font-family: 'GmarketSans';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+      font-weight: 500;
+      font-style: normal;
+    }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -85,9 +91,10 @@
       color: #fff;
       text-decoration: none;
       transition: color 0.2s;
+      position: relative;
     }
     .nav-links a:hover { color: rgba(255,255,255,0.45); }
-    .nav-links a.active { color: #fff; border-bottom: 2px solid var(--red); padding-bottom: 2px; }
+    .nav-links a.active { color: var(--accent); }
 
     /* ── HERO ── */
     .hero {
@@ -251,7 +258,7 @@
     .btn-icon { font-size: 1.7rem; }
 
     /* ── SECTION COMMONS ── */
-    section { padding: 5rem max(2.5rem, calc((100% - 1080px) / 2)); }
+    section { padding: 3.5rem max(2.5rem, calc((100% - 1080px) / 2)); }
     .row-label {
       font-family: var(--cond);
       font-size: 1.9rem;
@@ -259,14 +266,40 @@
       letter-spacing: -0.01em;
       text-transform: uppercase;
       margin-bottom: 2rem;
-      display: flex; align-items: center; gap: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
       color: #fff;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .row-label::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12%;
+      height: 76%;
+      width: 4px;
+      background: var(--red);
+      border-radius: 1px;
     }
     .row-label .rl-accent { color: var(--accent); }
     .row-label::after {
       content: '';
-      flex: 1; height: 1px;
-      background: linear-gradient(to right, rgba(229,9,20,0.4), transparent);
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(229,9,20,0.35), transparent);
+    }
+    .row-label-sub {
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: var(--cond);
+      align-self: flex-end;
+      padding-bottom: 0.22em;
+      flex-shrink: 0;
     }
 
     .contact-row {
@@ -274,7 +307,7 @@
     }
 
     /* ── ABOUT ── */
-    #about { background: var(--bg2); }
+    #about { background: var(--bg); }
     #about .row-label { margin-bottom: 0.75rem; }
     .about-layout {
       display: grid;
@@ -454,7 +487,11 @@
     }
 
     /* ── EXPERIENCE ── */
-    #experience { background: var(--bg2); }
+    #experience { background: var(--bg); }
+    #projects { background: var(--bg); }
+    #docs { background: var(--bg); }
+    #tools { background: var(--bg2); }
+    #recently-played { background: var(--bg); }
     .exp-episodes { display: flex; flex-direction: column; }
     .exp-ep {
       display: grid;
@@ -552,8 +589,35 @@
       margin: 0 1.5rem 1.5rem;
       border: 1px solid rgba(255,255,255,0.06);
       flex-shrink: 0;
+      position: relative;
     }
-    .proj-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .proj-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.45s ease;
+    }
+    .proj-card:hover .proj-thumb img { transform: scale(1.07); }
+    .proj-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.6rem 1.8rem;
+    }
+    .proj-card:hover .proj-thumb-overlay { opacity: 1; }
+    .proj-thumb-overlay-title {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      line-height: 1;
+      transform: translateY(8px);
+      transition: transform 0.35s ease;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    .proj-card:hover .proj-thumb-overlay-title { transform: translateY(0); }
     .proj-thumb-empty {
       width: 100%; height: 100%; min-height: 220px;
       display: flex; align-items: center; justify-content: center;
@@ -578,7 +642,9 @@
       display: flex;
       gap: 0.6rem;
       flex-wrap: wrap;
-      margin-top: 0.5rem;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
     }
     .proj-btn {
       display: inline-flex;
@@ -609,6 +675,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.1rem;
+      justify-content: flex-start;
     }
     /* Sections */
     .proj-sections { display: flex; flex-direction: column; gap: 1rem; }
@@ -631,35 +698,41 @@
     .proj-achiev li b { font-weight: 400; }
     .proj-achiev-sub { font-size: 0.95em; color: var(--accent); padding-left: 0.2rem; }
     .proj-achiev n { font-style: normal; color: var(--accent); font-weight: 700; }
-    /* ── CAREER CARDS ── */
-    .career-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    /* ── CAREER TIMELINE ── */
+    .career-timeline {
+      position: relative;
       margin-top: 2.5rem;
     }
+    .career-tl-item {
+      display: flex;
+      align-items: flex-start;
+      padding-bottom: 2rem;
+    }
+    .career-tl-item:last-child { padding-bottom: 0; }
+    /* 가로형 카드 */
     .career-card {
+      flex: 1;
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.07);
-      border-top: 3px solid var(--cc);
+      border-left: 3px solid var(--cc);
       overflow: hidden;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       transition: transform 0.25s, box-shadow 0.25s;
     }
     .career-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      transform: translateX(6px);
+      box-shadow: -6px 0 28px rgba(0,0,0,0.35);
     }
-    /* 로고 영역 */
+    /* 로고 */
     .cc-logo {
       background: #fff;
-      width: 100%;
-      height: 110px;
+      width: 160px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.25rem 2rem;
+      padding: 0.5rem 0.75rem;
     }
     .cc-logo img {
       max-width: 100%;
@@ -668,11 +741,12 @@
     }
     /* 카드 본문 */
     .cc-body {
-      padding: 1.5rem;
+      padding: 1.5rem 1.75rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.65rem;
       flex: 1;
+      justify-content: center;
     }
     .cc-header {
       display: flex;
@@ -682,67 +756,29 @@
     .cc-name {
       font-family: 'GmarketSans', sans-serif;
       font-weight: 700;
-      font-size: 1.55rem;
+      font-size: 1.7rem;
       letter-spacing: -0.01em;
       color: #fff;
       line-height: 1.15;
-      white-space: nowrap;
     }
     .cc-num {
       font-family: var(--display);
-      font-size: 2rem;
-      color: rgba(255,255,255,0.07);
+      font-size: 2.2rem;
+      color: rgba(255,255,255,0.06);
       line-height: 1;
     }
     .cc-period {
-      font-size: 1.11rem;
+      font-size: 1.22rem;
       color: var(--accent);
       letter-spacing: 0.02em;
     }
-    /* 재직 기간 바 */
-    .cc-bar-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .cc-bar-track {
-      height: 4px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .cc-bar-fill {
-      height: 100%;
-      background: var(--cc);
-      border-radius: 2px;
-    }
-    .cc-duration {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--cc);
-    }
-    /* 팀 + 태그 */
     .cc-team {
-      font-size: 1.14rem;
-      color: #fff;
+      font-size: 1.19rem;
+      color: rgba(255,255,255,0.7);
       line-height: 1.6;
-    }
-    .cc-tags {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: nowrap;
-      margin-top: auto;
-    }
-    .cc-tag {
-      font-size: 0.92rem;
-      padding: 0.35rem 0.9rem;
-      white-space: nowrap;
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #fff;
     }
 
     /* ── PROJECTS ── */
-    #projects { background: var(--bg); }
     .project-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -926,26 +962,41 @@
     }
     .docs-note {
       margin-top: 1.25rem;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: #fff;
       line-height: 1.7;
     }
 
 
     /* ── TOOLS ── */
-    .tools-section-inner { display: flex; flex-direction: column; gap: 3rem; }
-    .tools-category { display: block; }
-    .tools-cat-label {
-      font-family: var(--body);
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid rgba(245,166,35,0.2);
-      line-height: 1;
+    .tools-section-inner { display: flex; flex-direction: column; gap: 0; }
+    /* ── TOOLS TABS ── */
+    .tools-tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 1.8rem;
     }
+    .tools-tab-btn {
+      font-family: var(--cond);
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.9rem 1.8rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -1px;
+    }
+    .tools-tab-btn:hover { color: rgba(255,255,255,0.88); }
+    .tools-tab-btn.active { color: #fff; border-bottom-color: var(--red); }
+    .tools-category { display: none; }
+    .tools-category.active { display: block; }
+    .tools-cat-label { display: none; }
     .tools-cat-grid {
       display: flex;
       flex-direction: column;
@@ -1025,8 +1076,7 @@
 
     /* ── RECENTLY PLAYED ── */
     #recently-played {
-      background: var(--bg2);
-      padding: 5rem max(2.5rem, calc((100% - 1080px) / 2)) 7rem;
+      padding: 3.5rem max(2.5rem, calc((100% - 1080px) / 2)) 5rem;
     }
     .rp-grid {
       display: grid;
@@ -1035,17 +1085,19 @@
       margin-top: 0;
     }
     .rp-card {
-      background: var(--bg);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid rgba(229,9,20,0.25);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: border-left-color 0.2s, background 0.2s, transform 0.25s, box-shadow 0.25s;
     }
     .rp-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(229,9,20,0.5);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      border-left-color: var(--red);
+      background: #1c1c1c;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
     }
     .rp-img-wrap {
       width: 100%;
@@ -1082,10 +1134,10 @@
       flex: 1;
     }
     .rp-title {
-      font-family: 'Gowun Dodum', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+      font-family: 'GmarketSans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
       color: #fff;
       line-height: 1.3;
     }
@@ -1146,7 +1198,7 @@
       background: var(--bg);
       position: relative;
       overflow: hidden;
-      padding: 5rem max(2.5rem, calc((100% - 1080px) / 2)) 7rem;
+      padding: 3.5rem max(2.5rem, calc((100% - 1080px) / 2)) 5rem;
     }
     #contact::before {
       content: '';
@@ -1197,7 +1249,7 @@
     .contact-icon { font-size: 1.15rem; line-height: 1; opacity: 0.7; }
     .contact-label {
       font-family: var(--body);
-      font-size: 0.82rem;
+      font-size: 1.12rem;
       font-weight: 400;
       color: rgba(255,255,255,0.5);
       letter-spacing: 0;
@@ -1205,7 +1257,7 @@
     }
     .contact-value {
       font-family: var(--body);
-      font-size: 1.45rem;
+      font-size: 1.75rem;
       font-weight: 700;
       color: #fff;
       line-height: 1.2;
@@ -1214,15 +1266,128 @@
     }
 
 
+    /* ── DOT NAVIGATOR ── */
+    #dot-nav {
+      position: fixed;
+      right: 1.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      z-index: 200;
+    }
+    .dot-nav-item {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      padding: 0;
+    }
+    .dot-nav-item:hover {
+      background: rgba(255,255,255,0.55);
+      transform: scale(1.3);
+    }
+    .dot-nav-item.active {
+      background: var(--red);
+      transform: scale(1.5);
+      box-shadow: 0 0 8px rgba(229,9,20,0.7);
+    }
+    /* 호버 시 레이블 */
+    .dot-nav-item::after {
+      content: attr(data-label);
+      position: absolute;
+      right: 1.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10,10,10,0.88);
+      color: #fff;
+      font-family: var(--body);
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      padding: 0.22rem 0.6rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .dot-nav-item:hover::after { opacity: 1; }
+    @media (max-width: 900px) { #dot-nav { display: none; } }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--red);
+      z-index: 9999;
+      transition: width 0.08s linear;
+      box-shadow: 0 0 8px rgba(229,9,20,0.7);
+    }
+
+    /* ── BACK TO TOP ── */
+    #back-to-top {
+      position: fixed;
+      bottom: 2.2rem;
+      right: 2.2rem;
+      z-index: 500;
+      width: 48px;
+      height: 48px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+      pointer-events: none;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    #back-to-top:hover {
+      background: var(--red-dark);
+      filter: brightness(1.15);
+    }
+    @media (max-width: 480px) {
+      #back-to-top { bottom: 1.2rem; right: 1.2rem; width: 42px; height: 42px; font-size: 1rem; }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #050505;
-      padding: 2rem 4rem;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2.5rem 4rem 2rem;
+      border-top: none;
+      position: relative;
     }
+    .footer-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--red), rgba(245,166,35,0.6), transparent);
+      margin-bottom: 2rem;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-left { display: flex; flex-direction: column; gap: 0.3rem; }
     .footer-logo { font-family: var(--display); font-size: 1.2rem; color: var(--red); letter-spacing: 0.08em; }
-    footer span { font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.02em; color: rgba(255,255,255,0.25); text-transform: uppercase; }
+    .footer-copy { font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.04em; color: #fff; text-transform: uppercase; }
+    .footer-nav { display: flex; gap: 1.6rem; list-style: none; flex-wrap: wrap; padding-right: 4rem; }
+    .footer-nav a { font-family: var(--cond); font-size: 0.78rem; letter-spacing: 0.06em; color: #fff; text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--accent); }
 
     /* ── VIDEO MODAL ── */
     .intro-modal {
@@ -1257,11 +1422,40 @@
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    .reveal, .reveal-left, .reveal-right {
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+      transition-delay: var(--reveal-delay, 0ms);
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal { transform: translateY(30px); }
+    .reveal-left { transform: translateX(-48px); }
+    .reveal-right { transform: translateX(48px); }
+    .reveal.visible, .reveal-left.visible, .reveal-right.visible {
+      opacity: 1; transform: none;
+    }
+
+    /* ── HERO PARTICLES ── */
+    #hero-particles {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── TYPING CURSOR ── */
+    .typing-cursor {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 300;
+      animation: blink 0.75s step-end infinite;
+      margin-left: 1px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
 
     /* ── HAMBURGER ── */
     .nav-hamburger {
@@ -1312,7 +1506,7 @@
       #nav.menu-open .nav-hamburger { position: fixed; top: 0.75rem; right: 1.25rem; z-index: 400; }
 
       /* Sections */
-      section { padding: 3.5rem 1.25rem; }
+      section { padding: 2.5rem 1.25rem; }
       .hero { padding: 0 1.25rem 4rem; min-height: 500px; }
       #contact { padding: 3.5rem 1.25rem 5rem; }
       #recently-played { padding: 3.5rem 1.25rem 5rem; }
@@ -1355,14 +1549,15 @@
       .ep-role { font-size: 1.5rem; }
       .ep-desc { font-size: 0.9rem; max-width: 100%; }
 
-      /* Career cards: 태블릿에서 2열 */
-      .career-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
-      .cc-logo { height: 90px; }
-      .cc-name { font-size: 1.3rem; white-space: normal; }
+      /* Career timeline: 태블릿 */
+      .career-timeline { margin-top: 1.5rem; }
+      .career-tl-item { gap: 1.5rem; padding-bottom: 1.5rem; }
+      .career-tl-dot { width: 38px; height: 38px; font-size: 1rem; margin-top: 1rem; }
+      .career-timeline::before { left: 18px; }
+      .cc-logo { width: 120px; padding: 1rem; }
+      .cc-name { font-size: 1.3rem; }
       .cc-period { font-size: 0.95rem; }
-      .cc-team { font-size: 0.95rem; }
-      .cc-tag { font-size: 0.82rem; padding: 0.28rem 0.7rem; }
-      .cc-tags { flex-wrap: wrap; }
+      .cc-team { font-size: 0.9rem; }
       .cc-num { font-size: 1.5rem; }
 
       /* Proj-list cards */
@@ -1394,6 +1589,8 @@
 
       /* Tools */
       .tools-cat-label { font-size: 1.2rem; }
+      .tools-tab-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+      .tools-tab-btn { font-size: 0.82rem; padding: 0.75rem 1rem; white-space: nowrap; flex-shrink: 0; }
       .tool-card { grid-template-columns: 1fr; gap: 0.3rem; padding: 0.9rem 1rem; }
       .tool-card-name { font-size: 1.2rem; }
       .tool-card-desc { font-size: 0.9rem; }
@@ -1416,17 +1613,26 @@
       /* Contact */
       .contact-info { grid-template-columns: 1fr; max-width: 100%; }
       .contact-card { padding: 1.1rem 1.4rem; }
-      .contact-label { font-size: 0.88rem; }
-      .contact-value { font-size: 1.2rem; }
+      .contact-label { font-size: 0.9rem; }
+      .contact-value { font-size: 1.35rem; }
+
+      /* Row label sub */
+      .row-label-sub { font-size: 0.72rem; }
 
       /* Footer */
-      footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      footer { padding: 1.5rem 1.25rem 1.25rem; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
+      .footer-nav { justify-content: center; padding-right: 0; }
+
+      /* Reveal: 좌우 슬라이드 → 페이드업으로 교체 (모바일 가로 스크롤 방지) */
+      .reveal-left { transform: translateY(20px); }
+      .reveal-right { transform: translateY(20px); }
     }
 
     /* 480px: 스마트폰 세로 모드 */
     @media (max-width: 480px) {
       /* Sections */
-      section { padding: 3rem 1rem; }
+      section { padding: 2rem 1rem; }
       .hero { padding: 0 1rem 3.5rem; }
       #contact { padding: 3rem 1rem 4rem; }
       #recently-played { padding: 3rem 1rem 4rem; }
@@ -1452,14 +1658,16 @@
       .ep-role { font-size: 1.3rem; }
       .ep-desc { font-size: 0.85rem; }
 
-      /* Career cards: 폰에서 1열 */
-      .career-grid { grid-template-columns: 1fr; }
-      .cc-logo { height: 75px; }
-      .cc-body { padding: 1rem; gap: 0.75rem; }
+      /* Career timeline: 폰 */
+      .career-tl-item { gap: 1rem; }
+      .career-tl-dot { width: 32px; height: 32px; font-size: 0.85rem; margin-top: 0.85rem; }
+      .career-timeline::before { left: 15px; top: 2.5rem; }
+      .career-card { flex-direction: column; }
+      .cc-logo { width: 100%; height: 72px; }
+      .cc-body { padding: 1rem; gap: 0.5rem; }
       .cc-name { font-size: 1.2rem; }
       .cc-period { font-size: 0.88rem; }
-      .cc-team { font-size: 0.88rem; }
-      .cc-tag { font-size: 0.78rem; }
+      .cc-team { font-size: 0.85rem; }
 
       /* Proj-list cards */
       .proj-header { padding: 1rem 1rem 0.75rem; }
@@ -1479,6 +1687,7 @@
       /* Tools */
       .tools-cat-label { font-size: 1.05rem; }
       .tools-section-inner { gap: 2rem; }
+      .tools-tab-btn { font-size: 0.72rem; padding: 0.6rem 0.75rem; }
       .tools-tag { font-size: 0.78rem; }
 
       /* Recently played: 폰에서 1열 */
@@ -1491,10 +1700,16 @@
       .doc-title-sub { font-size: 1.05rem; }
 
       /* Contact */
-      .contact-value { font-size: 1.05rem; word-break: break-all; }
+      .contact-label { font-size: 0.82rem; }
+      .contact-value { font-size: 1.15rem; word-break: break-all; }
+
+      /* Row label sub */
+      .row-label-sub { font-size: 0.62rem; letter-spacing: 0.1em; }
 
       /* Footer */
-      footer { padding: 1.25rem 1rem; }
+      footer { padding: 1.25rem 1rem 1rem; }
+      .footer-nav { gap: 1rem; flex-wrap: wrap; }
+      .footer-nav a { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -1505,11 +1720,10 @@
   <a class="nav-logo" href="#home" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
 <span style="color:#fff;">나한이</span>&nbsp;<span style="color:var(--accent);">포트폴리오</span></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#about" data-section="about" onclick="closeMenu()">프로필</a></li>
     <li><a href="#experience" data-section="experience" onclick="closeMenu()">경력</a></li>
     <li><a href="#projects" data-section="projects" onclick="closeMenu()">프로젝트</a></li>
-    <li><a href="#tools" data-section="tools" onclick="closeMenu()">보유기술</a></li>
     <li><a href="#docs" data-section="docs" onclick="closeMenu()">기획서</a></li>
+    <li><a href="#tools" data-section="tools" onclick="closeMenu()">보유기술</a></li>
     <li><a href="#recently-played" data-section="recently-played" onclick="closeMenu()">플레이로그</a></li>
     <li><a href="#contact" data-section="contact" onclick="closeMenu()">연락처</a></li>
   </ul>
@@ -1518,6 +1732,7 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <canvas id="hero-particles"></canvas>
   <div class="hero-bg"><img src="./hero_bg.png" alt="" class="hero-bg-img" onerror="this.style.display='none'" /><div class="hero-bg-overlay"></div></div>
   <div class="hero-scanlines"></div>
   <div class="hero-letters"></div>
@@ -1527,118 +1742,64 @@
       <span class="name-line">나한이</span>
       <span class="name-line red">게임기획 포트폴리오</span>
     </h1>
-    <p class="hero-desc">
-      모호함을 명쾌함으로 바꾸는 기획자</br>
-      근거로 설득하고, 소통으로 완성합니다.
-    </p>
+    <p class="hero-desc" id="hero-desc-typing"></p>
     <div class="hero-actions">
       <button class="btn btn-play" onclick="openIntro()"><span class="btn-icon">▶</span> 포트폴리오 티저</button>
-      <a href="#about" class="btn btn-info"><span class="btn-icon info-lg">ⓘ</span> 프로필 보기</a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="row-label reveal">👤 프로필</div>
-  <div class="about-layout">
-    <div class="about-text">
-      <!-- 인적사항 -->
-      <div class="info-table reveal">
-        <div class="info-row">
-          <span class="info-label">이름</span>
-          <span class="info-value">나한이 &nbsp;<span style="font-size:0.9em; color:var(--muted); letter-spacing:0.06em;">HANYI NA</span></span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">생년월일</span>
-          <span class="info-value">1990.07.04</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">주소</span>
-          <span class="info-value">경기도 구리시</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">학력</span>
-          <span class="info-value">삼육대학교 경영학과 (중퇴) · 학점 3.47/4.5</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">자격증</span>
-          <span class="info-value">Unity Associate Certified<br>한국사능력검정시험 1급</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">병역</span>
-          <span class="info-value">공군 병장 만기전역</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">취미</span>
-          <span class="info-value">헬스 · 신작게임하기 · 보드게임하기</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">연락처</span>
-          <span class="info-value">010-4688-6515 / gtnan2@naver.com</span>
-        </div>
-        <div style="margin-top: 1.25rem;">
-          <a href="./이력서_나한이.pdf" download class="btn btn-info about-resume-btn">
-            ↓ &nbsp;이력서 PDF 다운로드
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="about-photos">
-      <div class="about-photo">
-        <img src="./photo2.png" alt="나한이" onerror="this.style.display='none'" />
-      </div>
+      <a href="./이력서_나한이.pdf" download class="btn btn-info">↓ &nbsp;이력서 PDF 다운로드</a>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="row-label reveal">💼 경력 <span style="font-size:1.59rem; color:var(--accent);">(총 4년 10개월)</span></div>
-  <div class="career-grid reveal">
+  <div class="row-label reveal-left">경력 <span class="row-label-sub">CAREER HISTORY</span><span style="font-size:1.4rem; color:var(--accent); font-family:var(--cond); letter-spacing:0.04em; flex-shrink:0;">(총 4년 10개월)</span></div>
+  <div class="career-timeline" data-stagger="130">
 
     <!-- DOUBLEU -->
-    <div class="career-card" style="--cc: #5aab22;">
-      <div class="cc-logo">
-        <img src="./logo_doubleu.png" alt="Doubleu Games" />
-      </div>
-      <div class="cc-body">
-        <div class="cc-header">
-          <div class="cc-name">더블유 게임즈</div>
-          <div class="cc-num">01</div>
+    <div class="career-tl-item" style="--cc:#5aab22;">
+
+      <div class="career-card">
+        <div class="cc-logo"><img src="./logo_doubleu.png" alt="Doubleu Games" /></div>
+        <div class="cc-body">
+          <div class="cc-header">
+            <div class="cc-name">더블유 게임즈</div>
+            <div class="cc-num">01</div>
+          </div>
+          <div class="cc-period">2021.11 — 2024.03 &nbsp;(2년 5개월)</div>
+          <div class="cc-team">스튜디오G 기획팀</div>
         </div>
-        <div class="cc-period">2021.11 — 2024.03 &nbsp;(2년 5개월)</div>
-        <div class="cc-team">스튜디오G 기획팀</div>
       </div>
     </div>
 
     <!-- JOYCITY -->
-    <div class="career-card" style="--cc: #f07c20;">
-      <div class="cc-logo">
-        <img src="./logo_joycity.png" alt="Joycity" />
-      </div>
-      <div class="cc-body">
-        <div class="cc-header">
-          <div class="cc-name">조이시티</div>
-          <div class="cc-num">02</div>
+    <div class="career-tl-item" style="--cc:#f07c20;">
+
+      <div class="career-card">
+        <div class="cc-logo"><img src="./logo_joycity.png" alt="Joycity" /></div>
+        <div class="cc-body">
+          <div class="cc-header">
+            <div class="cc-name">조이시티</div>
+            <div class="cc-num">02</div>
+          </div>
+          <div class="cc-period">2020.02 — 2021.10 &nbsp;(1년 9개월)</div>
+          <div class="cc-team">3on3 프리스타일 기획팀</div>
         </div>
-        <div class="cc-period">2020.02 — 2021.10 &nbsp;(1년 9개월)</div>
-        <div class="cc-team">3on3 프리스타일 기획팀</div>
       </div>
     </div>
 
     <!-- VERTIGO -->
-    <div class="career-card" style="--cc: #e08020;">
-      <div class="cc-logo">
-        <img src="./logo_vertigo.png" alt="Vertigo Games" />
-      </div>
-      <div class="cc-body">
-        <div class="cc-header">
-          <div class="cc-name">버티고우 게임즈</div>
-          <div class="cc-num">03</div>
+    <div class="career-tl-item" style="--cc:#e08020;">
+
+      <div class="career-card">
+        <div class="cc-logo"><img src="./logo_vertigo.png" alt="Vertigo Games" /></div>
+        <div class="cc-body">
+          <div class="cc-header">
+            <div class="cc-name">버티고우 게임즈</div>
+            <div class="cc-num">03</div>
+          </div>
+          <div class="cc-period">2019.05 — 2019.12 &nbsp;(8개월)</div>
+          <div class="cc-team">블랙샷 M 기획팀</div>
         </div>
-        <div class="cc-period">2019.05 — 2019.12 &nbsp;(8개월)</div>
-        <div class="cc-team">블랙샷 M 기획팀</div>
       </div>
     </div>
 
@@ -1647,8 +1808,8 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="row-label reveal">🎮 프로젝트</div>
-  <div class="proj-list reveal">
+  <div class="row-label reveal-left">프로젝트 <span class="row-label-sub">PROJECTS</span></div>
+  <div class="proj-list" data-stagger="90">
 
     <!-- 01 BINGO HAVEN -->
     <div class="proj-card">
@@ -1667,7 +1828,10 @@
             <span class="proj-ptag">Unity</span>
           </div>
         </div>
-        <div class="proj-thumb"><img src="./proj_bingo_haven.png" alt="BINGO HAVEN" /></div>
+        <div class="proj-thumb">
+          <img src="./proj_bingo_haven.png" alt="BINGO HAVEN" />
+          <div class="proj-thumb-overlay"><div class="proj-thumb-overlay-title">BINGO HAVEN</div></div>
+        </div>
       </div>
       <div class="proj-right">
         <div class="proj-sections">
@@ -1713,7 +1877,10 @@
             <span class="proj-ptag">소프트런칭</span>
           </div>
         </div>
-        <div class="proj-thumb"><img src="./proj_spinning.png" alt="SPINNING IN SPACE" /></div>
+        <div class="proj-thumb">
+          <img src="./proj_spinning.png" alt="SPINNING IN SPACE" />
+          <div class="proj-thumb-overlay"><div class="proj-thumb-overlay-title">SPINNING IN SPACE</div></div>
+        </div>
       </div>
       <div class="proj-right">
         <div class="proj-sections">
@@ -1758,7 +1925,10 @@
             <span class="proj-ptag">Unreal Engine 4</span>
           </div>
         </div>
-        <div class="proj-thumb"><img src="./proj_3on3.png" alt="3ON3 FREESTYLE" /></div>
+        <div class="proj-thumb">
+          <img src="./proj_3on3.png" alt="3ON3 FREESTYLE" />
+          <div class="proj-thumb-overlay"><div class="proj-thumb-overlay-title">3ON3 FREESTYLE</div></div>
+        </div>
       </div>
       <div class="proj-right">
         <div class="proj-sections">
@@ -1805,7 +1975,10 @@
             <span class="proj-ptag">글로벌 런칭</span>
           </div>
         </div>
-        <div class="proj-thumb"><img src="./proj_blackshot.png" alt="BLACKSHOT M" /></div>
+        <div class="proj-thumb">
+          <img src="./proj_blackshot.png" alt="BLACKSHOT M" />
+          <div class="proj-thumb-overlay"><div class="proj-thumb-overlay-title">BLACKSHOT M</div></div>
+        </div>
       </div>
       <div class="proj-right">
         <div class="proj-sections">
@@ -1851,7 +2024,10 @@
             <span class="proj-ptag">구글 플레이 · 원스토어 출시</span>
           </div>
         </div>
-        <div class="proj-thumb"><img src="./proj_gunnerduck.png" alt="GUNNER DUCK" /></div>
+        <div class="proj-thumb">
+          <img src="./proj_gunnerduck.png" alt="GUNNER DUCK" />
+          <div class="proj-thumb-overlay"><div class="proj-thumb-overlay-title">GUNNER DUCK</div></div>
+        </div>
       </div>
       <div class="proj-right">
         <div class="proj-sections">
@@ -1886,160 +2062,10 @@
   </div>
   </div>
 </section>
-<!-- TOOLS -->
-<section id="tools" style="background: var(--bg);">
-  <div class="row-label reveal">🛠 보유기술</div>
-  <div class="tools-section-inner reveal">
-
-    <!-- 기획 / 협업 / QA -->
-    <div class="tools-category">
-      <div class="tools-cat-label">기획 / 협업 / QA</div>
-      <div class="tools-mixed">
-        <div class="tool-card">
-          <div class="tool-card-name">MS OFFICE</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">PPT, EXCEL, WORD를 활용하여 기획서 및 테이블 설계 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">Google Docs</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">기획서, 테이블, 일정 관리 문서 작성 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">Confluence</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">기획서 작성, 대시보드 구성을 통한 업무 시각화 활용 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">Notion</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">사이드 프로젝트에서 해당 툴을 활용하여 기획서 작성 및 협업 진행</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">Redmine / Mantis / Jira</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">TC 작성, 이슈 관리 및 QA 프로세스 운영 경험</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 개발 -->
-    <div class="tools-category">
-      <div class="tools-cat-label">개발</div>
-      <div class="tools-mixed">
-        <div class="tool-card">
-          <div class="tool-card-name">UNITY</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">1인 모바일 게임 개발 경험 有 / 인스펙터 구조 이해 및 프리팹 수정 가능 / 더미 데이터로 프로토타입 제작 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">UNREAL</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">인게임 수치 밸런싱 및 테스트 협업 경험</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">Lua Script</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">전투 공식 설계 및 데이터 핫픽스 및 밸런싱 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">MySQL</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">DB 스키마 구조 이해 및 지표 확인을 위한 기본적인 쿼리 활용 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">Visual Studio</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">1인 개발 경험을 통한 시스템 로직 및 구조 이해 / 기획 검증 활용 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">VS Code</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">AI 보조 도구(Claude 등)를 활용한 효율적인 스크립트 작성 및 로직 구현</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">SVN</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">대부분 프로젝트에서 SVN 사용하여, 파일 관리 및 협업 가능</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 디자인 / 영상 -->
-    <div class="tools-category">
-      <div class="tools-cat-label">디자인 / 영상</div>
-      <div class="tools-mixed">
-        <div class="tool-card">
-          <div class="tool-card-name">PHOTOSHOP</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">기획 의도 전달을 위한 시안 제작 가능, 썸네일 및 이미지 합성/편집 가능</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">PREMIERE PRO</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">고급 영상 편집 기술 보유 / 외주 프로젝트 경험을 바탕으로 각종 연출, 콘티 문서 제작 가능</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AI -->
-    <div class="tools-category">
-      <div class="tools-cat-label">AI</div>
-      <div class="ai-section">
-        <div class="ai-desc">바이브 코딩, 데이터 분석, 이미지 및 영상 제작 가능</div>
-        <div class="ai-subcat">
-          <div class="ai-subrow">
-            <div class="ai-sublabel">LLM / 분석</div>
-            <div class="tools-tag-list">
-              <span class="tools-tag">ChatGPT</span>
-              <span class="tools-tag">Grok</span>
-              <span class="tools-tag">Claude</span>
-              <span class="tools-tag">Gemini</span>
-              <span class="tools-tag">Perplexity</span>
-              <span class="tools-tag">NotebookLM</span>
-            </div>
-          </div>
-          <div class="ai-subrow">
-            <div class="ai-sublabel">이미지 / 영상</div>
-            <div class="tools-tag-list">
-              <span class="tools-tag">Midjourney</span>
-              <span class="tools-tag">Cling</span>
-              <span class="tools-tag">Veo</span>
-            </div>
-          </div>
-          <div class="ai-subrow">
-            <div class="ai-sublabel">사운드</div>
-            <div class="tools-tag-list">
-              <span class="tools-tag">Suno</span>
-              <span class="tools-tag">Eleven Labs</span>
-              <span class="tools-tag">Typecast</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <!-- DOCS -->
 <section id="docs" style="background: var(--bg);">
-  <div class="row-label reveal">📄 기획서</div>
-  <div class="docs-grid reveal">
+  <div class="row-label reveal-left">기획서 <span class="row-label-sub">DOCUMENTS</span></div>
+  <div class="docs-grid" data-stagger="80">
     <article class="doc-card">
       <div class="doc-card-top">
         <h3 class="doc-title">콘텐츠 기획서</h3>
@@ -2068,9 +2094,147 @@
   </div>
   <p class="docs-note reveal">※ 보안 유지를 위해 문서 내 데이터와 구조는 실제와 다르게 재구성되었습니다</p>
 </section>
+
+<!-- TOOLS -->
+<section id="tools" style="background: var(--bg);">
+  <div class="row-label reveal-left">보유기술 <span class="row-label-sub">SKILLS & TOOLS</span></div>
+  <div class="tools-section-inner reveal">
+
+    <!-- TAB BAR -->
+    <div class="tools-tab-bar">
+      <button class="tools-tab-btn active" onclick="switchToolTab(this,'tab-plan')">기획 / 협업 / QA</button>
+      <button class="tools-tab-btn" onclick="switchToolTab(this,'tab-dev')">개발</button>
+      <button class="tools-tab-btn" onclick="switchToolTab(this,'tab-design')">디자인 / 영상</button>
+      <button class="tools-tab-btn" onclick="switchToolTab(this,'tab-ai')">AI 활용</button>
+    </div>
+
+    <!-- 기획 / 협업 / QA -->
+    <div class="tools-category active" id="tab-plan">
+      <div class="tools-cat-label">기획 / 협업 / QA</div>
+      <div class="tools-mixed">
+        <div class="tool-card">
+          <div class="tool-card-name">MS OFFICE</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">PPT, EXCEL, WORD를 활용하여 기획서 및 테이블 설계 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Google Docs</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">기획서, 테이블, 일정 관리 문서 작성 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Confluence</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">기획서 작성, 대시보드 구성을 통한 업무 시각화 활용 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Notion</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">사이드 프로젝트에서 해당 툴을 활용하여 기획서 작성 및 협업 진행</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Redmine / Mantis / Jira</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">TC 작성, 이슈 관리 및 QA 프로세스 운영 경험</div>          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 개발 -->
+    <div class="tools-category" id="tab-dev">
+      <div class="tools-cat-label">개발</div>
+      <div class="tools-mixed">
+        <div class="tool-card">
+          <div class="tool-card-name">UNITY</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">1인 모바일 게임 개발 경험 有 / 인스펙터 구조 이해 및 프리팹 수정 가능 / 더미 데이터로 프로토타입 제작 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">UNREAL</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">인게임 수치 밸런싱 및 테스트 협업 경험</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Lua Script</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">전투 공식 설계 및 데이터 핫픽스 및 밸런싱 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">MySQL</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">DB 스키마 구조 이해 및 지표 확인을 위한 기본적인 쿼리 활용 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Visual Studio</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">1인 개발 경험을 통한 시스템 로직 및 구조 이해 / 기획 검증 활용 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">VS Code</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">AI 보조 도구(Claude 등)를 활용한 효율적인 스크립트 작성 및 로직 구현</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">SVN</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">대부분 프로젝트에서 SVN 사용하여, 파일 관리 및 협업 가능</div>          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 디자인 / 영상 -->
+    <div class="tools-category" id="tab-design">
+      <div class="tools-cat-label">디자인 / 영상</div>
+      <div class="tools-mixed">
+        <div class="tool-card">
+          <div class="tool-card-name">PHOTOSHOP</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">기획 의도 전달을 위한 시안 제작 가능, 썸네일 및 이미지 합성/편집 가능</div>          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">PREMIERE PRO</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">고급 영상 편집 기술 보유 / 외주 프로젝트 경험을 바탕으로 각종 연출, 콘티 문서 제작 가능</div>          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI -->
+    <div class="tools-category" id="tab-ai">
+      <div class="tools-cat-label">AI 활용 역량</div>
+      <div class="tools-mixed">
+        <div class="tool-card" style="align-items:center;">
+          <div class="tool-card-name" style="font-family:'GmarketSans',sans-serif; font-weight:500; font-size:1.4rem; letter-spacing:-0.01em;">기획 및 분석</div>
+          <div class="tool-card-right" style="display:flex; flex-direction:column; gap:0.55rem;">
+            <div class="tool-card-desc">프로토타입 시스템 설계, 데이터 분석, 기획 문서 초안 작성에 활용</div>
+            <div class="tools-tag-list">
+              <span class="tools-tag">ChatGPT</span>
+              <span class="tools-tag">Claude</span>
+              <span class="tools-tag">Gemini</span>
+              <span class="tools-tag">Perplexity</span>
+              <span class="tools-tag">NotebookLM</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" style="align-items:center;">
+          <div class="tool-card-name" style="font-family:'GmarketSans',sans-serif; font-weight:500; font-size:1.4rem; letter-spacing:-0.01em;">시각화</div>
+          <div class="tool-card-right" style="display:flex; flex-direction:column; gap:0.55rem;">
+            <div class="tool-card-desc">컨셉 이미지, 연출 레퍼런스 제작 가능</div>
+            <div class="tools-tag-list">
+              <span class="tools-tag">Midjourney</span>
+              <span class="tools-tag">Cling</span>
+              <span class="tools-tag">Veo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 <!-- RECENTLY PLAYED -->
 <section id="recently-played">
-  <div class="row-label reveal">🎮 플레이로그</div>
+  <div class="row-label reveal-left">플레이로그 <span class="row-label-sub">PLAY LOG</span></div>
 
   <!-- 인생게임 TOP 3 -->
   <div class="rp-subblock reveal">
@@ -2105,7 +2269,7 @@
           <div class="rp-img-placeholder" style="display:none;">🎮</div>
         </div>
         <div class="rp-body">
-          <div class="rp-title">젤다: 야생의 숨결</div>
+          <div class="rp-title">젤다의 전설: 야생의 숨결</div>
           <p class="rp-comment"></p>
         </div>
       </div>
@@ -2115,7 +2279,7 @@
 
   <!-- 현재 플레이 6개 -->
   <div class="rp-subblock reveal">
-    <div class="rp-subtitle">🕹 현재 플레이 <span class="rp-subtitle-accent">6개</span> <span class="rp-subtitle-meta">(2026년 4월 기준)</span></div>
+    <div class="rp-subtitle">🎮 현재 플레이 <span class="rp-subtitle-accent">6개</span> <span class="rp-subtitle-meta">(2026년 4월 기준)</span></div>
     <div class="rp-grid">
 
       <div class="rp-card">
@@ -2186,8 +2350,8 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-content">
-    <div class="row-label reveal contact-row">📬 연락처</div>
-    <div class="contact-info reveal">
+    <div class="row-label reveal-left contact-row">연락처 <span class="row-label-sub">CONTACT</span></div>
+    <div class="contact-info" data-stagger="110">
       <a class="contact-card" style="cursor:default;">
         <div class="contact-card-top">
           <span class="contact-icon">👤</span>
@@ -2223,11 +2387,40 @@
   </div>
 </div>
 
+<!-- DOT NAVIGATOR -->
+<div id="dot-nav">
+  <button class="dot-nav-item" data-target="home"           data-label="홈"       onclick="scrollToSection('home')"></button>
+  <button class="dot-nav-item" data-target="experience"     data-label="경력"     onclick="scrollToSection('experience')"></button>
+  <button class="dot-nav-item" data-target="projects"       data-label="프로젝트" onclick="scrollToSection('projects')"></button>
+  <button class="dot-nav-item" data-target="docs"           data-label="기획서"   onclick="scrollToSection('docs')"></button>
+  <button class="dot-nav-item" data-target="tools"          data-label="보유기술" onclick="scrollToSection('tools')"></button>
+  <button class="dot-nav-item" data-target="recently-played" data-label="플레이로그" onclick="scrollToSection('recently-played')"></button>
+  <button class="dot-nav-item" data-target="contact"        data-label="연락처"   onclick="scrollToSection('contact')"></button>
+</div>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress"></div>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'instant'})" aria-label="맨 위로">▲</button>
+
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">PORTFOLIO</div>
-  <span>© 2026 나한이</span>
-  <span>Game Designer</span>
+  <div class="footer-divider"></div>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo">PORTFOLIO</div>
+      <span class="footer-copy">© 2026 나한이 · Game Designer</span>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#experience">경력</a></li>
+      <li><a href="#projects">프로젝트</a></li>
+      <li><a href="#docs">기획서</a></li>
+      <li><a href="#tools">보유기술</a></li>
+      <li><a href="#recently-played">플레이로그</a></li>
+      <li><a href="#contact">연락처</a></li>
+    </ul>
+  </div>
 </footer>
 
 <script>
@@ -2237,6 +2430,19 @@
     nav.classList.toggle('solid', window.scrollY > 80);
   });
 
+  // Back to top button
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Scroll progress bar
+  const scrollBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    scrollBar.style.width = (window.scrollY / total * 100) + '%';
+  });
+
   // Active nav tab on scroll
   const sections = document.querySelectorAll('section[id], .hero[id]');
   const navLinks = document.querySelectorAll('.nav-links a[data-section]');
@@ -2244,6 +2450,20 @@
   function closeMenu() {
     document.getElementById('nav').classList.remove('menu-open');
   }
+
+  // Dot navigator scroll
+  function switchToolTab(btn, targetId) {
+    document.querySelectorAll('.tools-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tools-category').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(targetId).classList.add('active');
+  }
+
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
+  const dotItems = document.querySelectorAll('.dot-nav-item[data-target]');
 
   function setActiveNav() {
     const navHeight = nav.offsetHeight || 0;
@@ -2268,18 +2488,30 @@
       const active = document.querySelector(`.nav-links a[data-section="${currentSectionId}"]`);
       if (active) active.classList.add('active');
     }
+    // Dot nav sync
+    dotItems.forEach(d => d.classList.remove('active'));
+    const activeDot = document.querySelector(`.dot-nav-item[data-target="${currentSectionId}"]`);
+    if (activeDot) activeDot.classList.add('active');
   }
 
   window.addEventListener('scroll', setActiveNav);
   window.addEventListener('load', setActiveNav);
   window.addEventListener('resize', setActiveNav);
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
+  // Scroll reveal — stagger children of [data-stagger] containers
+  document.querySelectorAll('[data-stagger]').forEach(container => {
+    const gap = parseInt(container.dataset.stagger) || 100;
+    [...container.children].forEach((child, i) => {
+      child.classList.add('reveal');
+      child.style.setProperty('--reveal-delay', `${i * gap}ms`);
+    });
+  });
+
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   const io = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
+    entries.forEach(e => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        e.target.classList.add('visible');
         io.unobserve(e.target);
       }
     });
@@ -2304,6 +2536,124 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeIntro();
   });
+
+  // ── HERO PARTICLES ──
+  (function() {
+    const canvas = document.getElementById('hero-particles');
+    const ctx = canvas.getContext('2d');
+    let W, H, animId;
+
+    function resize() {
+      const hero = document.getElementById('home');
+      W = canvas.width = hero.offsetWidth;
+      H = canvas.height = hero.offsetHeight;
+    }
+
+    const COLORS = [
+      '255,255,255', '255,255,255', '255,255,255',
+      '229,9,20',
+      '245,166,35', '245,166,35'
+    ];
+
+    function makeParticle() {
+      return {
+        x: Math.random() * (W || 1200),
+        y: (H || 700) + Math.random() * 80,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: -(Math.random() * 1.2 + 0.25),
+        size: Math.random() * 2.2 + 0.4,
+        alpha: Math.random() * 0.55 + 0.1,
+        decay: Math.random() * 0.0035 + 0.0008,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)]
+      };
+    }
+
+    // 120 particles, seeded at random heights so they don't all start at bottom
+    const particles = Array.from({ length: 120 }, () => {
+      const p = makeParticle();
+      p.y = Math.random() * (H || 700);
+      return p;
+    });
+
+    function reset(p) {
+      const n = makeParticle();
+      Object.assign(p, n);
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, W, H);
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= p.decay;
+        if (p.alpha <= 0 || p.y < -10) reset(p);
+
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.shadowBlur = p.size * 5;
+        ctx.shadowColor = `rgba(${p.color},0.9)`;
+        ctx.fillStyle = `rgba(${p.color},1)`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+      animId = requestAnimationFrame(tick);
+    }
+
+    // Stop animating when hero is out of view (performance)
+    const heroObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { if (!animId) tick(); }
+        else { cancelAnimationFrame(animId); animId = null; }
+      });
+    }, { threshold: 0 });
+    heroObs.observe(document.getElementById('home'));
+
+    window.addEventListener('resize', () => { resize(); });
+    resize();
+    tick();
+  })();
+
+  // ── TYPING ANIMATION ──
+  (function() {
+    const el = document.getElementById('hero-desc-typing');
+    if (!el) return;
+
+    const lines = [
+      '모호함을 명쾌함으로 바꾸는 기획자',
+      '근거로 설득하고, 소통으로 완성합니다.'
+    ];
+
+    let lineIdx = 0, charIdx = 0;
+
+    function render(done) {
+      const prev = lines.slice(0, lineIdx).join('<br>');
+      const cur = lines[lineIdx].slice(0, charIdx);
+      const cursor = done ? '' : '<span class="typing-cursor">|</span>';
+      el.innerHTML = (prev ? prev + '<br>' : '') + cur + cursor;
+    }
+
+    function type() {
+      const line = lines[lineIdx];
+      if (charIdx <= line.length) {
+        render(false);
+        charIdx++;
+        setTimeout(type, charIdx <= line.length ? 32 : 0);
+      } else {
+        if (lineIdx < lines.length - 1) {
+          lineIdx++;
+          charIdx = 0;
+          setTimeout(type, 380);
+        } else {
+          render(true); // remove cursor when done
+        }
+      }
+    }
+
+    // Start after hero fade-in animation completes (~1.4s)
+    setTimeout(type, 1500);
+  })();
 </script>
 
 </body>
