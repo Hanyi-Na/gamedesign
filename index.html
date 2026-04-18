@@ -272,6 +272,7 @@
 
     /* ── ABOUT ── */
     #about { background: var(--bg2); }
+    #about .row-label { margin-bottom: 0.75rem; }
     .about-layout {
       display: grid;
       grid-template-columns: 1fr 420px;
@@ -373,11 +374,10 @@
 
     /* 인적사항 */
     .info-table {
-      margin-top: 2rem;
+      margin-top: 0.75rem;
       display: flex;
       flex-direction: column;
       gap: 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
     }
     .info-row {
       display: flex;
@@ -1561,23 +1561,6 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="row-label reveal">💼 경력 <span style="font-size:1.59rem;">(총 4년 10개월)</span></div>
-  <div class="about-meta reveal" style="margin-bottom: 2rem;">
-    <div class="meta-row">
-      <span class="meta-badge highlight">게임기획 4년 10개월</span>
-      <span class="meta-badge">시스템 기획</span>
-      <span class="meta-badge">콘텐츠 기획</span>
-    </div>
-    <div class="meta-row">
-      <span class="meta-badge">1인 개발 경험</span>
-      <span class="meta-badge">신규 개발</span>
-      <span class="meta-badge">라이브서비스</span>
-    </div>
-    <div class="meta-row">
-      <span class="meta-badge">Unity</span>
-      <span class="meta-badge">Unreal</span>
-      <span class="meta-badge">PC / Console / Mobile</span>
-    </div>
-  </div>
   <div class="career-grid reveal">
 
     <!-- DOUBLEU -->
@@ -1592,10 +1575,6 @@
         </div>
         <div class="cc-period">2021.11 — 2024.03 &nbsp;(2년 5개월)</div>
         <div class="cc-team">스튜디오G 기획팀</div>
-        <div class="cc-tags">
-          <span class="cc-tag">신규 개발</span>
-          <span class="cc-tag">모바일</span>
-        </div>
       </div>
     </div>
 
@@ -1611,10 +1590,6 @@
         </div>
         <div class="cc-period">2020.02 — 2021.10 &nbsp;(1년 9개월)</div>
         <div class="cc-team">3on3 프리스타일 기획팀</div>
-        <div class="cc-tags">
-          <span class="cc-tag">라이브 서비스</span>
-          <span class="cc-tag">PS · XBOX · PC</span>
-        </div>
       </div>
     </div>
 
@@ -1630,11 +1605,6 @@
         </div>
         <div class="cc-period">2019.05 — 2019.12 &nbsp;(8개월)</div>
         <div class="cc-team">블랙샷 M 기획팀</div>
-        <div class="cc-tags">
-          <span class="cc-tag">신규 개발</span>
-          <span class="cc-tag">라이브 서비스</span>
-          <span class="cc-tag">모바일</span>
-        </div>
       </div>
     </div>
 
@@ -1658,9 +1628,9 @@
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">캐주얼</span>
+            <span class="proj-ptag">신규개발</span>
             <span class="proj-ptag">모바일</span>
             <span class="proj-ptag">Unity</span>
-            <span class="proj-ptag">신규개발</span>
           </div>
         </div>
         <div class="proj-thumb"><img src="./proj_bingo_haven.png" alt="BINGO HAVEN" /></div>
@@ -1701,10 +1671,12 @@
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">캐주얼 어드벤처</span>
+            <span class="proj-ptag">신규개발</span>
             <span class="proj-ptag">모바일</span>
             <span class="proj-ptag">Unity</span>
-            <span class="proj-ptag">신규개발</span>
-            <span class="proj-ptag">소프트 런칭</span>
+          </div>
+          <div class="proj-ptags" style="margin-top: 0.35rem;">
+            <span class="proj-ptag">소프트런칭</span>
           </div>
         </div>
         <div class="proj-thumb"><img src="./proj_spinning.png" alt="SPINNING IN SPACE" /></div>
@@ -1745,9 +1717,11 @@
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">스포츠</span>
-            <span class="proj-ptag">PS · XBOX · PC(STEAM)</span>
-            <span class="proj-ptag">Unreal Engine 4</span>
             <span class="proj-ptag">라이브 서비스</span>
+            <span class="proj-ptag">PS · XBOX · PC(STEAM)</span>
+          </div>
+          <div class="proj-ptags" style="margin-top: 0.35rem;">
+            <span class="proj-ptag">Unreal Engine 4</span>
           </div>
         </div>
         <div class="proj-thumb"><img src="./proj_3on3.png" alt="3ON3 FREESTYLE" /></div>
@@ -1788,10 +1762,12 @@
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">FPS</span>
-            <span class="proj-ptag">모바일</span>
-            <span class="proj-ptag">Unity</span>
             <span class="proj-ptag">신규개발</span>
             <span class="proj-ptag">라이브서비스</span>
+          </div>
+          <div class="proj-ptags" style="margin-top: 0.35rem;">
+            <span class="proj-ptag">모바일</span>
+            <span class="proj-ptag">Unity</span>
             <span class="proj-ptag">글로벌 런칭</span>
           </div>
         </div>
@@ -1833,8 +1809,11 @@
           </div>
           <div class="proj-ptags">
             <span class="proj-ptag">아케이드</span>
+            <span class="proj-ptag">신규개발</span>
             <span class="proj-ptag">모바일</span>
-            <span class="proj-ptag">Unity / C#</span>
+          </div>
+          <div class="proj-ptags" style="margin-top: 0.35rem;">
+            <span class="proj-ptag">Unity</span>
             <span class="proj-ptag">구글 플레이 · 원스토어 출시</span>
           </div>
         </div>
