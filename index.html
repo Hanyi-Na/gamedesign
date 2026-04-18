@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HANYI-NA — Game Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gowun+Dodum&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gowun+Dodum&family=Black+Han+Sans&display=swap" rel="stylesheet" />
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <style>
     @font-face {
@@ -58,25 +58,28 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-      padding: 0.5rem 4rem;
+      padding: 1rem 4rem;
       display: flex; justify-content: flex-start; align-items: center; gap: 2.5rem;
       background: rgba(10,10,10,0.97);
       transition: background 0.4s;
     }
     nav.solid { background: rgba(10,10,10,0.97); } /* always solid */
     .nav-logo {
-      font-family: var(--display);
-      font-size: 2rem;
-      letter-spacing: 0.08em;
-      color: var(--red);
-      text-shadow: 0 0 30px rgba(229,9,20,0.5);
+      font-family: 'GmarketSans', sans-serif;
+      font-weight: 700;
+      font-size: 1.62rem;
+      letter-spacing: 0.02em;
       cursor: pointer;
       text-decoration: none;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      margin-top: 6px;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       font-family: var(--cond);
-      font-size: 0.85rem;
+      font-size: 1.15rem;
       letter-spacing: -0.01em;
       text-transform: uppercase;
       color: #fff;
@@ -301,7 +304,7 @@
     }
     .about-photo {
       width: 100%;
-      height: 520px;
+      height: 540px;
       overflow: hidden;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.1);
@@ -693,7 +696,7 @@
     }
     .cc-period {
       font-size: 1.11rem;
-      color: rgba(255,255,255,0.9);
+      color: var(--accent);
       letter-spacing: 0.02em;
     }
     /* 재직 기간 바 */
@@ -1469,14 +1472,15 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="#home" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">PORTFOLIO</a>
+  <a class="nav-logo" href="#home" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+<span style="color:#fff;">나한이</span>&nbsp;<span style="color:var(--accent);">포트폴리오</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about" data-section="about" onclick="closeMenu()">프로필</a></li>
     <li><a href="#experience" data-section="experience" onclick="closeMenu()">경력</a></li>
     <li><a href="#projects" data-section="projects" onclick="closeMenu()">프로젝트</a></li>
     <li><a href="#tools" data-section="tools" onclick="closeMenu()">보유기술</a></li>
     <li><a href="#docs" data-section="docs" onclick="closeMenu()">기획서</a></li>
-    <li><a href="#recently-played" data-section="recently-played" onclick="closeMenu()">플레이 로그</a></li>
+    <li><a href="#recently-played" data-section="recently-played" onclick="closeMenu()">플레이로그</a></li>
     <li><a href="#contact" data-section="contact" onclick="closeMenu()">연락처</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" onclick="document.getElementById('nav').classList.toggle('menu-open')" aria-label="메뉴">☰</button>
@@ -1560,7 +1564,7 @@
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="row-label reveal">💼 경력 <span style="font-size:1.59rem;">(총 4년 10개월)</span></div>
+  <div class="row-label reveal">💼 경력 <span style="font-size:1.59rem; color:var(--accent);">(총 4년 10개월)</span></div>
   <div class="career-grid reveal">
 
     <!-- DOUBLEU -->
@@ -1857,25 +1861,38 @@
   <div class="row-label reveal">🛠 보유기술</div>
   <div class="tools-section-inner reveal">
 
-    <!-- 기획 / 협업, QA -->
+    <!-- 기획 / 협업 / QA -->
     <div class="tools-category">
-      <div class="tools-cat-label">기획 / 협업, QA</div>
-      <div class="ai-subcat">
-        <div class="ai-subrow">
-          <div class="ai-sublabel">기획</div>
-          <div class="tools-tag-list">
-            <span class="tools-tag">MS Office</span>
-            <span class="tools-tag">Google Docs</span>
-            <span class="tools-tag">Confluence</span>
-            <span class="tools-tag">Notion</span>
+      <div class="tools-cat-label">기획 / 협업 / QA</div>
+      <div class="tools-mixed">
+        <div class="tool-card">
+          <div class="tool-card-name">MS OFFICE</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">PPT, EXCEL, WORD를 활용하여 기획서 및 테이블 설계 가능</div>
           </div>
         </div>
-        <div class="ai-subrow">
-          <div class="ai-sublabel">협업, QA</div>
-          <div class="tools-tag-list">
-            <span class="tools-tag">Jira</span>
-            <span class="tools-tag">Redmine</span>
-            <span class="tools-tag">Mantis</span>
+        <div class="tool-card">
+          <div class="tool-card-name">Google Docs</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">기획서, 테이블, 일정 관리 문서 작성 가능</div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Confluence</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">기획서 작성, 대시보드 구성을 통한 업무 시각화 활용 가능</div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Notion</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">사이드 프로젝트에서 해당 툴을 활용하여 기획서 작성 및 협업 진행</div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Redmine / Mantis / Jira</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">TC 작성, 이슈 관리 및 QA 프로세스 운영 경험</div>
           </div>
         </div>
       </div>
@@ -1888,53 +1905,63 @@
         <div class="tool-card">
           <div class="tool-card-name">UNITY</div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">1인 모바일 게임 개발 및 출시 경험, 더미 데이터를 활용한 프로토타입 제작</div>
+            <div class="tool-card-desc">1인 모바일 게임 개발 경험 有 / 인스펙터 구조 이해 및 프리팹 수정 가능 / 더미 데이터로 프로토타입 제작 가능</div>
           </div>
         </div>
         <div class="tool-card">
           <div class="tool-card-name">UNREAL</div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">Unreal 4를 활용하여 신규 캐릭터 제작 및 인게임 관련 기획에 활용</div>
+            <div class="tool-card-desc">인게임 수치 밸런싱 및 테스트 협업 경험</div>
           </div>
         </div>
-        <div class="tools-tag-list">
-          <span class="tools-tag">MySql</span>
-          <span class="tools-tag">SQLyog</span>
-          <span class="tools-tag">Visual Studio</span>
-          <span class="tools-tag">VS Code</span>
-          <span class="tools-tag">Lua Script</span>
-          <span class="tools-tag">SVN</span>
-          <span class="tools-tag">Fork</span>
-          <span class="tools-tag">Git</span>
+        <div class="tool-card">
+          <div class="tool-card-name">Lua Script</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">전투 공식 설계 및 데이터 핫픽스 및 밸런싱 가능</div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">MySQL</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">DB 스키마 구조 이해 및 지표 확인을 위한 기본적인 쿼리 활용 가능</div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">Visual Studio</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">1인 개발 경험을 통한 시스템 로직 및 구조 이해 / 기획 검증 활용 가능</div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">VS Code</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">AI 보조 도구(Claude 등)를 활용한 효율적인 스크립트 작성 및 로직 구현</div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-name">SVN</div>
+          <div class="tool-card-right">
+            <div class="tool-card-desc">대부분 프로젝트에서 SVN 사용하여, 파일 관리 및 협업 가능</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 디자인 -->
+    <!-- 디자인 / 영상 -->
     <div class="tools-category">
-      <div class="tools-cat-label">디자인</div>
-      <div class="tools-cat-grid">
+      <div class="tools-cat-label">디자인 / 영상</div>
+      <div class="tools-mixed">
         <div class="tool-card">
           <div class="tool-card-name">PHOTOSHOP</div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">이미지 편집, 유튜브 썸네일 제작, 간단한 색보정, 이미지 합성</div>
+            <div class="tool-card-desc">기획 의도 전달을 위한 시안 제작 가능, 썸네일 및 이미지 합성/편집 가능</div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- 영상 -->
-    <div class="tools-category">
-      <div class="tools-cat-label">영상</div>
-      <div class="tools-mixed">
         <div class="tool-card">
           <div class="tool-card-name">PREMIERE PRO</div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">유튜브 편집, 외주 영상 제작을 통한 프리랜서 경험</div>
+            <div class="tool-card-desc">고급 영상 편집 기술 보유 / 외주 프로젝트 경험을 바탕으로 각종 연출, 콘티 문서 제작 가능</div>
           </div>
-        </div>
-        <div class="tools-tag-list">
-          <span class="tools-tag">After Effects</span>
         </div>
       </div>
     </div>
@@ -1969,7 +1996,6 @@
             <div class="tools-tag-list">
               <span class="tools-tag">Suno</span>
               <span class="tools-tag">Eleven Labs</span>
-              <span class="tools-tag">SuperTone</span>
               <span class="tools-tag">Typecast</span>
             </div>
           </div>
@@ -2014,7 +2040,7 @@
 </section>
 <!-- RECENTLY PLAYED -->
 <section id="recently-played">
-  <div class="row-label reveal">🎮 플레이 로그</div>
+  <div class="row-label reveal">🎮 플레이로그</div>
 
   <!-- 인생게임 TOP 3 -->
   <div class="rp-subblock reveal">
