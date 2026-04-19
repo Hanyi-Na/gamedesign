@@ -764,7 +764,7 @@
     .cc-num {
       font-family: var(--display);
       font-size: 2.2rem;
-      color: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.08);
       line-height: 1;
     }
     .cc-period {
@@ -774,8 +774,41 @@
     }
     .cc-team {
       font-size: 1.19rem;
-      color: rgba(255,255,255,0.7);
+      color: #fff;
       line-height: 1.6;
+    }
+    .cc-proj-label {
+      font-family: var(--cond);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-top: 0.2rem;
+    }
+    .cc-proj-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .cc-proj-item {
+      font-size: 1rem;
+      color: #fff;
+      line-height: 1.5;
+      padding-left: 0.9rem;
+      position: relative;
+    }
+    .cc-proj-item::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-size: 0.75rem;
+      top: 0.3rem;
+    }
+    .cc-proj-item span {
+      color: #fff;
+      font-size: 0.92rem;
     }
 
     /* ── PROJECTS ── */
@@ -1766,7 +1799,11 @@
             <div class="cc-num">01</div>
           </div>
           <div class="cc-period">2021.11 — 2024.03 &nbsp;(2년 5개월)</div>
-          <div class="cc-team">스튜디오G 기획팀</div>
+          <div class="cc-proj-label">담당 프로젝트</div>
+          <div class="cc-proj-list">
+            <div class="cc-proj-item">Bingo Haven <span>| 시스템, 콘텐츠 기획 | 23.03 — 24.03</span></div>
+            <div class="cc-proj-item">Spinning In Space <span>| 시스템, 콘텐츠 기획 | 21.11 — 23.02</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1782,7 +1819,10 @@
             <div class="cc-num">02</div>
           </div>
           <div class="cc-period">2020.02 — 2021.10 &nbsp;(1년 9개월)</div>
-          <div class="cc-team">3on3 프리스타일 기획팀</div>
+          <div class="cc-proj-label">담당 프로젝트</div>
+          <div class="cc-proj-list">
+            <div class="cc-proj-item">3on3 프리스타일 <span>| 시스템, 콘텐츠, 캐릭터, 밸런스 기획 | 20.02 — 21.10</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1798,7 +1838,10 @@
             <div class="cc-num">03</div>
           </div>
           <div class="cc-period">2019.05 — 2019.12 &nbsp;(8개월)</div>
-          <div class="cc-team">블랙샷 M 기획팀</div>
+          <div class="cc-proj-label">담당 프로젝트</div>
+          <div class="cc-proj-list">
+            <div class="cc-proj-item">블랙샷 M <span>| 시스템, 콘텐츠 기획 | 19.05 — 19.12</span></div>
+          </div>
         </div>
       </div>
     </div>
