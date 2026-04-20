@@ -1,0 +1,8 @@
+게임 플레이 이미지 사이즈 / 파일명
+
+ 640 × 360px
+
+인생게임 1	life_game1.jpg
+인생게임 2	life_game2.jpg
+인생게임 3	life_game3.jpg
+현재 플레이 1~5	now_game1.jpg ~ now_game5.jpg
