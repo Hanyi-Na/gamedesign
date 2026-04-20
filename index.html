@@ -188,7 +188,7 @@
       font-size: 0.82rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #fff;
       margin-bottom: 1rem;
       display: flex; align-items: center; gap: 1rem;
       opacity: 0;
@@ -551,6 +551,17 @@
 
     /* ── PROJECTS ── */
     .proj-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .proj-sub-label {
+      font-family: var(--cond);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
+    .proj-sub-label:first-of-type { margin-top: 0; }
     .proj-card {
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.07);
@@ -808,7 +819,7 @@
     }
     .cc-proj-item span {
       color: #fff;
-      font-size: 0.92rem;
+      font-size: 1rem;
     }
 
     /* ── PROJECTS ── */
@@ -1399,6 +1410,87 @@
       #back-to-top { bottom: 1.2rem; right: 1.2rem; width: 42px; height: 42px; font-size: 1rem; }
     }
 
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-intro-text {
+      font-family: var(--body);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.9;
+      max-width: 760px;
+      margin-top: 1.8rem;
+      margin-bottom: 3rem;
+    }
+    .about-sub-label {
+      font-family: var(--cond);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .about-block { margin-bottom: 2.8rem; }
+    .about-specialty {
+      font-family: var(--body);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0;
+      line-height: 1.7;
+    }
+    .about-specialty span { color: rgba(255,255,255,0.35); margin: 0 0.4rem; }
+    .about-exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .about-exp-item {
+      font-size: 1.05rem;
+      color: #fff;
+      line-height: 1.7;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .about-exp-item::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-size: 0.72rem;
+      top: 0.32rem;
+    }
+    .about-philosophy {
+      font-size: 1.05rem;
+      color: #fff;
+      line-height: 2;
+      max-width: 720px;
+    }
+    .about-attitude-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 720px;
+    }
+    .about-attitude-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .about-attitude-num {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      color: var(--red);
+      flex-shrink: 0;
+      line-height: 1.7;
+    }
+    .about-attitude-text {
+      font-size: 1.05rem;
+      color: #fff;
+      line-height: 1.75;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #050505;
@@ -1753,6 +1845,7 @@
   <a class="nav-logo" href="#home" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
 <span style="color:#fff;">나한이</span>&nbsp;<span style="color:var(--accent);">포트폴리오</span></a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#about" data-section="about" onclick="closeMenu()">소개</a></li>
     <li><a href="#experience" data-section="experience" onclick="closeMenu()">경력</a></li>
     <li><a href="#projects" data-section="projects" onclick="closeMenu()">프로젝트</a></li>
     <li><a href="#docs" data-section="docs" onclick="closeMenu()">기획서</a></li>
@@ -1772,13 +1865,61 @@
   <div class="hero-content">
     <div class="hero-eyebrow">Game Designer · Portfolio</div>
     <h1 class="hero-title">
-      <span class="name-line">나한이</span>
-      <span class="name-line red">게임기획 포트폴리오</span>
+      <span class="name-line" style="color:var(--accent);">게임기획자 나한이</span>
+      <span class="name-line">포트폴리오</span>
     </h1>
-    <p class="hero-desc" id="hero-desc-typing"></p>
     <div class="hero-actions">
       <button class="btn btn-play" onclick="openIntro()"><span class="btn-icon">▶</span> 포트폴리오 티저</button>
       <a href="./이력서_나한이.pdf" download class="btn btn-info">↓ &nbsp;이력서 PDF 다운로드</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="row-label reveal-left">소개 <span class="row-label-sub">ABOUT</span></div>
+
+  <p class="about-intro-text reveal">
+    5년 경력의 콘텐츠 및 시스템 기획자 <strong style="color:var(--accent); font-weight:700;">'나한이'</strong> 입니다.
+  </p>
+
+  <div class="about-block reveal">
+    <div class="about-sub-label">주요 담당</div>
+    <div class="about-specialty">
+      시스템 기획<span>/</span>콘텐츠 기획<span>/</span>캐릭터 기획
+    </div>
+  </div>
+
+  <div class="about-block reveal">
+    <div class="about-sub-label">주요 경험</div>
+    <div class="about-exp-list">
+      <div class="about-exp-item">1인 유니티 게임 개발 및 출시 경험</div>
+      <div class="about-exp-item">모바일 게임 신규 개발에서 런칭, 라이브 서비스까지 경험</div>
+      <div class="about-exp-item">유니티, 언리얼 엔진 제작 환경 경험</div>
+      <div class="about-exp-item">콘솔(PS, XBOX)과 PC(STEAM) 크로스플랫폼을 위한 포팅작업 경험</div>
+    </div>
+  </div>
+
+  <div class="about-block reveal">
+    <div class="about-sub-label">기획을 할 때</div>
+    <p class="about-philosophy">
+      데이터를 바탕으로 기획의 당위성을 설계합니다.<br>
+      로그와 정성적 피드백을 교차 검증하여 유저의 니즈를 관통하는 인사이트를 찾아냅니다.<br>
+      '가설-실행-검증' 이라는 루프를 기획 원칙으로 삼아 리스크를 최소화하고,<br>
+      성공의 경험을 정량화하는 과정을 즐깁니다. 새로운 기획이 기존 시스템과<br>
+      유기적으로 공존하도록 설계하여 시너지 효과를 만들어내는 것을 지향합니다.
+    </p>
+  </div>
+
+  <div class="about-block reveal">
+    <div class="about-sub-label">태도 및 성향</div>
+    <div class="about-attitude-list">
+      <div class="about-attitude-item"><span class="about-attitude-num">01</span><span class="about-attitude-text">동료와 소통하고 경청하는 것을 즐깁니다.</span></div>
+      <div class="about-attitude-item"><span class="about-attitude-num">02</span><span class="about-attitude-text">프리핑, 리뷰를 통하여 설득하고 열린 토론하는 것을 좋아합니다.</span></div>
+      <div class="about-attitude-item"><span class="about-attitude-num">03</span><span class="about-attitude-text">커뮤니케이션에서 유머와 위트는 기본이라고 생각합니다.</span></div>
+      <div class="about-attitude-item"><span class="about-attitude-num">04</span><span class="about-attitude-text">어제의 정답은 오늘의 오답이 될 수 있기에, 유연한 사고를 중요시합니다.</span></div>
+      <div class="about-attitude-item"><span class="about-attitude-num">05</span><span class="about-attitude-text">단순 반복 작업을 지양하고 자동화된 툴을 제작하고 개선합니다.</span></div>
+      <div class="about-attitude-item"><span class="about-attitude-num">06</span><span class="about-attitude-text">새로운 작업 프로세스나 기술을 도입하고 활용하는 것을 즐깁니다.</span></div>
     </div>
   </div>
 </section>
@@ -2433,6 +2574,7 @@
 <!-- DOT NAVIGATOR -->
 <div id="dot-nav">
   <button class="dot-nav-item" data-target="home"           data-label="홈"       onclick="scrollToSection('home')"></button>
+  <button class="dot-nav-item" data-target="about"          data-label="소개"     onclick="scrollToSection('about')"></button>
   <button class="dot-nav-item" data-target="experience"     data-label="경력"     onclick="scrollToSection('experience')"></button>
   <button class="dot-nav-item" data-target="projects"       data-label="프로젝트" onclick="scrollToSection('projects')"></button>
   <button class="dot-nav-item" data-target="docs"           data-label="기획서"   onclick="scrollToSection('docs')"></button>
@@ -2456,6 +2598,7 @@
       <span class="footer-copy">© 2026 나한이 · Game Designer</span>
     </div>
     <ul class="footer-nav">
+      <li><a href="#about">소개</a></li>
       <li><a href="#experience">경력</a></li>
       <li><a href="#projects">프로젝트</a></li>
       <li><a href="#docs">기획서</a></li>
@@ -2658,45 +2801,6 @@
     tick();
   })();
 
-  // ── TYPING ANIMATION ──
-  (function() {
-    const el = document.getElementById('hero-desc-typing');
-    if (!el) return;
-
-    const lines = [
-      '모호함을 명쾌함으로 바꾸는 기획자',
-      '근거로 설득하고, 소통으로 완성합니다.'
-    ];
-
-    let lineIdx = 0, charIdx = 0;
-
-    function render(done) {
-      const prev = lines.slice(0, lineIdx).join('<br>');
-      const cur = lines[lineIdx].slice(0, charIdx);
-      const cursor = done ? '' : '<span class="typing-cursor">|</span>';
-      el.innerHTML = (prev ? prev + '<br>' : '') + cur + cursor;
-    }
-
-    function type() {
-      const line = lines[lineIdx];
-      if (charIdx <= line.length) {
-        render(false);
-        charIdx++;
-        setTimeout(type, charIdx <= line.length ? 32 : 0);
-      } else {
-        if (lineIdx < lines.length - 1) {
-          lineIdx++;
-          charIdx = 0;
-          setTimeout(type, 380);
-        } else {
-          render(true); // remove cursor when done
-        }
-      }
-    }
-
-    // Start after hero fade-in animation completes (~1.4s)
-    setTimeout(type, 1500);
-  })();
 </script>
 
 </body>
