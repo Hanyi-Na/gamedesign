@@ -813,7 +813,7 @@
     }
     .proj-sub-label:first-of-type { margin-top: 0; }
     .proj-click-notice {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #2dd4bf;
       margin-bottom: 1.5rem;
       letter-spacing: 0.02em;
@@ -1021,30 +1021,30 @@
     .cc-name {
       font-family: 'GmarketSans', sans-serif;
       font-weight: 700;
-      font-size: 1.7rem;
+      font-size: 1.825rem;
       letter-spacing: -0.01em;
       color: #fff;
       line-height: 1.15;
     }
     .cc-num {
       font-family: var(--display);
-      font-size: 2.2rem;
+      font-size: 2.325rem;
       color: rgba(255,255,255,0.08);
       line-height: 1;
     }
     .cc-period {
-      font-size: 1.22rem;
+      font-size: 1.345rem;
       color: var(--accent);
       letter-spacing: 0.02em;
     }
     .cc-team {
-      font-size: 1.19rem;
+      font-size: 1.315rem;
       color: #fff;
       line-height: 1.6;
     }
     .cc-proj-label {
       font-family: var(--cond);
-      font-size: 0.95rem;
+      font-size: 1.075rem;
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -1057,7 +1057,7 @@
       gap: 0.25rem;
     }
     .cc-proj-item {
-      font-size: 1rem;
+      font-size: 1.125rem;
       color: #fff;
       line-height: 1.5;
       padding-left: 0.9rem;
@@ -1073,7 +1073,7 @@
     }
     .cc-proj-item span {
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.125rem;
     }
 
     /* ── PROJECTS ── */
@@ -1169,20 +1169,21 @@
       gap: 1.25rem;
     }
     .doc-card {
-      background: linear-gradient(180deg, rgba(31,31,31,0.96) 0%, rgba(20,20,20,0.96) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 1.5rem;
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid rgba(229,9,20,0.35);
+      padding: 1.1rem 1.5rem;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      min-height: 240px;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      transition: border-left-color 0.2s, background 0.2s, box-shadow 0.2s;
     }
     .doc-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(229,9,20,0.5);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.28);
-      background: linear-gradient(180deg, rgba(42,42,42,0.98) 0%, rgba(20,20,20,0.98) 100%);
+      border-left-color: var(--red);
+      background: #252525;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
     }
     .doc-card-top {
       display: flex;
@@ -1198,11 +1199,16 @@
       color: #fff;
       margin: 0;
     }
+    .doc-sub-label {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
     .doc-title-sub {
       display: block;
       font-family: var(--body);
-      font-size: 1.56rem;
-      font-weight: 700;
+      font-size: 1.125rem;
+      font-weight: 600;
       color: #fff;
       letter-spacing: 0.01em;
       text-transform: none;
@@ -1241,7 +1247,7 @@
       color: #fff;
       text-decoration: none;
       font-family: var(--cond);
-      font-size: 0.86rem;
+      font-size: 0.985rem;
       font-weight: 700;
       letter-spacing: -0.01em;
       text-transform: uppercase;
@@ -1261,7 +1267,7 @@
     .docs-note {
       margin-top: 1.25rem;
       font-size: 1.1rem;
-      color: #fff;
+      color: #2dd4bf;
       line-height: 1.7;
     }
 
@@ -1669,7 +1675,7 @@
     .about-content-card {
       background: #1e1e1e;
       border-left: 3px solid var(--accent);
-      padding: 2.5rem 2.8rem;
+      padding: 1.5rem 2.8rem 2.5rem;
       margin-top: 2rem;
     }
     .about-intro-text {
@@ -1679,7 +1685,7 @@
       color: #fff;
       line-height: 1.9;
       max-width: 760px;
-      margin-top: 1.8rem;
+      margin-top: 0.4rem;
       padding-bottom: 2rem;
       margin-bottom: 0;
       border-bottom: 1px solid rgba(255,255,255,0.12);
@@ -1948,10 +1954,13 @@
       .career-tl-dot { width: 38px; height: 38px; font-size: 1rem; margin-top: 1rem; }
       .career-timeline::before { left: 18px; }
       .cc-logo { width: 120px; padding: 1rem; }
-      .cc-name { font-size: 1.3rem; }
-      .cc-period { font-size: 0.95rem; }
-      .cc-team { font-size: 0.9rem; }
-      .cc-num { font-size: 1.5rem; }
+      .cc-name { font-size: 1.425rem; }
+      .cc-period { font-size: 1.075rem; }
+      .cc-team { font-size: 1.025rem; }
+      .cc-num { font-size: 1.625rem; }
+      .cc-proj-label { font-size: 0.95rem; }
+      .cc-proj-item { font-size: 1rem; }
+      .cc-proj-item span { font-size: 1rem; }
 
       /* Proj-list cards */
       .proj-card { grid-template-columns: 1fr; }
@@ -2028,10 +2037,10 @@
       .pcard-tag { font-size: 0.82rem; }
       .pcard-hint { font-size: 0.95rem; }
       .about-attitude-text { font-size: 0.95rem; }
-      .about-content-card { padding: 2rem 2rem; }
+      .about-content-card { padding: 1.5rem 2rem 2.5rem; }
 
       /* About 소개 섹션 폰트 */
-      .about-intro-text { font-size: 1.18rem; padding-bottom: 1.5rem; margin-top: 1.2rem; }
+      .about-intro-text { font-size: 1.18rem; padding-bottom: 1.5rem; margin-top: 0.4rem; }
       .about-sub-label { font-size: 1.18rem; }
       .about-specialty { font-size: 1rem; }
       .about-exp-item { font-size: 1rem; }
@@ -2110,9 +2119,12 @@
       .career-card { flex-direction: column; }
       .cc-logo { width: 100%; height: 72px; }
       .cc-body { padding: 1rem; gap: 0.5rem; }
-      .cc-name { font-size: 1.2rem; }
-      .cc-period { font-size: 0.88rem; }
-      .cc-team { font-size: 0.85rem; }
+      .cc-name { font-size: 1.325rem; }
+      .cc-period { font-size: 1rem; }
+      .cc-team { font-size: 0.975rem; }
+      .cc-proj-label { font-size: 0.88rem; }
+      .cc-proj-item { font-size: 0.92rem; }
+      .cc-proj-item span { font-size: 0.92rem; }
 
       /* Proj-list cards */
       .proj-header { padding: 1rem 1rem 0.75rem; }
@@ -2142,7 +2154,8 @@
 
       /* Docs */
       .doc-title { font-size: 1.3rem; }
-      .doc-title-sub { font-size: 1.05rem; }
+      .doc-title-sub { font-size: 1rem; }
+      .doc-sub-label { font-size: 0.875rem; }
 
       /* Contact */
       .contact-label { font-size: 0.82rem; }
@@ -2165,10 +2178,10 @@
       .pcard-tag { font-size: 0.76rem; padding: 0.15rem 0.45rem; }
       .pcard-hint { font-size: 0.88rem; margin-top: 0.5rem; }
       .about-attitude-text { font-size: 0.88rem; }
-      .about-content-card { padding: 1.5rem 1.25rem; }
+      .about-content-card { padding: 1.5rem 1.25rem 2rem; }
 
       /* About 소개 섹션 폰트 */
-      .about-intro-text { font-size: 0.98rem; padding-bottom: 1.25rem; margin-top: 0.8rem; }
+      .about-intro-text { font-size: 0.98rem; padding-bottom: 1.25rem; margin-top: 0.4rem; }
       .about-sub-label { font-size: 1rem; }
       .about-specialty { font-size: 0.92rem; }
       .about-exp-item { font-size: 0.92rem; }
@@ -2182,8 +2195,10 @@
       #tools::before, #tools::after { height: 1.5rem; }
 
       /* Docs 버튼 */
-      .doc-download { width: 100%; justify-content: center; font-size: 0.95rem; }
-      .docs-grid { grid-template-columns: 1fr !important; }
+      .doc-card { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 0.9rem 1rem; }
+      .doc-download { font-size: 0.9rem; padding: 0.65rem 1rem; }
+      .doc-title-sub { font-size: 1rem; }
+      .docs-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
 
       /* 프로젝트 팝업 모달 */
       .proj-modal-overlay { align-items: flex-end; }
@@ -2247,7 +2262,7 @@
     </h1>
     <div class="hero-actions">
       <button class="btn btn-play" onclick="openIntro()"><span class="btn-icon">▶</span> 포트폴리오 티저</button>
-      <a href="./hanyina_portfolio_resource/이력서_나한이.pdf" download class="btn btn-info">↓ &nbsp;이력서 PDF 다운로드</a>
+      <a href="./hanyina_portfolio_resource/1_이력서_나한이.pdf" download class="btn btn-info">↓ &nbsp;이력서 PDF 다운로드</a>
     </div>
   </div>
 </section>
@@ -2483,7 +2498,7 @@
               <div class="proj-contrib-quote">인게임 핵심 루프와 유기적으로 결합된 BM 시스템을 설계<br>향후 확장성을 고려한 템플릿을 구축하여 유관부서와의 업무 효율 증대</div>
               <div class="proj-img-gallery" style="margin-top:0.75rem;">
                 <img src="./hanyina_portfolio_resource/bingo_contrib1_img1.webp.png" alt="BM 시스템 이미지 1" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
-                <img src="./hanyina_portfolio_resource/bingo_contrib1_img2.webp.JPEG" alt="BM 시스템 이미지 2" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                <img src="./hanyina_portfolio_resource/bingo_contrib1_img2.webp.png" alt="BM 시스템 이미지 2" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
               </div>
             </div>
           </div>
@@ -2492,6 +2507,10 @@
             <div class="proj-contrib-body">
               <div class="proj-contrib-title">하우징 시스템 및 정책 설계</div>
               <div class="proj-contrib-quote">오브젝트 배치 로직 및 효율적인 에셋 관리 체계 구축<br>아트, 연출 부서와의 협업을 통해 하우징 프로토타입 구현 및 고도화</div>
+              <div class="proj-img-gallery">
+                <img src="./hanyina_portfolio_resource/bingo_contrib2_img1.png.png" alt="하우징 시스템 이미지 1" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                <img src="./hanyina_portfolio_resource/bingo_contrib2_img2.png.JPEG" alt="하우징 시스템 이미지 2" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+              </div>
             </div>
           </div>
           <div class="proj-contrib-item">
@@ -2987,18 +3006,28 @@
 <!-- DOCS -->
 <section id="docs" style="background: var(--bg);">
   <div class="row-label reveal-left">기획서 <span class="row-label-sub">DOCUMENTS</span></div>
-  <div class="docs-grid" style="grid-template-columns: minmax(280px, 480px);" data-stagger="80">
+  <div class="docs-grid" style="grid-template-columns: 1fr; gap: 0.5rem; max-width: 540px;" data-stagger="80">
     <article class="doc-card">
-      <div class="doc-card-top">
-        <h3 class="doc-title">콘텐츠 기획 포트폴리오</h3>
-        <span class="doc-badge">PDF</span>
+      <div style="flex-shrink: 0;">
+        <a href="./hanyina_portfolio_resource/2_포트폴리오_콘텐츠_컨셉기획서_나한이.pdf" download class="doc-download">↓ &nbsp;PDF 다운로드</a>
       </div>
-      <div class="doc-actions">
-        <a href="./hanyina_portfolio_resource/콘텐츠 기획서_캐릭터 컨셉_나한이.pdf" download class="doc-download" style="padding: 1.1rem 2rem; font-size: 1rem;">↓ &nbsp;PDF 다운로드</a>
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="doc-title-sub" style="margin-top: 0;">콘텐츠 컨셉 기획서</span>
+        <span class="doc-sub-label">신규 캐릭터 컨셉 기획서</span>
+      </div>
+    </article>
+
+    <article class="doc-card">
+      <div style="flex-shrink: 0;">
+        <a href="./hanyina_portfolio_resource/3_포트폴리오_콘텐츠_상세기획서_나한이.pdf" download class="doc-download">↓ &nbsp;PDF 다운로드</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="doc-title-sub" style="margin-top: 0;">콘텐츠 상세 기획서</span>
+        <span class="doc-sub-label">신규 스킬 상세 기획서</span>
       </div>
     </article>
   </div>
-  <p class="docs-note reveal">※ 보안 유지를 위해 문서 내 데이터와 구조는 실제와 다르게 재구성되었습니다.</p>
+  <p class="docs-note reveal">※ 보안 유지를 위해 문서 내 구조, 내용, 데이터는 실제와 다르게 재구성되었습니다.</p>
 </section>
 
 <!-- TOOLS -->
