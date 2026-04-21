@@ -94,7 +94,11 @@
       position: relative;
     }
     .nav-links a:hover { color: rgba(255,255,255,0.45); }
-    .nav-links a.active { color: var(--accent); }
+    .nav-links a.active {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2px;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -256,6 +260,7 @@
       border: 1px solid rgba(255,255,255,0.2);
     }
     .btn-icon { font-size: 1.7rem; }
+    .btn-play .btn-icon { animation: pulse 2s ease-in-out infinite; display: inline-block; }
 
     /* ── SECTION COMMONS ── */
     section { padding: 3.5rem max(2.5rem, calc((100% - 1080px) / 2)); }
@@ -308,6 +313,12 @@
 
     /* ── ABOUT ── */
     #about { background: var(--bg); }
+    .about-content-card {
+      background: #1e1e1e;
+      border-left: 3px solid var(--accent);
+      padding: 2.5rem 2.8rem;
+      margin-top: 2rem;
+    }
     #about .row-label { margin-bottom: 0.75rem; }
     .about-layout {
       display: grid;
@@ -374,7 +385,7 @@
     }
     .about-big .red { color: var(--accent); }
     .about-body {
-      font-size: 1rem;
+      font-size: 1.13rem;
       font-weight: 300;
       color: rgba(255,255,255,0.7);
       line-height: 1.9;
@@ -391,7 +402,7 @@
     }
     .meta-badge {
       font-family: var(--cond);
-      font-size: 1rem;
+      font-size: 1.13rem;
       letter-spacing: 0.01em;
       padding: 0.55rem 1.2rem;
       border: 1px solid rgba(255,255,255,0.3);
@@ -399,7 +410,7 @@
       border-radius: 2px;
     }
     .meta-badge.highlight {
-      font-size: 1.05rem;
+      font-size: 1.18rem;
       font-weight: 700;
       padding: 0.6rem 1.3rem;
       background: var(--accent);
@@ -424,7 +435,7 @@
     }
     .info-label {
       font-family: var(--cond);
-      font-size: 1.05rem;
+      font-size: 1.18rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--accent);
@@ -433,7 +444,7 @@
       padding-top: 0.1em;
     }
     .info-value {
-      font-size: 1.2rem;
+      font-size: 1.33rem;
       color: rgba(255,255,255,0.95);
       line-height: 1.6;
     }
@@ -490,7 +501,28 @@
     #experience { background: var(--bg); }
     #projects { background: var(--bg); }
     #docs { background: var(--bg); }
-    #tools { background: var(--bg2); }
+    #tools {
+      background: var(--bg2);
+      position: relative;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    #tools::before, #tools::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 3rem;
+      pointer-events: none;
+      z-index: 1;
+    }
+    #tools::before {
+      top: 0;
+      background: linear-gradient(to bottom, var(--bg), transparent);
+    }
+    #tools::after {
+      bottom: 0;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
     #recently-played { background: var(--bg); }
     .exp-episodes { display: flex; flex-direction: column; }
     .exp-ep {
@@ -513,7 +545,7 @@
     .exp-ep:hover .ep-number { color: rgba(229,9,20,0.4); }
     .ep-period {
       font-family: var(--cond);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       letter-spacing: 0.03em;
       color: var(--accent);
       text-transform: uppercase;
@@ -617,6 +649,8 @@
       display: none;
       position: fixed; inset: 0;
       background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       z-index: 600;
       align-items: center;
       justify-content: center;
@@ -1176,7 +1210,7 @@
     }
     .doc-badge {
       font-family: var(--cond);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.02em;
       text-transform: uppercase;
@@ -1415,7 +1449,7 @@
     .rp-tag {
       display: inline-block;
       font-family: var(--cond);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -1571,7 +1605,7 @@
       background: rgba(10,10,10,0.88);
       color: #fff;
       font-family: var(--body);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       letter-spacing: 0.02em;
       padding: 0.22rem 0.6rem;
       white-space: nowrap;
@@ -1632,29 +1666,39 @@
 
     /* ── ABOUT ── */
     #about { background: var(--bg); }
+    .about-content-card {
+      background: #1e1e1e;
+      border-left: 3px solid var(--accent);
+      padding: 2.5rem 2.8rem;
+      margin-top: 2rem;
+    }
     .about-intro-text {
       font-family: var(--body);
-      font-size: 1.25rem;
+      font-size: 1.38rem;
       font-weight: 400;
       color: #fff;
       line-height: 1.9;
       max-width: 760px;
       margin-top: 1.8rem;
-      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      margin-bottom: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
     .about-sub-label {
       font-family: var(--cond);
-      font-size: 1.25rem;
+      font-size: 1.38rem;
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 0.75rem;
     }
-    .about-block { margin-bottom: 2.8rem; }
+    .about-block { margin-bottom: 2.8rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .about-block:first-child { padding-top: 0; border-top: none; }
+    .about-block:last-child { margin-bottom: 0; }
     .about-specialty {
       font-family: var(--body);
-      font-size: 1.05rem;
+      font-size: 1.18rem;
       font-weight: 400;
       color: #fff;
       letter-spacing: 0;
@@ -1667,7 +1711,7 @@
       gap: 0.5rem;
     }
     .about-exp-item {
-      font-size: 1.05rem;
+      font-size: 1.18rem;
       color: #fff;
       line-height: 1.7;
       padding-left: 1.1rem;
@@ -1682,7 +1726,7 @@
       top: 0.32rem;
     }
     .about-philosophy {
-      font-size: 1.05rem;
+      font-size: 1.18rem;
       color: #fff;
       line-height: 2;
       max-width: 720px;
@@ -1700,13 +1744,13 @@
     }
     .about-attitude-num {
       font-family: var(--display);
-      font-size: 1.1rem;
+      font-size: 1.23rem;
       color: var(--red);
       flex-shrink: 0;
       line-height: 1.7;
     }
     .about-attitude-text {
-      font-size: 1.05rem;
+      font-size: 1.18rem;
       color: #fff;
       line-height: 1.75;
     }
@@ -1729,7 +1773,7 @@
     }
     .footer-left { display: flex; flex-direction: column; gap: 0.3rem; }
     .footer-logo { font-family: var(--display); font-size: 1.2rem; color: var(--red); letter-spacing: 0.08em; }
-    .footer-copy { font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.04em; color: #fff; text-transform: uppercase; }
+    .footer-copy { font-family: var(--cond); font-size: 0.75rem; letter-spacing: 0.04em; color: #fff; text-transform: uppercase; }
     .footer-nav { display: flex; gap: 1.6rem; list-style: none; flex-wrap: wrap; padding-right: 4rem; }
     .footer-nav a { font-family: var(--cond); font-size: 0.78rem; letter-spacing: 0.06em; color: #fff; text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
     .footer-nav a:hover { color: var(--accent); }
@@ -1766,6 +1810,10 @@
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
     }
     .reveal, .reveal-left, .reveal-right {
       opacity: 0;
@@ -1962,7 +2010,7 @@
       .contact-value { font-size: 1.35rem; }
 
       /* Row label sub */
-      .row-label-sub { font-size: 0.72rem; }
+      .row-label-sub { font-size: 0.75rem; }
 
       /* Footer */
       footer { padding: 1.5rem 1.25rem 1.25rem; }
@@ -1980,6 +2028,25 @@
       .pcard-tag { font-size: 0.82rem; }
       .pcard-hint { font-size: 0.95rem; }
       .about-attitude-text { font-size: 0.95rem; }
+      .about-content-card { padding: 2rem 2rem; }
+
+      /* About 소개 섹션 폰트 */
+      .about-intro-text { font-size: 1.18rem; padding-bottom: 1.5rem; margin-top: 1.2rem; }
+      .about-sub-label { font-size: 1.18rem; }
+      .about-specialty { font-size: 1rem; }
+      .about-exp-item { font-size: 1rem; }
+      .about-philosophy { font-size: 1rem; }
+      .about-attitude-num { font-size: 1.05rem; }
+      .about-block { padding-top: 1.5rem; margin-bottom: 0; }
+      .about-block:first-child { padding-top: 0; }
+
+      /* Tools 섹션 패딩 */
+      #tools { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+      #tools::before, #tools::after { height: 2.5rem; }
+
+      /* Docs */
+      .docs-grid { grid-template-columns: 1fr !important; }
+      .doc-download { width: 100%; justify-content: center; }
 
       /* 프로젝트 팝업 모달 */
       .proj-modal-box {
@@ -2054,18 +2121,18 @@
       .proj-thumb { width: calc(100% - 2rem); }
       .proj-company-text { font-size: 0.85rem; }
       .proj-period { font-size: 0.85rem; }
-      .proj-ptag { font-size: 0.74rem; padding: 0.18rem 0.5rem; }
+      .proj-ptag { font-size: 0.75rem; padding: 0.18rem 0.5rem; }
       .proj-section-label { font-size: 0.88rem; }
       .proj-rtag { font-size: 0.82rem; padding: 0.22rem 0.6rem; }
       .proj-achiev li { font-size: 0.88rem; line-height: 1.6; }
       .proj-achiev-sub { font-size: 0.82rem; }
       .proj-achiev li::before { font-size: 0.75rem; top: 0.22rem; }
-      .proj-btn { font-size: 0.72rem; padding: 0.45rem 0.75rem; }
+      .proj-btn { font-size: 0.75rem; padding: 0.45rem 0.75rem; }
 
       /* Tools */
       .tools-cat-label { font-size: 1.05rem; }
       .tools-section-inner { gap: 2rem; }
-      .tools-tab-btn { font-size: 0.72rem; padding: 0.6rem 0.75rem; }
+      .tools-tab-btn { font-size: 0.75rem; padding: 0.6rem 0.75rem; }
       .tools-tag { font-size: 0.78rem; }
 
       /* Recently played: 폰에서 1열 */
@@ -2082,7 +2149,7 @@
       .contact-value { font-size: 1.15rem; word-break: break-all; }
 
       /* Row label sub */
-      .row-label-sub { font-size: 0.62rem; letter-spacing: 0.1em; }
+      .row-label-sub { font-size: 0.75rem; letter-spacing: 0.1em; }
 
       /* Footer */
       footer { padding: 1.25rem 1rem 1rem; }
@@ -2098,6 +2165,25 @@
       .pcard-tag { font-size: 0.76rem; padding: 0.15rem 0.45rem; }
       .pcard-hint { font-size: 0.88rem; margin-top: 0.5rem; }
       .about-attitude-text { font-size: 0.88rem; }
+      .about-content-card { padding: 1.5rem 1.25rem; }
+
+      /* About 소개 섹션 폰트 */
+      .about-intro-text { font-size: 0.98rem; padding-bottom: 1.25rem; margin-top: 0.8rem; }
+      .about-sub-label { font-size: 1rem; }
+      .about-specialty { font-size: 0.92rem; }
+      .about-exp-item { font-size: 0.92rem; }
+      .about-philosophy { font-size: 0.92rem; line-height: 1.85; }
+      .about-attitude-num { font-size: 0.92rem; }
+      .about-block { padding-top: 1.25rem; margin-bottom: 0; }
+      .about-block:first-child { padding-top: 0; }
+
+      /* Tools 섹션 패딩 */
+      #tools { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+      #tools::before, #tools::after { height: 1.5rem; }
+
+      /* Docs 버튼 */
+      .doc-download { width: 100%; justify-content: center; font-size: 0.95rem; }
+      .docs-grid { grid-template-columns: 1fr !important; }
 
       /* 프로젝트 팝업 모달 */
       .proj-modal-overlay { align-items: flex-end; }
@@ -2121,7 +2207,7 @@
       .proj-section-label-row { flex-wrap: wrap; gap: 0.4rem; }
       .proj-accordion-toggle button { font-size: 0.76rem; padding: 0.25rem 0.55rem; }
       .proj-kpi-text { font-size: 0.82rem; }
-      .pcard-tags .pcard-tag { font-size: 0.74rem; padding: 0.18rem 0.5rem; }
+      .pcard-tags .pcard-tag { font-size: 0.75rem; padding: 0.18rem 0.5rem; }
       .proj-contrib-title { font-size: 0.88rem; }
       .proj-contrib-quote { font-size: 0.82rem; }
       .proj-accordion summary { font-size: 0.86rem; padding: 0.6rem 0.8rem; }
@@ -2170,47 +2256,50 @@
 <section id="about">
   <div class="row-label reveal-left">소개 <span class="row-label-sub">ABOUT</span></div>
 
-  <p class="about-intro-text reveal">
-    5년 경력의 콘텐츠 및 시스템 기획자 <strong style="color:var(--accent); font-weight:700;">'나한이'</strong> 입니다.
-  </p>
-
-  <div class="about-block reveal">
-    <div class="about-sub-label">주요 담당</div>
-    <div class="about-specialty">
-      시스템 기획<span>/</span>콘텐츠 기획<span>/</span>캐릭터 기획
-    </div>
-  </div>
-
-  <div class="about-block reveal">
-    <div class="about-sub-label">주요 경험</div>
-    <div class="about-exp-list">
-      <div class="about-exp-item">1인 유니티 게임 개발 및 출시 경험</div>
-      <div class="about-exp-item">모바일 게임 신규 개발에서 런칭, 라이브 서비스까지 경험</div>
-      <div class="about-exp-item">유니티, 언리얼 엔진 제작 환경 경험</div>
-      <div class="about-exp-item">콘솔(PS, XBOX)과 PC(STEAM) 크로스플랫폼을 위한 포팅작업 경험</div>
-    </div>
-  </div>
-
-  <div class="about-block reveal">
-    <div class="about-sub-label">기획을 할 때</div>
-    <p class="about-philosophy">
-      데이터를 바탕으로 기획의 당위성을 설계합니다.<br>
-      로그와 정성적 피드백을 교차 검증하여 유저의 니즈를 관통하는 인사이트를 찾아냅니다.<br>
-      '가설-실행-검증'이라는 루프를 기획 원칙으로 삼아 리스크를 최소화하고,<br>
-      성공의 경험을 정량화하는 과정을 즐깁니다. 새로운 기획이 기존 시스템과<br>
-      유기적으로 공존하도록 설계하여 시너지 효과를 만들어내는 것을 지향합니다.
+  <div class="about-content-card reveal">
+    <p class="about-intro-text">
+      5년 경력의 콘텐츠 및 시스템 기획자 <strong style="color:var(--accent); font-weight:700;">'나한이'</strong> 입니다.
     </p>
-  </div>
 
-  <div class="about-block reveal">
-    <div class="about-sub-label">태도 및 성향</div>
-    <div class="about-attitude-list">
-      <div class="about-attitude-item"><span class="about-attitude-num">01</span><span class="about-attitude-text">동료와 소통하고 경청하는 것을 즐깁니다.</span></div>
-      <div class="about-attitude-item"><span class="about-attitude-num">02</span><span class="about-attitude-text">브리핑, 리뷰를 통하여 설득하고 자유롭게 토론하는 것을 좋아합니다.</span></div>
-      <div class="about-attitude-item"><span class="about-attitude-num">03</span><span class="about-attitude-text">커뮤니케이션에서 유머와 위트는 기본이라고 생각합니다.</span></div>
-      <div class="about-attitude-item"><span class="about-attitude-num">04</span><span class="about-attitude-text">어제의 정답은 오늘의 오답이 될 수 있기에, 유연한 사고를 중요시합니다.</span></div>
-      <div class="about-attitude-item"><span class="about-attitude-num">05</span><span class="about-attitude-text">단순 반복 작업을 지양하고 자동화된 툴을 제작하고 개선합니다.</span></div>
-      <div class="about-attitude-item"><span class="about-attitude-num">06</span><span class="about-attitude-text">새로운 작업 프로세스나 기술을 도입하고 활용하는 것을 즐깁니다.</span></div>
+    <div class="about-block">
+      <div class="about-sub-label">주요 담당</div>
+      <div class="about-specialty">
+        시스템 기획<span>/</span>콘텐츠 기획<span>/</span>캐릭터 기획
+      </div>
+    </div>
+
+    <div class="about-block">
+      <div class="about-sub-label">주요 경험</div>
+      <div class="about-exp-list">
+        <div class="about-exp-item">1인 유니티 게임 개발 및 출시 경험</div>
+        <div class="about-exp-item">모바일 게임 신규 개발에서 런칭, 라이브 서비스까지 경험</div>
+        <div class="about-exp-item">유니티, 언리얼 엔진 제작 환경 경험</div>
+        <div class="about-exp-item">콘솔(PS, XBOX)과 PC(STEAM) 크로스플랫폼을 위한 포팅작업 경험</div>
+      </div>
+    </div>
+
+    <div class="about-block">
+      <div class="about-sub-label">기획을 할 때</div>
+      <p class="about-philosophy">
+        데이터를 바탕으로 기획의 당위성을 설계합니다.<br>
+        로그와 정성적 피드백을 교차 검증하여 유저의 니즈를 관통하는 인사이트를 찾아냅니다.<br>
+        '가설-실행-검증'이라는 루프를 기획 원칙으로 삼아 리스크를 최소화하고,<br>
+        성공의 경험을 정량화하는 과정을 즐깁니다. 새로운 기획이 기존 시스템과<br>
+        유기적으로 공존하도록 설계하여 시너지 효과를 만들어내는 것을 지향합니다.
+      </p>
+    </div>
+
+    <div class="about-block">
+      <div class="about-sub-label">태도 및 성향</div>
+      <div class="about-attitude-list">
+        <div class="about-attitude-item"><span class="about-attitude-num">01</span><span class="about-attitude-text">동료와 소통하고 경청하는 것을 즐깁니다.</span></div>
+        <div class="about-attitude-item"><span class="about-attitude-num">02</span><span class="about-attitude-text">브리핑, 리뷰를 통하여 설득하고 자유롭게 토론하는 것을 좋아합니다.</span></div>
+        <div class="about-attitude-item"><span class="about-attitude-num">03</span><span class="about-attitude-text">커뮤니케이션에서 유머와 위트는 기본이라고 생각합니다.</span></div>
+        <div class="about-attitude-item"><span class="about-attitude-num">04</span><span class="about-attitude-text">어제의 정답은 오늘의 오답이 될 수 있기에, 유연한 사고를 중요시합니다.</span></div>
+        <div class="about-attitude-item"><span class="about-attitude-num">05</span><span class="about-attitude-text">단순 반복 작업보다는 자동화된 툴을 제작하여 프로세스를 개선하는 것을 선호합니다.</span></div>
+        <div class="about-attitude-item"><span class="about-attitude-num">06</span><span class="about-attitude-text">새로운 작업 프로세스나 기술을 도입하고 활용하는 것을 즐깁니다.</span></div>
+        <div class="about-attitude-item"><span class="about-attitude-num">07</span><span class="about-attitude-text">다양한 시나리오(A/B TEST)를 준비하여, 비교 분석하고 합의를 도출하는 과정을 즐깁니다.</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -2898,30 +2987,14 @@
 <!-- DOCS -->
 <section id="docs" style="background: var(--bg);">
   <div class="row-label reveal-left">기획서 <span class="row-label-sub">DOCUMENTS</span></div>
-  <div class="docs-grid" data-stagger="80">
+  <div class="docs-grid" style="grid-template-columns: minmax(280px, 480px);" data-stagger="80">
     <article class="doc-card">
       <div class="doc-card-top">
-        <h3 class="doc-title">콘텐츠 기획서</h3>
+        <h3 class="doc-title">콘텐츠 기획 포트폴리오</h3>
         <span class="doc-badge">PDF</span>
       </div>
-      <p class="doc-desc">
-        캐릭터 컨셉, 구성 의도, 데이터 등 콘텐츠 설계 내용을 정리
-      </p>
       <div class="doc-actions">
-        <a href="./hanyina_portfolio_resource/콘텐츠 기획서_캐릭터 컨셉_나한이.pdf" download class="doc-download">↓ 다운로드</a>
-      </div>
-    </article>
-
-    <article class="doc-card">
-      <div class="doc-card-top">
-        <h3 class="doc-title">시스템 기획서<span class="doc-title-sub">(컨플루언스 Ver)</span></h3>
-        <span class="doc-badge">PDF</span>
-      </div>
-      <p class="doc-desc">
-        시스템 구조, 정책 정의, 예외 처리 등을 컨플루언스 문서 기준으로 정리
-      </p>
-      <div class="doc-actions">
-        <a href="./hanyina_portfolio_resource/시스템 기획서_시즌 꾸미기_나한이.pdf" download class="doc-download">↓ 다운로드</a>
+        <a href="./hanyina_portfolio_resource/콘텐츠 기획서_캐릭터 컨셉_나한이.pdf" download class="doc-download" style="padding: 1.1rem 2rem; font-size: 1rem;">↓ &nbsp;PDF 다운로드</a>
       </div>
     </article>
   </div>
@@ -3318,7 +3391,7 @@
     if (!data) return;
     document.getElementById('proj-modal-content').innerHTML = data.innerHTML;
     document.getElementById('proj-modal').classList.add('open');
-    document.getElementById('proj-modal').scrollTop = 0;
+    document.querySelector('#proj-modal .proj-modal-box').scrollTop = 0;
     document.body.style.overflow = 'hidden';
   }
   function closeProjModal() {
