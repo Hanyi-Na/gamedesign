@@ -107,7 +107,7 @@
       min-height: 600px;
       display: flex;
       align-items: flex-end;
-      padding: 0 4rem 6rem;
+      padding: 0 4rem 4.2rem;
       overflow: hidden;
     }
 
@@ -938,7 +938,13 @@
       background: var(--red);
       color: #fff;
     }
-    .proj-btn-store:hover { background: var(--red-dark); filter: brightness(1.1); }
+    .proj-btn-store:hover { background: var(--red-dark); filter: brightness(1.08); transform: translateY(-1px); }
+    .proj-btn-store-dark {
+      background: #111;
+      color: #fff;
+      justify-content: center;
+    }
+    .proj-btn-store-dark:hover { background: var(--red-dark); filter: brightness(1.08); transform: translateY(-1px); }
     .proj-btn-dl {
       background: transparent;
       color: #fff;
@@ -1211,14 +1217,14 @@
       margin: 0;
     }
     .doc-sub-label {
-      font-size: 1rem;
+      font-size: 1.0625rem;
       color: var(--accent);
       font-weight: 500;
     }
     .doc-title-sub {
       display: block;
       font-family: var(--body);
-      font-size: 1.125rem;
+      font-size: 1.1875rem;
       font-weight: 600;
       color: #fff;
       letter-spacing: 0.01em;
@@ -1254,7 +1260,7 @@
       align-items: center;
       gap: 0.55rem;
       padding: 0.82rem 1.25rem;
-      background: var(--red);
+      background: #111;
       color: #fff;
       text-decoration: none;
       font-family: var(--cond);
@@ -1917,7 +1923,7 @@
 
       /* Sections */
       section { padding: 2.5rem 1.25rem; }
-      .hero { padding: 0 1.25rem 4rem; min-height: 500px; }
+      .hero { padding: 0 1.25rem 3.8rem; min-height: 500px; }
       #contact { padding: 3.5rem 1.25rem 5rem; }
       #recently-played { padding: 3.5rem 1.25rem 5rem; }
 
@@ -2015,7 +2021,7 @@
       /* Docs */
       .docs-grid { grid-template-columns: 1fr; }
       .doc-title { font-size: 1.5rem; }
-      .doc-title-sub { font-size: 1.2rem; }
+      .doc-title-sub { font-size: 1.2625rem; }
       .doc-desc { font-size: 0.9rem; }
 
       /* Recently played: 태블릿에서 2열 */
@@ -2067,6 +2073,7 @@
       /* Docs */
       .docs-grid { grid-template-columns: 1fr !important; }
       .doc-download { width: 100%; justify-content: center; }
+      .proj-btn-store-dark { width: 100%; }
 
       /* 프로젝트 팝업 모달 */
       .proj-modal-box {
@@ -2098,7 +2105,7 @@
     @media (max-width: 480px) {
       /* Sections */
       section { padding: 2rem 1rem; }
-      .hero { padding: 0 1rem 3.5rem; }
+      .hero { padding: 0 1rem 3.325rem; }
       #contact { padding: 3rem 1rem 4rem; }
       #recently-played { padding: 3rem 1rem 4rem; }
 
@@ -2110,6 +2117,7 @@
       .hero-title { font-size: clamp(1.75rem, 9vw, 2.8rem); }
       .hero-desc { font-size: 0.88rem; }
       .btn { font-size: 0.95rem; padding: 0.7rem 1.2rem; }
+      .hero-actions p { font-size: 0.875rem !important; }
 
       /* About */
       .about-big { font-size: clamp(1.7rem, 8vw, 2.5rem); }
@@ -2165,8 +2173,8 @@
 
       /* Docs */
       .doc-title { font-size: 1.3rem; }
-      .doc-title-sub { font-size: 1rem; }
-      .doc-sub-label { font-size: 0.875rem; }
+      .doc-title-sub { font-size: 1.0625rem; }
+      .doc-sub-label { font-size: 0.9375rem; }
 
       /* Contact */
       .contact-label { font-size: 0.82rem; }
@@ -2206,9 +2214,11 @@
       #tools::before, #tools::after { height: 1.5rem; }
 
       /* Docs 버튼 */
-      .doc-card { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 0.9rem 1rem; }
-      .doc-download { font-size: 0.9rem; padding: 0.65rem 1rem; }
-      .doc-title-sub { font-size: 1rem; }
+      .doc-card { flex-direction: column; align-items: stretch; gap: 0.6rem; padding: 0.9rem 1rem; }
+      .doc-card > div { width: 100%; }
+      .doc-download { font-size: 0.9rem; padding: 0.65rem 1rem; width: 100%; }
+      .proj-btn-store-dark { font-size: 0.9rem; padding: 0.65rem 1rem; width: 100%; }
+      .doc-title-sub { font-size: 1.0625rem; }
       .docs-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
 
       /* 프로젝트 팝업 모달 */
@@ -2251,7 +2261,7 @@
     <li><a href="#about" data-section="about" onclick="closeMenu()">소개</a></li>
     <li><a href="#experience" data-section="experience" onclick="closeMenu()">경력</a></li>
     <li><a href="#projects" data-section="projects" onclick="closeMenu()">프로젝트</a></li>
-    <li><a href="#docs" data-section="docs" onclick="closeMenu()">기획서</a></li>
+    <li><a href="#docs" data-section="docs" onclick="closeMenu()">자료실</a></li>
     <li><a href="#tools" data-section="tools" onclick="closeMenu()">보유기술</a></li>
     <li><a href="#recently-played" data-section="recently-played" onclick="closeMenu()">플레이로그</a></li>
     <li><a href="#contact" data-section="contact" onclick="closeMenu()">연락처</a></li>
@@ -2272,8 +2282,7 @@
       <span class="name-line">포트폴리오</span>
     </h1>
     <div class="hero-actions">
-      <a href="./hanyina_portfolio_resource/이력서_나한이.pdf" download class="btn btn-info">↓ &nbsp;이력서 PDF 다운로드</a>
-      <p style="font-size: 0.9675rem; color: #fff; margin: 0; letter-spacing: 0.01em;">※ 해당 포트폴리오는 PC 버전에 최적화되어있습니다.</p>
+      <p style="font-size: 1.03rem; color: #2dd4bf; margin: 0; letter-spacing: 0.01em;">※ 해당 포트폴리오는 PC 버전에 최적화되어있습니다.</p>
     </div>
   </div>
 </section>
@@ -2939,10 +2948,6 @@
         <span class="pcard-tag">아케이드</span><span class="pcard-tag">신규개발</span><span class="pcard-tag">모바일</span><span class="pcard-tag">Unity</span><span class="pcard-tag">구글 플레이 · 원스토어 출시</span>
       </div>
       <p class="proj-desc-text" style="margin-top:0.5rem;">거너덕은 유니티 엔진을 활용한 1인 개발 프로젝트로, 기획부터 구글·원스토어 출시까지 전 과정을 혼자서 담당했습니다. 플랫포머-아케이드 하이브리드 게임이며, 광고 기반의 보상형 BM을 설계하여 수익화 구조를 직접 구현했습니다.</p>
-      <div class="proj-btn-row" style="margin-top:0.75rem;">
-        <a href="https://m.onestore.co.kr/v2/ko-kr/app/0000737986" target="_blank" rel="noopener" class="proj-btn proj-btn-store">▶ 거너덕 원스토어 바로가기</a>
-        <a href="./hanyina_portfolio_resource/거너덕_기획서_나한이.pdf" download class="proj-btn proj-btn-dl">↓ 거너덕 기획서 다운로드</a>
-      </div>
     </div>
     <div class="proj-modal-body">
       <div class="proj-section">
@@ -3018,8 +3023,28 @@
 
 <!-- DOCS -->
 <section id="docs" style="background: var(--bg);">
-  <div class="row-label reveal-left">기획서 <span class="row-label-sub">DOCUMENTS</span></div>
+  <div class="row-label reveal-left">자료실 <span class="row-label-sub">ARCHIVE</span></div>
   <div class="docs-grid" style="grid-template-columns: 1fr; gap: 0.5rem; max-width: 540px;" data-stagger="80">
+    <article class="doc-card">
+      <div style="flex-shrink: 0;">
+        <a href="./hanyina_portfolio_resource/이력서_나한이.pdf" download class="doc-download">↓ &nbsp;PDF 다운로드</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="doc-title-sub" style="margin-top: 0;">이력서</span>
+        <span class="doc-sub-label">나한이 이력서</span>
+      </div>
+    </article>
+
+    <article class="doc-card">
+      <div style="flex-shrink: 0;">
+        <a href="./hanyina_portfolio_resource/포트폴리오_시스템기획서_나한이.pdf" download class="doc-download">↓ &nbsp;PDF 다운로드</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="doc-title-sub" style="margin-top: 0;">시스템 기획서</span>
+        <span class="doc-sub-label">시즌 이벤트 시스템 기획서</span>
+      </div>
+    </article>
+
     <article class="doc-card">
       <div style="flex-shrink: 0;">
         <a href="./hanyina_portfolio_resource/포트폴리오_콘텐츠기획서_나한이.pdf" download class="doc-download">↓ &nbsp;PDF 다운로드</a>
@@ -3031,12 +3056,13 @@
     </article>
 
     <article class="doc-card">
-      <div style="flex-shrink: 0;">
-        <a href="./hanyina_portfolio_resource/포트폴리오_시스템기획서_나한이.pdf" download class="doc-download">↓ &nbsp;PDF 다운로드</a>
+      <div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 0.4rem;">
+        <a href="./hanyina_portfolio_resource/거너덕_기획서_나한이.pdf" download class="doc-download">↓ &nbsp;PDF 다운로드</a>
+        <a href="https://m.onestore.co.kr/v2/ko-kr/app/0000737986" target="_blank" rel="noopener" class="proj-btn proj-btn-store-dark">원스토어 바로가기</a>
       </div>
       <div style="display: flex; align-items: center; gap: 0.6rem;">
-        <span class="doc-title-sub" style="margin-top: 0;">시스템 기획서</span>
-        <span class="doc-sub-label">시즌 이벤트 시스템 기획서</span>
+        <span class="doc-title-sub" style="margin-top: 0;">1인 개발 기획서</span>
+        <span class="doc-sub-label">거너덕 기획서 (2019년)</span>
       </div>
     </article>
   </div>
