@@ -649,10 +649,16 @@
     .pcard-hint {
       margin-top: 0.75rem;
       font-size: 1.07rem;
+      font-weight: bold;
       color: var(--accent);
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      display: inline-block;
+      border: 1.5px solid var(--accent);
+      border-radius: 4px;
+      padding: 0.3em 0.8em;
     }
+
 
     /* 프로젝트 모달 */
     .proj-modal-overlay {
@@ -738,7 +744,7 @@
       background: var(--bg3);
     }
     .proj-img-caption {
-      font-size: 0.78rem;
+      font-size: 0.88rem;
       color: var(--text2);
       text-align: center;
     }
@@ -2517,7 +2523,7 @@
                 </div>
                 <div class="proj-img-with-caption">
                   <img src="./hanyina_portfolio_resource/bingo_contrib1_img2.PNG" alt="플로우 차트" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
-                  <div class="proj-img-caption">플로우 차트</div>
+                  <div class="proj-img-caption">플로우 차트 작성</div>
                 </div>
                 <div class="proj-img-with-caption">
                   <img src="./hanyina_portfolio_resource/bingo_contrib1_img3.PNG" alt="시스템 UI 기획" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
@@ -2525,7 +2531,7 @@
                 </div>
                 <div class="proj-img-with-caption">
                   <img src="./hanyina_portfolio_resource/bingo_contrib1_img4.PNG" alt="데이터 테이블" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
-                  <div class="proj-img-caption">데이터 테이블</div>
+                  <div class="proj-img-caption">테이블 설계 및 작업</div>
                 </div>
               </div>
             </div>
@@ -2536,8 +2542,14 @@
               <div class="proj-contrib-title">하우징 시스템 및 정책 설계</div>
               <div class="proj-contrib-quote">오브젝트 배치 로직 및 효율적인 에셋 관리 체계 구축<br>아트, 연출 부서와의 협업을 통해 하우징 프로토타입 구현 및 고도화</div>
               <div class="proj-img-gallery">
-                <img src="./hanyina_portfolio_resource/bingo_contrib2_img1.png.png" alt="하우징 시스템 이미지 1" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
-                <img src="./hanyina_portfolio_resource/bingo_contrib2_img2.png.JPEG" alt="하우징 시스템 이미지 2" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                <div class="proj-img-with-caption">
+                  <img src="./hanyina_portfolio_resource/bingo_contrib2_img1.png.png" alt="하우징 테이블 작업" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                  <div class="proj-img-caption">하우징 테이블 작업</div>
+                </div>
+                <div class="proj-img-with-caption">
+                  <img src="./hanyina_portfolio_resource/bingo_contrib2_img2.png.JPEG" alt="실제 구현된 하우징 시스템" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                  <div class="proj-img-caption">실제 구현된 하우징 시스템</div>
+                </div>
               </div>
             </div>
           </div>
@@ -2576,8 +2588,14 @@
               2. 개발팀과 함께 전반적인 데이터 구조를 재검토하고, 기획팀이 수치를 직접 조정할 수 있도록 <strong>하드코딩 구간을 테이블 기반으로 전환.</strong><br><br>
               3. 여러 테이블에서 함께 사용하여 문제가 된 각종 컬럼을 수정하고, <strong>서버/클라 테이블 분리 기준과 컬럼 규칙 설정, 전체 테이블 구조 관련 가이드 작성.</strong><br>
               <div class="proj-img-gallery" style="margin-top:0.75rem;">
-                <img src="./hanyina_portfolio_resource/bingo_star_img1.png" alt="테이블 구조 가이드 1" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
-                <img src="./hanyina_portfolio_resource/bingo_star_img2.png" alt="테이블 구조 가이드 2" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                <div class="proj-img-with-caption">
+                  <img src="./hanyina_portfolio_resource/bingo_star_img1.png" alt="컨플루언스용 DB 작업 가이드 제작" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                  <div class="proj-img-caption">컨플루언스용 DB 작업 가이드 제작</div>
+                </div>
+                <div class="proj-img-with-caption">
+                  <img src="./hanyina_portfolio_resource/bingo_star_img2.png" alt="비개발직군을 위한 DB 매뉴얼 작성" class="proj-zoomable" onclick="openLightbox(this)" onerror="this.style.background='var(--bg3)'" />
+                  <div class="proj-img-caption">비개발직군을 위한 DB 매뉴얼 작성</div>
+                </div>
               </div><br>
               4. 아트팀과 개발팀 사이의 가교 역할을 하여, 하우징, 시즌 이벤트 관련 <strong>리소스 테이블 사용을 제안하고 테이블 초안 작성과 가이드 제작.</strong>
             </div>
