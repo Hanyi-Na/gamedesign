@@ -748,6 +748,54 @@
       color: var(--text2);
       text-align: center;
     }
+    .yt-popup-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      margin-top: 0.6rem;
+      padding: 0.35em 0.9em;
+      border: 1.5px solid #ff4444;
+      border-radius: 4px;
+      color: #ff4444;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: transparent;
+      text-decoration: none;
+    }
+    .yt-popup-btn:hover { background: rgba(255,68,68,0.1); }
+    #yt-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #yt-modal-overlay.active { display: flex; }
+    #yt-modal-box {
+      position: relative;
+      width: min(860px, 92vw);
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    #yt-modal-box iframe {
+      width: 100%; height: 100%; border: none;
+    }
+    #yt-modal-close {
+      position: absolute;
+      top: -2rem;
+      right: 0;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
     .proj-desc-text {
       font-size: 0.95rem; color: #fff;
       line-height: 1.85; margin-top: 0.5rem;
@@ -2816,6 +2864,10 @@
             <div class="proj-contrib-body">
               <div class="proj-contrib-title">신규 캐릭터 6종 메인 기획</div>
               <div class="proj-contrib-quote">캐릭터별 고유 스킬 메커니즘 설계. 신규 상태이상, 스택 시스템 도입으로 고착화된 메타 재편<br><strong style="color:var(--accent);">역대 월 매출 1위 달성, 일 매출 1위 - 5위 갱신, 월 목표 매출 100% 초과 3회 달성에 기여</strong></div>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.4rem;">
+                <a class="yt-popup-btn" href="https://youtu.be/TzUorh7yN8g" target="_blank" rel="noopener">▶ 기획한 캐릭터 트레일러 1</a>
+                <a class="yt-popup-btn" href="https://www.youtube.com/watch?v=eBoknxBxDWg" target="_blank" rel="noopener">▶ 기획한 캐릭터 트레일러 2</a>
+              </div>
               <div class="proj-img-gallery" style="margin-top:0.75rem;">
                 <div class="proj-img-with-caption">
                   <img src="./hanyina_portfolio_resource/3on3_contrib1_img1.PNG" alt="라이브 데이터 지표 분석" onerror="this.style.background='var(--bg3)'" />
@@ -3705,6 +3757,7 @@
   })();
 
 </script>
+
 
 </body>
 </html>
