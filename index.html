@@ -2173,6 +2173,12 @@
       .proj-kpi-text { font-size: 0.95rem; }
       .proj-desc-text { font-size: 0.95rem; }
       .proj-btn { font-size: 0.95rem; padding: 0.5rem 0.9rem; }
+
+      /* 3열 갤러리 → 태블릿에서 2열 */
+      .proj-img-gallery[style*="repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; }
+
+      /* yt 버튼 줄바꿈 */
+      .yt-popup-btn { font-size: 0.85rem; padding: 0.3em 0.7em; }
     }
 
     /* 480px: 스마트폰 세로 모드 */
@@ -2322,6 +2328,29 @@
       .proj-contrib-quote { font-size: 0.95rem; }
       .proj-accordion summary { font-size: 0.95rem; padding: 0.6rem 0.8rem; }
       .proj-accordion-body li { font-size: 0.95rem; }
+
+      /* yt 버튼: 폰에서 줄바꿈 허용 */
+      .yt-popup-btn { font-size: 0.82rem; padding: 0.3em 0.65em; white-space: normal; word-break: keep-all; }
+
+      /* 긴 텍스트 넘침 방지 */
+      .about-exp-item { word-break: keep-all; overflow-wrap: break-word; }
+      .proj-desc-text { word-break: keep-all; overflow-wrap: break-word; }
+      .proj-star-text { word-break: keep-all; overflow-wrap: break-word; }
+      .proj-contrib-quote { word-break: keep-all; overflow-wrap: break-word; }
+    }
+
+    /* 360px: 초소형 폰 */
+    @media (max-width: 360px) {
+      section { padding: 1.75rem 0.85rem; }
+      .hero { padding: 0 0.85rem 3rem; }
+      .hero-title { font-size: clamp(1.5rem, 10vw, 2.2rem); }
+      .about-content-card { padding: 1.25rem 1rem 1.75rem; }
+      .pcard-body { padding: 0.75rem 0.85rem 0.85rem; }
+      .pcard-title { font-size: 1.15rem; }
+      .proj-modal-header { padding: 0.85rem 0.85rem 0.5rem; }
+      .proj-modal-body { padding: 0.65rem 0.85rem 1rem; }
+      .rp-card { padding: 0.6rem; }
+      .cc-body { padding: 0.85rem; }
     }
   </style>
 </head>
