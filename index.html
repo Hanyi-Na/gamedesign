@@ -1412,6 +1412,9 @@
       border: 1px solid rgba(255,255,255,0.13);
       color: rgba(255,255,255,0.78);
     }
+    .tools-tag--plan { background: #ddd6fe; border-color: #ddd6fe; color: #111; border-radius: 4px; }
+    .tools-tag--dev  { background: #fde68a; border-color: #fde68a; color: #111; border-radius: 4px; }
+    .tools-tag--viz  { background: #fce7f3; border-color: #fce7f3; color: #111; border-radius: 4px; }
     /* 카드 + 태그 혼합 */
     .tools-mixed { display: flex; flex-direction: column; gap: 0.4rem; }
     .tools-mixed .tools-tag-list { margin-top: 0.3rem; }
@@ -1419,10 +1422,10 @@
     .tool-card {
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,0.07);
-      padding: 0.85rem 1.2rem;
+      padding: 1rem 1.4rem;
       display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 1.25rem;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
       align-items: center;
       transition: border-color 0.2s, background 0.2s;
     }
@@ -1436,8 +1439,27 @@
       color: #fff;
       line-height: 1.2;
       letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
     }
     .tool-card-right { min-width: 0; }
+    .skill-badge {
+      display: inline-block;
+      font-size: 1.02rem;
+      font-weight: 700;
+      padding: 0.18em 0.55em;
+      border-radius: 3px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      font-family: var(--body);
+    }
+    .skill-badge--high { background: var(--accent); color: #111; }
+    .skill-badge--mid { background: #60b8ff; color: #111; }
+    .skill-badge--low { background: #a8e6a3; color: #111; }
     .tool-card-desc {
       font-size: 1rem;
       font-weight: 400;
@@ -2084,7 +2106,7 @@
       .tools-cat-label { font-size: 1.2rem; }
       .tools-tab-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
       .tools-tab-btn { font-size: 0.82rem; padding: 0.75rem 1rem; white-space: nowrap; flex-shrink: 0; }
-      .tool-card { grid-template-columns: 1fr; gap: 0.3rem; padding: 0.9rem 1rem; }
+      .tool-card { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem 1.1rem; }
       .tool-card-name { font-size: 1.2rem; }
       .tool-card-desc { font-size: 0.9rem; }
       .tools-tag { font-size: 0.84rem; padding: 0.32rem 0.75rem; }
@@ -2533,7 +2555,7 @@
   </div>
 
   <div class="proj-sub-label reveal">B. 개인 프로젝트</div>
-  <div class="proj-grid" style="grid-template-columns: 1fr 1fr;">
+  <div class="proj-grid">
     <div class="pcard reveal" onclick="openProjModal('gunnerduck')">
       <div class="pcard-thumb"><img src="./hanyina_portfolio_resource/proj_gunnerduck.png" alt="GUNNER DUCK" /><div class="pcard-thumb-overlay"></div></div>
       <div class="pcard-body">
@@ -3277,29 +3299,34 @@
       <div class="tools-cat-label">기획 / 협업 / QA</div>
       <div class="tools-mixed">
         <div class="tool-card">
-          <div class="tool-card-name">MS OFFICE</div>
+          <div class="tool-card-name">MS OFFICE <span class="skill-badge skill-badge--high">상급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">- PPT, EXCEL, WORD를 활용하여 기획서, 분석서 제작 가능<br>- Excel 함수 및 VBA를 활용한 업무 자동화 역량 보유</div>          </div>
+            <div class="tool-card-desc">- 기획서, 일정 관리 문서, 데이터 분석 보고서 작성 실무 경험<br>- Excel 함수 · VBA를 활용한 데이터 분석 및 업무 자동화 가능</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">Google Docs</div>
+          <div class="tool-card-name">Google Docs <span class="skill-badge skill-badge--high">상급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">기획서, 분석서, 일정 관리용 문서 제작 가능</div>          </div>
+            <div class="tool-card-desc">- 기획서 · 분석서 및 실시간 협업 · 일정 문서 작성 경험 보유<br>- Apps Script를 활용한 개발 생산성 향상 경험</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">Confluence</div>
+          <div class="tool-card-name">Confluence <span class="skill-badge skill-badge--high">상급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">기획서 작성, 대시보드 구성을 통한 업무 시각화 활용 가능</div>          </div>
+            <div class="tool-card-desc">기획 문서 체계화 및 대시보드 구성을 통한 프로젝트 현황 · 업무 시각화 가능</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">Notion</div>
+          <div class="tool-card-name">Notion <span class="skill-badge skill-badge--mid">중급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">사이드 프로젝트에서 해당 툴을 활용하여 기획서 작성 및 협업 진행 경험 有</div>          </div>
+            <div class="tool-card-desc">칸반 · 일정 기능을 활용한 문서 · 기획서 작성 및 사이드 프로젝트 협업 경험 보유</div>
+          </div>
         </div>
-        <div class="tool-card">
-          <div class="tool-card-name">Redmine / Mantis / Jira</div>
+        <div class="tool-card" style="align-items:center;">
+          <div class="tool-card-name">· Jira<br>· Mantis<br>· Redmine <span class="skill-badge skill-badge--mid">중급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">TC 작성, 이슈 관리 및 QA 프로세스 운영 경험</div>          </div>
+            <div class="tool-card-desc">TC 설계부터 이슈 트래킹까지, QA 프로세스 전반을 운영한 경험 보유</div>
+          </div>
         </div>
       </div>
     </div>
@@ -3309,39 +3336,40 @@
       <div class="tools-cat-label">개발</div>
       <div class="tools-mixed">
         <div class="tool-card">
-          <div class="tool-card-name">UNITY</div>
+          <div class="tool-card-name">UNITY <span class="skill-badge skill-badge--mid">중급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">1인 모바일 게임 개발 경험 有 / 인스펙터 구조 이해 및 프리팹 수정 가능 / 더미 데이터로 프로토타입 제작 가능</div>          </div>
+            <div class="tool-card-desc">- UNITY를 활용한 1인 모바일 게임 개발 및 출시 경험 보유<br>- 인스펙터, 프리팹 구조 이해를 바탕으로 더미 데이터 기반 프로토타입 제작 가능</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">Unreal Engine</div>
+          <div class="tool-card-name">Unreal Engine <span class="skill-badge skill-badge--mid">중급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">- Unreal Engine 4를 활용하여 신규 스킬 제작, 밸런스 작업 경험<br>- Unreal Engine 5 블루프린트 활용 가능</div>          </div>
+            <div class="tool-card-desc">- UE4 기반 라이브 서비스 환경에서 신규 스킬 설계 및 밸런스 조정 경험<br>- UE5 블루프린트를 활용한 게임 시스템 및 기능 프로토타입 제작 가능</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">Lua Script</div>
+          <div class="tool-card-name">MySQL <span class="skill-badge skill-badge--mid">중급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">전투 공식 설계 및 파라미터 조정 작업 경험</div>          </div>
+            <div class="tool-card-desc">DB 스키마 구조 분석, 쿼리 기반의 지표 추출 및 데이터 검증 역량 보유</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">MySQL</div>
+          <div class="tool-card-name">Lua Script <span class="skill-badge skill-badge--low">초급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">DB 스키마 구조 이해 및 지표 확인을 위한 기본적인 쿼리 활용 가능</div>          </div>
+            <div class="tool-card-desc">라이브 서비스 환경에서 게임 밸런스 조정, 전투 공식 및 파라미터 설계 경험 보유</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">Visual Studio</div>
+          <div class="tool-card-name">C# <span class="skill-badge skill-badge--low">초급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">1인 개발 경험을 통한 기본적인 C# 활용 능력 보유</div>          </div>
+            <div class="tool-card-desc">Unity 기반 1인 개발 프로젝트에서 C#을 활용한 게임 로직 및 기능 구현 경험</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">VS Code</div>
+          <div class="tool-card-name">SVN <span class="skill-badge skill-badge--high">상급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">AI 보조 도구(Claude 등)를 활용한 바이브 코딩 작업 가능</div>          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-name">SVN</div>
-          <div class="tool-card-right">
-            <div class="tool-card-desc">SVN 기반 버전 관리 및 협업 (다수 프로젝트 실무 경험)</div>          </div>
+            <div class="tool-card-desc">다수 프로젝트에서 SVN 기반 버전 관리 · 협업을 수행한 실무 경험 보유</div>
+          </div>
         </div>
       </div>
     </div>
@@ -3351,14 +3379,16 @@
       <div class="tools-cat-label">디자인 / 영상</div>
       <div class="tools-mixed">
         <div class="tool-card">
-          <div class="tool-card-name">PHOTOSHOP</div>
+          <div class="tool-card-name">Photoshop <span class="skill-badge skill-badge--mid">중급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">기획 의도 전달을 위한 시안 제작 가능, 썸네일 및 이미지 합성 · 편집 가능</div>          </div>
+            <div class="tool-card-desc">기획 의도를 시각적으로 전달하는 시안 제작 및 이미지 합성 · 편집 가능</div>
+          </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">PREMIERE PRO</div>
+          <div class="tool-card-name">Premiere Pro <span class="skill-badge skill-badge--high">상급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">유튜브 · 마케팅 영상 제작 경험, 마케팅 업체와 협업 경험</div>          </div>
+            <div class="tool-card-desc">유튜브 · 마케팅 영상 제작 및 외부 마케팅 업체와의 협업 진행 경험 보유</div>
+          </div>
         </div>
       </div>
     </div>
@@ -3368,26 +3398,36 @@
       <div class="tools-cat-label">AI 활용 역량</div>
       <div class="tools-mixed">
         <div class="tool-card" style="align-items:center;">
-          <div class="tool-card-name" style="font-family:'GmarketSans',sans-serif; font-weight:500; font-size:1.4rem; letter-spacing:-0.01em;">기획 및 분석</div>
+          <div class="tool-card-name" style="font-family:'GmarketSans',sans-serif; font-weight:500; font-size:1.4rem; letter-spacing:-0.01em;">기획 · 분석</div>
           <div class="tool-card-right" style="display:flex; flex-direction:column; gap:0.55rem;">
-            <div class="tool-card-desc">프로토타입 시스템 설계, 데이터 분석, 기획 문서 초안 작성에 활용 가능</div>
+            <div class="tool-card-desc">- 문서 초안 작성, 데이터 분석 및 아이디어 검증에 활용 가능<br>- 프롬프트 엔지니어링을 통한 정보 정확도 및 결과 검증 역량 보유</div>
             <div class="tools-tag-list">
-              <span class="tools-tag">ChatGPT</span>
-              <span class="tools-tag">Claude</span>
-              <span class="tools-tag">Gemini</span>
-              <span class="tools-tag">Perplexity</span>
-              <span class="tools-tag">NotebookLM</span>
+              <span class="tools-tag tools-tag--plan">ChatGPT</span>
+              <span class="tools-tag tools-tag--plan">Claude</span>
+              <span class="tools-tag tools-tag--plan">Gemini</span>
+              <span class="tools-tag tools-tag--plan">Perplexity</span>
+              <span class="tools-tag tools-tag--plan">NotebookLM</span>
             </div>
           </div>
         </div>
         <div class="tool-card" style="align-items:center;">
-          <div class="tool-card-name" style="font-family:'GmarketSans',sans-serif; font-weight:500; font-size:1.4rem; letter-spacing:-0.01em;">시각화</div>
+          <div class="tool-card-name" style="font-family:'GmarketSans',sans-serif; font-weight:500; font-size:1.4rem; letter-spacing:-0.01em;">개발 생산성</div>
           <div class="tool-card-right" style="display:flex; flex-direction:column; gap:0.55rem;">
-            <div class="tool-card-desc">컨셉 이미지, 연출 레퍼런스 제작 가능</div>
+            <div class="tool-card-desc">- AI 코딩 에이전트를 활용한 프로토타입 개발 경험<br>- 반복 업무 자동화 및 기술 검증 지원 가능</div>
             <div class="tools-tag-list">
-              <span class="tools-tag">Midjourney</span>
-              <span class="tools-tag">Kling</span>
-              <span class="tools-tag">Veo</span>
+              <span class="tools-tag tools-tag--dev">Claude Code</span>
+              <span class="tools-tag tools-tag--dev">Codex</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" style="align-items:center;">
+          <div class="tool-card-name" style="font-family:'GmarketSans',sans-serif; font-weight:500; font-size:1.4rem; letter-spacing:-0.01em;">시각화 · 생성형 AI</div>
+          <div class="tool-card-right" style="display:flex; flex-direction:column; gap:0.55rem;">
+            <div class="tool-card-desc">- 영상 AI를 활용한 유튜브 콘텐츠 제작 경험<br>- 기획 검증을 위한 컨셉 이미지, UI 목업 및 연출 레퍼런스 제작 가능</div>
+            <div class="tools-tag-list">
+              <span class="tools-tag tools-tag--viz">Midjourney</span>
+              <span class="tools-tag tools-tag--viz">Kling</span>
+              <span class="tools-tag tools-tag--viz">Veo</span>
             </div>
           </div>
         </div>
@@ -3484,31 +3524,11 @@
 
       <div class="rp-card">
         <div class="rp-img-wrap">
-          <img src="./hanyina_portfolio_resource/pkg_game1.png" alt="클레르 옵스퀴르: 33 원정대" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="rp-img-placeholder" style="display:none;">🎮</div>
-        </div>
-        <div class="rp-body">
-          <div class="rp-title">클레르 옵스퀴르: 33 원정대</div>
-        </div>
-      </div>
-
-      <div class="rp-card">
-        <div class="rp-img-wrap">
           <img src="./hanyina_portfolio_resource/pkg_game2.jfif" alt="스텔라 블레이드" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="rp-img-placeholder" style="display:none;">🎮</div>
         </div>
         <div class="rp-body">
           <div class="rp-title">스텔라 블레이드</div>
-        </div>
-      </div>
-
-      <div class="rp-card">
-        <div class="rp-img-wrap">
-          <img src="./hanyina_portfolio_resource/pkg_game3.webp" alt="붉은사막" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="rp-img-placeholder" style="display:none;">🎮</div>
-        </div>
-        <div class="rp-body">
-          <div class="rp-title">붉은사막</div>
         </div>
       </div>
 
@@ -3524,11 +3544,21 @@
 
       <div class="rp-card">
         <div class="rp-img-wrap">
-          <img src="./hanyina_portfolio_resource/pkg_game5.jpg" alt="마이 리틀 퍼피" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <img src="./hanyina_portfolio_resource/pkg_game3.webp" alt="붉은사막" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="rp-img-placeholder" style="display:none;">🎮</div>
         </div>
         <div class="rp-body">
-          <div class="rp-title">마이 리틀 퍼피</div>
+          <div class="rp-title">붉은사막</div>
+        </div>
+      </div>
+
+      <div class="rp-card">
+        <div class="rp-img-wrap">
+          <img src="./hanyina_portfolio_resource/pkg_game1.png" alt="클레르 옵스퀴르: 33 원정대" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="rp-img-placeholder" style="display:none;">🎮</div>
+        </div>
+        <div class="rp-body">
+          <div class="rp-title">클레르 옵스퀴르: 33 원정대</div>
         </div>
       </div>
 
