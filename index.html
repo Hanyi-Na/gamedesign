@@ -103,11 +103,11 @@
     /* ── HERO ── */
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 600px;
+      min-height: 340px;
       display: flex;
-      align-items: flex-end;
-      padding: 0 4rem 4.2rem;
+      align-items: center;
+      justify-content: center;
+      padding: 7rem max(2.5rem, calc((100% - 1080px) / 2)) 1rem;
       overflow: hidden;
     }
 
@@ -182,9 +182,11 @@
       user-select: none;
     }
 
-    .hero-content { position: relative; z-index: 2;
-      position: relative; z-index: 2;
-      max-width: 700px;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      width: 100%;
     }
 
     .hero-eyebrow {
@@ -208,7 +210,7 @@
       font-family: 'GmarketSans', sans-serif;
       font-weight: 700;
       font-size: 60px;
-      line-height: 1.0;
+      line-height: 1.2;
       letter-spacing: -0.01em;
       margin-bottom: 1.5rem;
       opacity: 0;
@@ -230,7 +232,7 @@
     }
 
     .hero-actions {
-      display: inline-flex; flex-direction: column; gap: 0.75rem;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem;
       opacity: 0;
       animation: fadeUp 0.7s 0.9s forwards;
     }
@@ -894,12 +896,17 @@
       margin-top: 2.5rem;
     }
     .proj-sub-label:first-of-type { margin-top: 0; }
+    @keyframes notice-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
     .proj-click-notice {
-      font-size: 1.325rem;
+      font-size: 1.525rem;
       font-weight: 700;
       color: #2dd4bf;
       margin-bottom: 1.5rem;
       letter-spacing: 0.02em;
+      animation: notice-blink 1.4s ease-in-out infinite;
     }
     .proj-card {
       background: var(--bg3);
@@ -2397,7 +2404,7 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <canvas id="hero-particles"></canvas>
-  <div class="hero-bg"><img src="./hanyina_portfolio_resource/hero_bg.png" alt="" class="hero-bg-img" onerror="this.style.display='none'" /><div class="hero-bg-overlay"></div></div>
+  <div class="hero-bg"><div class="hero-bg-overlay"></div></div>
   <div class="hero-scanlines"></div>
   <div class="hero-letters"></div>
   <div class="hero-content">
@@ -2437,6 +2444,51 @@
         <div class="about-exp-item">유니티 모바일 게임 3종의 <strong style="color:var(--accent); font-weight:700;">신규 개발–런칭–라이브서비스</strong> 전 주기 경험</div>
         <div class="about-exp-item">언리얼 엔진을 활용한 PC, 콘솔 크로스플랫폼 프로젝트 경험</div>
         <div class="about-exp-item">유니티를 활용하여 1인 모바일 게임 개발 및 출시</div>
+      </div>
+    </div>
+
+    <div class="about-block">
+      <div class="about-sub-label">기획을 할 때</div>
+      <p class="about-philosophy">
+        데이터를 바탕으로 기획의 당위성을 설계합니다.<br>
+        로그와 정성적 피드백을 교차 검증하여 유저의 니즈를 관통하는 인사이트를 찾아냅니다.<br>
+        '가설-실행-검증'이라는 루프를 기획 원칙으로 삼아 리스크를 최소화하고,<br>
+        성공의 경험을 정량화하는 과정을 즐깁니다. 새로운 기획이 기존 시스템과<br>
+        유기적으로 공존하도록 설계하여 시너지 효과를 만들어내는 것을 지향합니다.
+      </p>
+    </div>
+
+    <div class="about-block">
+      <div class="about-sub-label">태도 및 성향</div>
+      <div class="about-attitude-list">
+        <div class="about-attitude-item">
+          <span class="about-attitude-num">01</span>
+          <span class="about-attitude-text">동료와 소통하고 경청하는 것을 즐깁니다.</span>
+        </div>
+        <div class="about-attitude-item">
+          <span class="about-attitude-num">02</span>
+          <span class="about-attitude-text">브리핑, 리뷰를 통하여 설득하고 자유롭게 토론하는 것을 좋아합니다.</span>
+        </div>
+        <div class="about-attitude-item">
+          <span class="about-attitude-num">03</span>
+          <span class="about-attitude-text">커뮤니케이션에서 유머와 위트는 기본이라고 생각합니다.</span>
+        </div>
+        <div class="about-attitude-item">
+          <span class="about-attitude-num">04</span>
+          <span class="about-attitude-text">어제의 정답은 오늘의 오답이 될 수 있기에, 유연한 사고를 중요시합니다.</span>
+        </div>
+        <div class="about-attitude-item">
+          <span class="about-attitude-num">05</span>
+          <span class="about-attitude-text">단순 반복 작업보다는 자동화된 툴을 제작하여 프로세스를 개선하는 것을 선호합니다.</span>
+        </div>
+        <div class="about-attitude-item">
+          <span class="about-attitude-num">06</span>
+          <span class="about-attitude-text">새로운 프레임워크, 작업 프로세스, 기술을 도입하고 활용하는 것을 즐깁니다.</span>
+        </div>
+        <div class="about-attitude-item">
+          <span class="about-attitude-num">07</span>
+          <span class="about-attitude-text">다양한 시나리오(A/B TEST)를 준비하여, 비교 분석하고 합의를 도출하는 과정을 즐깁니다.</span>
+        </div>
       </div>
     </div>
 
@@ -3301,7 +3353,7 @@
         <div class="tool-card">
           <div class="tool-card-name">MS OFFICE <span class="skill-badge skill-badge--high">상급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">- 기획서, 일정 관리 문서, 데이터 분석 보고서 작성 실무 경험<br>- Excel 함수 · VBA를 활용한 데이터 분석 및 업무 자동화 가능, 파워쿼리 활용 가능</div>
+            <div class="tool-card-desc">- 기획서, 일정 관리 문서, 데이터 분석 보고서 작성 실무 경험<br>- Excel 함수 · VBA · 매크로 · 파워쿼리 · 해찾기를 활용하여 데이터 분석 및 업무 자동화 가능</div>
           </div>
         </div>
         <div class="tool-card">
@@ -3342,15 +3394,15 @@
           </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">Unreal Engine <span class="skill-badge skill-badge--mid">중급</span></div>
+          <div class="tool-card-name">Unreal Engine <span class="skill-badge skill-badge--low">초급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">- UE4 기반 라이브 서비스 환경에서 신규 스킬 설계 및 밸런스 조정 경험<br>- UE5 블루프린트, Behavior Tree 작업 가능</div>
+            <div class="tool-card-desc">- UE4 기반 라이브 서비스 환경에서 신규 스킬 설계 및 밸런스 조정 경험<br>- UE5 블루프린트 로직 이해, Behavior Tree 작업 가능</div>
           </div>
         </div>
         <div class="tool-card">
-          <div class="tool-card-name">MySQL <span class="skill-badge skill-badge--mid">중급</span></div>
+          <div class="tool-card-name">MySQL <span class="skill-badge skill-badge--low">초급</span></div>
           <div class="tool-card-right">
-            <div class="tool-card-desc">DB 스키마 구조 분석, 쿼리 기반의 지표 추출 및 데이터 검증 역량 보유</div>
+            <div class="tool-card-desc">DB 및 쿼리 활용 실무 경험 보유</div>
           </div>
         </div>
         <div class="tool-card">
